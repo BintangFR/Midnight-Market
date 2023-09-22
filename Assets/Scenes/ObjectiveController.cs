@@ -7,7 +7,8 @@ public class ObjectiveController : MonoBehaviour
 
     public ObjectivesManager objectiveManager;
 
-
+    //Create lorem ipsum lorem ipsum bvlalldaslsalsalslasaskasklaksas
+    // Start is called before the first frame update
     public void MarkObjectiveAsComplete(ObjectiveController objective)
     {
         objective.IsComplete = true;

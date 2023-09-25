@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class EnvirontmentController : MonoBehaviour,IInteractable
 {
@@ -14,6 +15,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     public EnvirontmentType environtmentType;
     public ItemController[] itemsList;
+    public UnityEvent unityEvent;
 
     public string GetInteractText()
     {
@@ -62,6 +64,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
             if (allResult)
                 {
                     gameObject.layer = default;
+                    unityEvent.Invoke();
                 }
         }   
     }

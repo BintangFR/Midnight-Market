@@ -1,38 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ObjectiveController : MonoBehaviour
 {
+    public int ID;
+    public string description;
+    public bool isComplete;
+    public bool isActive;
+    public ObjectiveType type;
+    public float progress;
+    public Requirement ObjectiveRequirement;
+    public HintData ObjectiveHint;
+    public UnityEvent requirement;
 
     public ObjectivesManager objectiveManager;
+    
 
-
-    public void MarkObjectiveAsComplete(ObjectiveController objective)
+    public void MarkObjectiveAsComplete()
     {
-        objective.IsComplete = true;
-
-        // untuk mengecek objective 1 sudah selesai atau belum
-        if (objective.ID == 1)
-        {
-            // mengactivate objective 2 jika obj 1 sudah selesai
-            if (CheckConditionsForObjective2())
-            {
-                // Aktifkan objektif 2
-                ObjectiveController objective2 = GetObjectiveByID(2);
-                if (objective2 != null)
-                {
-                    ActivateObjective(objective2);
-                }
-            }
-        }
+       isComplete = true;
+       isActive = false;
     }
+
+ 
+
 
     private bool CheckConditionsForObjective2()
     {
         //untuk memeriksa apakah obj 1 sudah selesai atau belum
         ObjectiveController objective1 = GetObjectiveByID(1);
-        if (objective1 != null && objective1.IsComplete)
+        if (objective1 != null && objective1.isComplete)
         {
             //untuk menambahkan kondisi lain jika ada
             return true;
@@ -52,28 +52,20 @@ public class ObjectiveController : MonoBehaviour
         return null;
     }
 
-    private void ActivateObjective(ObjectiveController objective)
+    public void ActivateObjective(ObjectiveController objective)
     {
-        objective.IsActive = true;
+        objective.isActive = true;
     }
 
-    public int ID;
-    public string Description;
-    public bool IsComplete;
-    public bool IsActive;
-    public ObjectiveType Type;
-    public float Progress;
-    public Requirement ObjectiveRequirement;
-    public HintData ObjectiveHint;
 
     public ObjectiveController(int id, string description, ObjectiveType type, Requirement requirement, HintData hint)
     {
         ID = id;
-        Description = description;
-        IsComplete = false;
-        IsActive = false;
-        Type = type;
-        Progress = 0f;
+        description = description;
+        isComplete = false;
+        isActive = false;
+        type = type;
+        progress = 0f;
         ObjectiveRequirement = requirement;
         ObjectiveHint = hint;
     }
@@ -95,13 +87,13 @@ public class ObjectiveController : MonoBehaviour
     {
         public string Description;
         public HintType Type;
-        public bool IsActive;
+        public bool isActive;
 
         public HintData(string description, HintType type)
         {
             Description = description;
             Type = type;
-            IsActive = false;
+            isActive = false;
         }
     }
 
@@ -119,6 +111,5 @@ public class ObjectiveController : MonoBehaviour
         ToolkitHint
     }
 
-    
 }
 

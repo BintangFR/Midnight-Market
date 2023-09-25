@@ -23,6 +23,7 @@ public class ObjectiveController : MonoBehaviour
     {
        isComplete = true;
        isActive = false;
+       gameObject.SetActive(false);
     }
 
  

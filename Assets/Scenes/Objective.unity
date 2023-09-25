@@ -11522,6 +11522,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Office Fuse
   Description: Fuse that found in the Office
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   isObtained: 0
   isPlaced: 0
 --- !u!65 &1204548411
@@ -14255,6 +14258,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Food
   Description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   isObtained: 0
   isPlaced: 0
 --- !u!65 &1471561471
@@ -17704,6 +17710,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Food
   Description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   isObtained: 0
   isPlaced: 0
 --- !u!65 &1789014792
@@ -18391,6 +18400,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Bolt Cutter
   Description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   isObtained: 0
   isPlaced: 0
 --- !u!65 &1884125245
@@ -20802,6 +20814,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Food
   Description: 
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls: []
   isObtained: 0
   isPlaced: 0
 --- !u!65 &2132410636
@@ -21093,6 +21108,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 475547155}
     m_Modifications:
+    - target: {fileID: 1300357405854576271, guid: 5ce4963bc76a5a84284ce342d3a9b7b0,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300357405854576271, guid: 5ce4963bc76a5a84284ce342d3a9b7b0,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300357405854576271, guid: 5ce4963bc76a5a84284ce342d3a9b7b0,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 108473884}
+    - target: {fileID: 1300357405854576271, guid: 5ce4963bc76a5a84284ce342d3a9b7b0,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300357405854576271, guid: 5ce4963bc76a5a84284ce342d3a9b7b0,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MarkObjectiveAsComplete
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300357405854576271, guid: 5ce4963bc76a5a84284ce342d3a9b7b0,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ObjectiveController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300357405854576271, guid: 5ce4963bc76a5a84284ce342d3a9b7b0,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 1321457499913642083, guid: 5ce4963bc76a5a84284ce342d3a9b7b0,
         type: 3}
       propertyPath: m_Name

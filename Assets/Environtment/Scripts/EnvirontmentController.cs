@@ -11,6 +11,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         ShelfDrink,
         ShelfSnack,
         Electrical,
+        Telephone
     }
 
     public EnvirontmentType environtmentType;
@@ -19,13 +20,17 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     public string GetInteractText()
     {
-        foreach (ItemController item in itemsList)
+        if (environtmentType != EnvirontmentType.Telephone)
         {
-            if (ItemManager.instance.items.Contains(item))
+            
+            foreach (ItemController item in itemsList)
             {
-                return "Place " + item.name;
-            }
+                if (ItemManager.instance.items.Contains(item))
+                {
+                    return "Place " + item.name;
+                }
 
+            }
         }
     //     else if (ItemManager.instance.items.Contains(fuseOffice))
     //     {
@@ -38,21 +43,32 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
     //     else{
     //         return "Look For Fuse";
     //     }
+
+        if (environtmentType == EnvirontmentType.Telephone)
+        {
+            return "Call 911";
+        }
         return "";
         
      }
 
     public void Interact()
     {
-        foreach (ItemController item in itemsList)
-        {
-            if (ItemManager.instance.items.Contains(item))
-            {
-                item.isPlaced = true;
-                ItemManager.instance.items.Remove(item); 
-            }
-            
+        if (environtmentType != EnvirontmentType.Telephone){
 
+            foreach (ItemController item in itemsList)
+            {
+                if (ItemManager.instance.items.Contains(item))
+                {
+                    item.isPlaced = true;
+                    ItemManager.instance.items.Remove(item); 
+                }
+            }
+        }
+        if (environtmentType == EnvirontmentType.Telephone)
+        {
+            Debug.Log("Telephone Mati");
+            unityEvent.Invoke();
         }
     }
 

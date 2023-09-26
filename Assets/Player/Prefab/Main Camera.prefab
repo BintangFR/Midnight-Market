@@ -33,6 +33,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4223048241556990666}
   serializedVersion: 2
+  m_LocalRotation: {x: 0.100551344, y: -0.714264, z: 0.10490444, w: 0.684625}
+  m_LocalPosition: {x: 152.04625, y: 0.4230001, z: -45.372593}
 <<<<<<< Updated upstream
   m_LocalRotation: {x: -0.0084248595, y: 0.98102635, z: 0.043806054, w: 0.18867277}
   m_LocalPosition: {x: 14.413108, y: 0.96213824, z: -102.74042}
@@ -82,7 +84,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -158,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 0
-  strength: 0
+  strength: 0.284
   material: {fileID: 2100000, guid: dabac87302b71472d89c8543b765eba8, type: 2}
 --- !u!114 &519805743314498984
 MonoBehaviour:
@@ -232,8 +234,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   on: 1
   grayscale: 0
-  amount: 211
-  strength: 0.16
+  amount: 285
+  strength: 0.333
   noise: 0.47
   speed: 0.88
   material: {fileID: 2100000, guid: 34707840cacc149bbae1e03a783fcb40, type: 2}

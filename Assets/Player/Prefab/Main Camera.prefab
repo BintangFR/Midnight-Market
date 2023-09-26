@@ -33,13 +33,22 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4223048241556990666}
   serializedVersion: 2
+<<<<<<< Updated upstream
   m_LocalRotation: {x: -0.0084248595, y: 0.98102635, z: 0.043806054, w: 0.18867277}
   m_LocalPosition: {x: 14.413108, y: 0.96213824, z: -102.74042}
+=======
+  m_LocalRotation: {x: -0.08356207, y: -0.8065593, z: -0.1175637, w: 0.5732872}
+  m_LocalPosition: {x: 132.83446, y: 0.42300004, z: -39.901222}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+<<<<<<< Updated upstream
   m_LocalEulerAnglesHint: {x: 4, y: -196.5, z: 0.4}
+=======
+  m_LocalEulerAnglesHint: {x: -16.586, y: -109.191, z: 0}
+>>>>>>> Stashed changes
 --- !u!20 &6198745489471029214
 Camera:
   m_ObjectHideFlags: 0
@@ -128,8 +137,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 1
+<<<<<<< Updated upstream
   amount: 0.0075
   speed: 0
+=======
+  amount: 0.0108
+  speed: 0.88
+>>>>>>> Stashed changes
   material: {fileID: 2100000, guid: 668e4ca5bbe07424e90bffec7dd41598, type: 2}
 --- !u!114 &8989975167717423003
 MonoBehaviour:
@@ -159,7 +173,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 1
+<<<<<<< Updated upstream
   level: 42
+=======
+  level: 47
+>>>>>>> Stashed changes
   material: {fileID: 2100000, guid: 84da12828e118449c8833ae1aa31804d, type: 2}
 --- !u!114 &2317619468396060881
 MonoBehaviour:
@@ -174,9 +192,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 1
+<<<<<<< Updated upstream
   strength: 0.04
   size: 1.12
   cutOff: 0.158
+=======
+  strength: 0.843
+  size: 1.32
+  cutOff: 0.145
+>>>>>>> Stashed changes
   material: {fileID: 2100000, guid: 8505dcfb904c34d3990c8703d7bbb780, type: 2}
 --- !u!114 &2343613676745476917
 MonoBehaviour:
@@ -191,8 +215,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 1
-  thickDistort: 0.38
-  fineDistort: 1.92
+  thickDistort: 0.97
+  fineDistort: 0.1
   material: {fileID: 2100000, guid: 0b2b1aef91c2345ab8d2fecf276fba3c, type: 2}
 --- !u!114 &4313071743301198884
 MonoBehaviour:
@@ -211,5 +235,5 @@ MonoBehaviour:
   amount: 211
   strength: 0.16
   noise: 0.47
-  speed: 0.82
+  speed: 0.88
   material: {fileID: 2100000, guid: 34707840cacc149bbae1e03a783fcb40, type: 2}

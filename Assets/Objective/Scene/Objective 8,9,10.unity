@@ -10452,13 +10452,13 @@ MonoBehaviour:
   endObjective:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 450791610}
+        m_TargetAssemblyTypeName: ObjectiveController, Assembly-CSharp
+        m_MethodName: MarkObjectiveAsComplete
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19412,6 +19412,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3371151533778151792, guid: 3082c580014ee034fae97cb46bf7260a,
+        type: 3}
+      propertyPath: playerMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371151533778151792, guid: 3082c580014ee034fae97cb46bf7260a,
+        type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 129
+      objectReference: {fileID: 0}
     - target: {fileID: 3640542608115454753, guid: 3082c580014ee034fae97cb46bf7260a,
         type: 3}
       propertyPath: m_Name

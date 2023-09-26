@@ -33,13 +33,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4223048241556990666}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0084248595, y: 0.98102635, z: 0.043806054, w: 0.18867277}
-  m_LocalPosition: {x: 14.413108, y: 0.96213824, z: -102.74042}
+  m_LocalRotation: {x: 0.100551344, y: -0.714264, z: 0.10490444, w: 0.684625}
+  m_LocalPosition: {x: 152.04625, y: 0.4230001, z: -45.372593}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 4, y: -196.5, z: 0.4}
+  m_LocalEulerAnglesHint: {x: 28.578, y: -201.773, z: 0}
 --- !u!20 &6198745489471029214
 Camera:
   m_ObjectHideFlags: 0
@@ -73,7 +73,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 1
-  amount: 0.0075
+  amount: 0.0123
   speed: 0
   material: {fileID: 2100000, guid: 668e4ca5bbe07424e90bffec7dd41598, type: 2}
 --- !u!114 &8989975167717423003
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 0
-  strength: 0
+  strength: 0.284
   material: {fileID: 2100000, guid: dabac87302b71472d89c8543b765eba8, type: 2}
 --- !u!114 &519805743314498984
 MonoBehaviour:
@@ -159,7 +159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 1
-  level: 42
+  level: 34
   material: {fileID: 2100000, guid: 84da12828e118449c8833ae1aa31804d, type: 2}
 --- !u!114 &2317619468396060881
 MonoBehaviour:
@@ -174,9 +174,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   on: 1
-  strength: 0.04
-  size: 1.12
-  cutOff: 0.158
+  strength: 0.843
+  size: 1.18
+  cutOff: 0.145
   material: {fileID: 2100000, guid: 8505dcfb904c34d3990c8703d7bbb780, type: 2}
 --- !u!114 &2343613676745476917
 MonoBehaviour:
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   on: 1
   grayscale: 0
-  amount: 211
-  strength: 0.16
+  amount: 285
+  strength: 0.333
   noise: 0.47
   speed: 0.82
   material: {fileID: 2100000, guid: 34707840cacc149bbae1e03a783fcb40, type: 2}

@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ItemController : MonoBehaviour,IInteractable
 {
     public String name;
     public String Description;
+    public UnityEvent unityEvent;
     
     [SerializeField] private bool isObtained;
     public bool isPlaced;
@@ -21,6 +23,7 @@ public class ItemController : MonoBehaviour,IInteractable
         isObtained = true;
         ItemManager.instance.AddItem(this);
         gameObject.active = false;
+        unityEvent.Invoke();
     }
 
     // Start is called before the first frame update

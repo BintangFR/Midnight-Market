@@ -11,15 +11,29 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         ShelfDrink,
         ShelfSnack,
         Electrical,
-        Telephone
+        Telephone,
+        Fan,
+        Taskboard
     }
 
     public EnvirontmentType environtmentType;
     public ItemController[] itemsList;
     public UnityEvent unityEvent;
 
+    private bool fanInteracted = false;
+
     public string GetInteractText()
     {
+        if (environtmentType == EnvirontmentType.Fan)
+        {
+            return "Turn off fan";
+        }
+
+        if (environtmentType == EnvirontmentType.Taskboard)
+        {
+            return "Look at taskboard";
+        }
+
         if (environtmentType != EnvirontmentType.Telephone)
         {
             
@@ -48,9 +62,16 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         {
             return "Call 911";
         }
+
         return "";
-        
-     }
+
+    }
+
+    public bool HasInteractedWithFan()
+    {
+        return fanInteracted;
+    }
+
 
     public void Interact()
     {
@@ -68,6 +89,19 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         if (environtmentType == EnvirontmentType.Telephone)
         {
             Debug.Log("Telephone Mati");
+            unityEvent.Invoke();
+        }
+
+        else if (environtmentType == EnvirontmentType.Fan)
+        {
+            fanInteracted = true;
+            Debug.Log("Fan Mati");
+            unityEvent.Invoke();
+        }
+
+        else if (environtmentType == EnvirontmentType.Taskboard)
+        {
+            Debug.Log("Taskboard dilihat");
             unityEvent.Invoke();
         }
     }

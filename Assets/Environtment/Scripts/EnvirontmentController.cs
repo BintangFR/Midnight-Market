@@ -12,6 +12,8 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         ShelfSnack,
         Electrical,
         Telephone,
+        Fan,
+        Taskboard,
         CCTV
     }
 
@@ -19,8 +21,20 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
     public ItemController[] itemsList;
     public UnityEvent unityEvent;
 
+    private bool fanInteracted = false;
+
     public string GetInteractText()
     {
+        if (environtmentType == EnvirontmentType.Fan)
+        {
+            return "Turn off fan";
+        }
+
+        if (environtmentType == EnvirontmentType.Taskboard)
+        {
+            return "Look at taskboard";
+        }
+
         if (environtmentType != EnvirontmentType.Telephone)
         {
             
@@ -54,8 +68,14 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
             return "Watch CCTV";
         }
         return "";
-        
-     }
+
+    }
+
+    public bool HasInteractedWithFan()
+    {
+        return fanInteracted;
+    }
+
 
     public void Interact()
     {
@@ -75,6 +95,18 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
             Debug.Log("Telephone Mati");
             unityEvent.Invoke();
         }
+
+        else if (environtmentType == EnvirontmentType.Fan)
+        {
+            fanInteracted = true;
+            Debug.Log("Fan Mati");
+            unityEvent.Invoke();
+        }
+
+        else if (environtmentType == EnvirontmentType.Taskboard)
+        {
+            Debug.Log("Taskboard dilihat");
+
         else if (environtmentType == EnvirontmentType.CCTV)
         {
             Debug.Log("CCTV sudah dicek");

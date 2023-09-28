@@ -17,6 +17,8 @@ public class VentController : MonoBehaviour,IInteractable
 
     private bool isFading = false; // Flag to prevent overlapping fades.
 
+    public EnvirontmentController environmentController; //Reference to environment controller
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
@@ -95,7 +97,14 @@ public class VentController : MonoBehaviour,IInteractable
 
     public void Interact()
     {
-        StartCoroutine(FadeScreenInAndOut());
-
+        if (environmentController.HasInteractedWithFan())
+        {
+            StartCoroutine(FadeScreenInAndOut());
+        }
+        else
+        {
+            Debug.Log("Matiin Fan dulu"); 
+        }
     }
 }
+

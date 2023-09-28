@@ -6752,7 +6752,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e56cc8bd75582647905382cbe1cb885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 940217728}
+  camera: {fileID: 0}
   light: {fileID: 648452894}
   minBrightness: 0.01
   maxBrightness: 13.5
@@ -9257,12 +9257,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 938565292}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &940217728 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6065786915116669873, guid: c6f86b952f2627840b0faa9b89a3b274,
-    type: 3}
-  m_PrefabInstance: {fileID: 1933766258}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &941444813
 GameObject:
   m_ObjectHideFlags: 0
@@ -10452,13 +10446,13 @@ MonoBehaviour:
   endObjective:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
+      - m_Target: {fileID: 450791610}
+        m_TargetAssemblyTypeName: ObjectiveController, Assembly-CSharp
+        m_MethodName: MarkObjectiveAsComplete
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -19412,6 +19406,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3371151533778151792, guid: 3082c580014ee034fae97cb46bf7260a,
+        type: 3}
+      propertyPath: playerMask.m_Bits
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 3371151533778151792, guid: 3082c580014ee034fae97cb46bf7260a,
+        type: 3}
+      propertyPath: obstacleMask.m_Bits
+      value: 129
+      objectReference: {fileID: 0}
     - target: {fileID: 3640542608115454753, guid: 3082c580014ee034fae97cb46bf7260a,
         type: 3}
       propertyPath: m_Name
@@ -19915,6 +19919,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 264192317681391015, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      propertyPath: orientation
+      value: 
+      objectReference: {fileID: 259819382}
+    - target: {fileID: 264192317681391015, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      propertyPath: cameraPosition
+      value: 
+      objectReference: {fileID: 168714920}
     - target: {fileID: 483956181748949390, guid: c6f86b952f2627840b0faa9b89a3b274,
         type: 3}
       propertyPath: amount

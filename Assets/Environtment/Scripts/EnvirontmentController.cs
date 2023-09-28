@@ -13,7 +13,8 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         Electrical,
         Telephone,
         Fan,
-        Taskboard
+        Taskboard,
+        CCTV
     }
 
     public EnvirontmentType environtmentType;
@@ -62,7 +63,10 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         {
             return "Call 911";
         }
-
+        else if (environtmentType == EnvirontmentType.CCTV)
+        {
+            return "Watch CCTV";
+        }
         return "";
 
     }
@@ -75,14 +79,14 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     public void Interact()
     {
-        if (environtmentType != EnvirontmentType.Telephone){
+        if (environtmentType != EnvirontmentType.Telephone) {
 
             foreach (ItemController item in itemsList)
             {
                 if (ItemManager.instance.items.Contains(item))
                 {
                     item.isPlaced = true;
-                    ItemManager.instance.items.Remove(item); 
+                    ItemManager.instance.items.Remove(item);
                 }
             }
         }
@@ -102,6 +106,10 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         else if (environtmentType == EnvirontmentType.Taskboard)
         {
             Debug.Log("Taskboard dilihat");
+
+        else if (environtmentType == EnvirontmentType.CCTV)
+        {
+            Debug.Log("CCTV sudah dicek");
             unityEvent.Invoke();
         }
     }

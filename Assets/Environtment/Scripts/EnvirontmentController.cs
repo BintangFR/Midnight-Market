@@ -107,6 +107,8 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         {
             Debug.Log("Taskboard dilihat");
 
+        }
+
         else if (environtmentType == EnvirontmentType.CCTV)
         {
             Debug.Log("CCTV sudah dicek");

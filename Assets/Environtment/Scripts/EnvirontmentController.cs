@@ -21,6 +21,10 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
     public ItemController[] itemsList;
     public UnityEvent unityEvent;
 
+    public UnityEvent StorageFuseEvent;
+    public UnityEvent OfficeFuseEvent;
+
+
     private bool fanInteracted = false;
 
     public string GetInteractText()
@@ -87,9 +91,30 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
                 {
                     item.isPlaced = true;
                     ItemManager.instance.items.Remove(item);
+                    unityEvent.Invoke();
                 }
             }
         }
+
+        if (environtmentType == EnvirontmentType.Electrical) {
+            foreach (ItemController item in itemsList)
+            {
+                if (ItemManager.instance.items.Contains(item) && item.name == "Storage Fuse")
+                {
+                    item.isPlaced = true;
+                    ItemManager.instance.items.Remove(item);
+                    StorageFuseEvent.Invoke();
+                }
+                else if (ItemManager.instance.items.Contains(item) && item.name == "Office Fuse")
+                {
+                    item.isPlaced = true;
+                    ItemManager.instance.items.Remove(item);
+                    OfficeFuseEvent.Invoke();
+                }
+            }
+        }
+
+
         if (environtmentType == EnvirontmentType.Telephone)
         {
             Debug.Log("Telephone Mati");

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2688006487303487767}
   - component: {fileID: 8586560032775190750}
   - component: {fileID: 8978410766318382264}
-  - component: {fileID: 1033553659176768975}
+  - component: {fileID: 6570213661041031331}
   m_Layer: 7
   m_Name: Bolt Cutter
   m_TagString: Untagged
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1033553659176768975
+--- !u!114 &6570213661041031331
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,11 +115,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6372847078199391346}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e1e84187cef6e42a91dd562af28324, type: 3}
+  m_Script: {fileID: 11500000, guid: 0b33c44f2c65e1c4e99bb2af35eed541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environtmentType: 4
-  itemsList: []
+  name: Bolt Cutter
+  Description: 
   unityEvent:
     m_PersistentCalls:
       m_Calls:
@@ -147,6 +147,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isObtained: 0
+  isPlaced: 0
 --- !u!1 &6808770636888504694
 GameObject:
   m_ObjectHideFlags: 0
@@ -163,7 +165,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3588309856707861248
 Transform:
   m_ObjectHideFlags: 0

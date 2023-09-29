@@ -71,6 +71,7 @@ public class Dialogue : MonoBehaviour
         {
             gotFlashlight.Invoke();
             gameObject.SetActive(false);
+            index = 0;
             player.GetComponent<PlayerController>().enabled = true;
             
         }

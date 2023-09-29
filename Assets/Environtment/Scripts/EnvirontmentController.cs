@@ -106,7 +106,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         else if (environtmentType == EnvirontmentType.Taskboard)
         {
             Debug.Log("Taskboard dilihat");
-
+            unityEvent.Invoke();
         }
 
         else if (environtmentType == EnvirontmentType.CCTV)

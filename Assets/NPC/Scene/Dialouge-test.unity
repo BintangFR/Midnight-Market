@@ -584,6 +584,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1873801443}
+        m_TargetAssemblyTypeName: NPCController, Assembly-CSharp
+        m_MethodName: ChangeDialogue
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 1370209738}
+          m_ObjectArgumentAssemblyTypeName: Dialogue, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   StorageFuseEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -10044,7 +10056,7 @@ PrefabInstance:
     - target: {fileID: 3777334038743343335, guid: ec86369af1c376243b5f43d57e456f88,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 138.64366
+      value: 96.72
       objectReference: {fileID: 0}
     - target: {fileID: 3777334038743343335, guid: ec86369af1c376243b5f43d57e456f88,
         type: 3}
@@ -10054,7 +10066,7 @@ PrefabInstance:
     - target: {fileID: 3777334038743343335, guid: ec86369af1c376243b5f43d57e456f88,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.787867
+      value: -47.98
       objectReference: {fileID: 0}
     - target: {fileID: 3777334038743343335, guid: ec86369af1c376243b5f43d57e456f88,
         type: 3}
@@ -13529,7 +13541,7 @@ Transform:
   m_GameObject: {fileID: 1276620982}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 134.9, y: 0, z: -17.87}
+  m_LocalPosition: {x: 86.999985, y: 0, z: -62.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14525,7 +14537,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1276620982}
+      objectReference: {fileID: 1276620983}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[0]
@@ -14817,6 +14829,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1370209736}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1370209738 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
+    type: 3}
+  m_PrefabInstance: {fileID: 1370209736}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a33b4b7a8b0a64d976ff560f3cedc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1376185311
 GameObject:
   m_ObjectHideFlags: 0
@@ -18664,7 +18688,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1276620982}
+      objectReference: {fileID: 1276620983}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: gotFlashlight.m_PersistentCalls.m_Calls.Array.size
@@ -19712,7 +19736,7 @@ Transform:
   m_GameObject: {fileID: 1873801438}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 136.6, y: 0.088, z: -13.41}
+  m_LocalPosition: {x: 88.7, y: 0.088, z: -57.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23909,6 +23933,11 @@ PrefabInstance:
     - target: {fileID: 2289965528884071574, guid: 1dce1dd70f58ee1418b1199fc5985221,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173688956592277131, guid: 1dce1dd70f58ee1418b1199fc5985221,
+        type: 3}
+      propertyPath: requirement.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8173688956592277131, guid: 1dce1dd70f58ee1418b1199fc5985221,

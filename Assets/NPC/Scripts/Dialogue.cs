@@ -14,7 +14,7 @@ public class Dialogue : MonoBehaviour
 
     private int index;
     public UnityEvent gotFlashlight;
-    [SerializeField] private GameObject player;
+    [SerializeField] private PlayerController player;
 
     // Start is called before the first frame update
     void Start()
@@ -44,8 +44,8 @@ public class Dialogue : MonoBehaviour
 
     void StartDialogue()
     {
-        player.GetComponent<PlayerController>().enabled = false;
-
+        //player.GetComponent<PlayerController>().enabled = false;
+        player.canMove = false;
         index = 0;
         StartCoroutine(TypeLine());
     }
@@ -71,8 +71,7 @@ public class Dialogue : MonoBehaviour
         {
             gotFlashlight.Invoke();
             gameObject.SetActive(false);
-            index = 0;
-            player.GetComponent<PlayerController>().enabled = true;
+            player.canMove = true;
             
         }
     }

@@ -14,6 +14,10 @@ public class AIController : MonoBehaviour
     public LayerMask whatIsPlayer;
     public PlayerController playerController;
     public Vector3 range;
+
+    [SerializeField] private float normalSpeed;
+    [SerializeField] private float sprintSpeed;
+    
     public Transform[] waypoints;
     private Animator anim;
 
@@ -59,12 +63,12 @@ public class AIController : MonoBehaviour
         else if (currentState == EnemyState.seeking)
         {
             anim.SetFloat("Speed", agent.speed);
-            agent.speed = 5.0f;
-
+            agent.speed = normalSpeed;
             agent.stoppingDistance = 0f;
 
             if (!agent.hasPath && waypoints.Length > 0)
             {
+                anim.SetBool("Seek", true);
                 MoveToWaypoint();
             }
 
@@ -75,17 +79,20 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.chasing)
         {
+
             agent.stoppingDistance = 1.5f;
             agent.SetDestination(player.position);
-            agent.speed = 10.0f;
+            agent.speed = sprintSpeed;
             anim.SetFloat("Speed", agent.speed);
+            anim.SetBool("Seek", false);
 
             if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
             {
+
                 currentState = EnemyState.seeking;
             }
 
-            if (Vector3.Distance(transform.position, player.position) <= 1.5f)
+            if (Vector3.Distance(transform.position, player.position) <= 1.9f)
             {
                 StartCoroutine(Attack());
             }
@@ -123,8 +130,8 @@ public class AIController : MonoBehaviour
             randomIndex = Random.Range(0, waypoints.Length);
         }
         while (currentWaypointIndex == randomIndex);
-
         currentWaypointIndex = randomIndex;
+        
         agent.SetDestination(waypoints[currentWaypointIndex].position);
     }
 

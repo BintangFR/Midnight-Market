@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class NPCController : MonoBehaviour,IInteractable
 {
 
     public GameObject npcDialogue;
-
+    public NavMeshAgent agent;
+    [SerializeField] private Animator animator;
     
     public string GetInteractText()
     {
@@ -18,16 +20,10 @@ public class NPCController : MonoBehaviour,IInteractable
         npcDialogue.SetActive(true);
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    public void GoToDestinantion(Transform Destination){
+        animator.SetFloat("Speed",agent.speed);
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        agent.SetDestination(Destination.position);
     }
 
     public void ChangeDialogue(Dialogue dialogue){

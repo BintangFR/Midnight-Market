@@ -84,16 +84,18 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
     public void Interact()
     {
         if (environtmentType != EnvirontmentType.Telephone) {
-
             foreach (ItemController item in itemsList)
             {
                 if (ItemManager.instance.items.Contains(item))
                 {
                     item.isPlaced = true;
+                    item.isObtained = false;
+
                     ItemManager.instance.items.Remove(item);
                     unityEvent.Invoke();
                 }
             }
+
         }
 
         if (environtmentType == EnvirontmentType.Electrical) {
@@ -102,12 +104,14 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
                 if (ItemManager.instance.items.Contains(item) && item.name == "Storage Fuse")
                 {
                     item.isPlaced = true;
+                    item.isObtained = false;
                     ItemManager.instance.items.Remove(item);
                     StorageFuseEvent.Invoke();
                 }
                 else if (ItemManager.instance.items.Contains(item) && item.name == "Office Fuse")
                 {
                     item.isPlaced = true;
+                    item.isObtained = false;
                     ItemManager.instance.items.Remove(item);
                     OfficeFuseEvent.Invoke();
                 }

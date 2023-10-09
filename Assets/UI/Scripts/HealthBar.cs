@@ -13,7 +13,7 @@ public class HealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-CreateHeart();
+
 
     }
 
@@ -22,6 +22,7 @@ CreateHeart();
     {
         for (int i = 0; i < playerHealth.maxHealth; i++)
         {
+        CreateHeart();
 
         }
 
@@ -30,6 +31,7 @@ CreateHeart();
     public void CreateHeart(){
         GameObject newHeart = Instantiate(health);
         newHeart.transform.SetParent(this.gameObject.transform);
+        newHeart.transform.localScale = new Vector3(0.25f,1,1);
     }
 
 }

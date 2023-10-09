@@ -38,11 +38,11 @@ public class ItemController : MonoBehaviour,IInteractable
     // Update is called once per frame
     void Update()
     {
-        if (isObtained)
+        if (isObtained && icon != null)
         {
             icon.SetActive(true);
         }
-        else
+        else if(!isObtained && icon != null)
         {
             icon.SetActive(false);
         }

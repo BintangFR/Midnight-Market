@@ -24,6 +24,7 @@ public class ObjectiveController : MonoBehaviour
        isComplete = true;
        isActive = false;
        gameObject.SetActive(false);
+       AudioManager.Instance.PlaySFX("Objective Complete", transform.position);
     }
 
  

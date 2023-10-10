@@ -27,6 +27,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     private bool fanInteracted = false;
 
+
     public string GetInteractText()
     {
         if (environtmentType == EnvirontmentType.Fan)
@@ -51,17 +52,29 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
             }
         }
-    //     else if (ItemManager.instance.items.Contains(fuseOffice))
-    //     {
-    //         return "Place " + fuseOffice.name; 
-    //     }
-    //     else if (ItemManager.instance.items.Contains(boltCutter))
-    //     {
-    //         return "Cut chain with " + boltCutter.name; 
-    //     }
-    //     else{
-    //         return "Look For Fuse";
-    //     }
+
+        if (environtmentType != EnvirontmentType.Electrical)
+        {
+
+            foreach (ItemController item in itemsList)
+            {
+                if (ItemManager.instance.items.Contains(item))
+                {
+                    return "Place " + item.name;
+                }
+            }
+        }
+        //     else if (ItemManager.instance.items.Contains(fuseOffice))
+        //     {
+        //         return "Place " + fuseOffice.name; 
+        //     }
+        //     else if (ItemManager.instance.items.Contains(boltCutter))
+        //     {
+        //         return "Cut chain with " + boltCutter.name; 
+        //     }
+        //     else{
+        //         return "Look For Fuse";
+        //     }
 
         if (environtmentType == EnvirontmentType.Telephone)
         {

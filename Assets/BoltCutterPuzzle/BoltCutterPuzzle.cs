@@ -21,5 +21,7 @@ public class BoltCutterPuzzle : MonoBehaviour, IInteractable
         {
             objectiveTrigger.startObjective.Invoke();
         }
+
+        AudioManager.Instance.PlaySFX("Chain", transform.position);
     }
 }

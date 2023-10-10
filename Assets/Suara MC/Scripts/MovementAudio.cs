@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class footsteps : MonoBehaviour
+public class MovementAudio : MonoBehaviour
 {
     public AudioSource footstepsSound, sprintSound;
 

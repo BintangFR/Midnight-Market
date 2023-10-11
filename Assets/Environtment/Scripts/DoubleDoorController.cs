@@ -7,6 +7,7 @@ public class DoubleDoorController : MonoBehaviour, IInteractable
     public DoorController Door1;
     public DoorController Door2;
     public bool isOpen = false;
+    public bool isLocked = false;
 
 
     public string GetInteractText()
@@ -16,18 +17,26 @@ public class DoubleDoorController : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        Door1.InteractDoor();
-        Door2.InteractDoor();
-
-        if (!isOpen)
+        if (!isLocked)
         {
-            AudioManager.Instance.PlaySFX("MainDoor-Open", transform.position);
-            isOpen = true;
+            Door1.InteractDoor();
+            Door2.InteractDoor();
+
+            if (!isOpen)
+            {
+                AudioManager.Instance.PlaySFX("MainDoor-Open", transform.position);
+                isOpen = true;
+            }
+            else
+            {
+                AudioManager.Instance.PlaySFX("MainDoor-Close", transform.position);
+                isOpen = false;
+            }
         }
         else
         {
-            AudioManager.Instance.PlaySFX("MainDoor-Close", transform.position);
-            isOpen = false;
+            AudioManager.Instance.PlaySFX("MainDoor-Locked", transform.position);
         }
+        
     }
 }

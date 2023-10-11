@@ -96,11 +96,6 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
             }
         }
 
-        if (environtmentType == EnvirontmentType.ShelfSponsoredFood)
-        {
-            AudioManager.Instance.PlaySFX("ItemPlaced-Shelf", transform.position);
-        }
-
         if (environtmentType == EnvirontmentType.Electrical) {
             foreach (ItemController item in itemsList)
             {
@@ -143,6 +138,11 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         {
             Debug.Log("CCTV sudah dicek");
             unityEvent.Invoke();
+        }
+        else if (environtmentType == EnvirontmentType.ShelfSponsoredFood)
+        {
+            Debug.Log("Makanan ditaruh");
+            AudioManager.Instance.PlaySFX("ItemPlaced-Shelf", transform.position);
         }
     }
 

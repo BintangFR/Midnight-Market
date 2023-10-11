@@ -88,8 +88,12 @@ public class PlayerController : MonoBehaviour
                 gameObject.layer = 3;
             }
         }
-
         
+        // test AudioManager
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            AudioManager.Instance.PlaySFX("Male Pain", transform.position);
+        }
     }
 
     private void DepleteStamina(float amount)

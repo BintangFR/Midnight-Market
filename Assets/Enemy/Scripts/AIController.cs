@@ -14,6 +14,10 @@ public class AIController : MonoBehaviour
     public LayerMask whatIsPlayer;
     public PlayerController playerController;
     public Vector3 range;
+
+    [SerializeField] private float normalSpeed;
+    [SerializeField] private float sprintSpeed;
+    
     public Transform[] waypoints;
     private Animator anim;
 
@@ -43,35 +47,7 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*if ()
-                playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
 
-                if (playerInSightRange)
-                {
-                    agent.SetDestination(player.transform.position);
-                }
-                else
-                {
-                    agent.ResetPath();
-                }
-        // Direction from the enemy to the player
-        Vector3 directionToPlayer = player.position - transform.position;
-
-        // Check if there's a clear line of sight between the enemy and the player
-        RaycastHit hitInfo;
-        if (Physics.Raycast(transform.position, directionToPlayer, out hitInfo, sightRange, whatIsPlayer))
-        {
-            // The ray hit something on the player's layer, meaning the enemy can see the player
-            agent.SetDestination(player.transform.position);
-            // Debug.DrawRay(transform.position, directionToPlayer, Color.green);
-        }
-        else
-        {
-            // The ray did not hit the player's layer, meaning the player is not in sight
-            // Debug.DrawRay(transform.position, directionToPlayer, Color.red);
-            EnemyPatrol();
-        }
-        */
         if (currentState == EnemyState.non_active)
         {
             // non_active logic
@@ -86,10 +62,13 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.seeking)
         {
+            anim.SetFloat("Speed", agent.speed);
+            agent.speed = normalSpeed;
             agent.stoppingDistance = 0f;
 
             if (!agent.hasPath && waypoints.Length > 0)
             {
+                anim.SetBool("Seek", true);
                 MoveToWaypoint();
             }
 
@@ -100,15 +79,20 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.chasing)
         {
+
             agent.stoppingDistance = 1.5f;
             agent.SetDestination(player.position);
+            agent.speed = sprintSpeed;
+            anim.SetFloat("Speed", agent.speed);
+            anim.SetBool("Seek", false);
 
             if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
             {
+
                 currentState = EnemyState.seeking;
             }
 
-            if (Vector3.Distance(transform.position, player.position) <= 1.5f)
+            if (Vector3.Distance(transform.position, player.position) <= 1.9f)
             {
                 StartCoroutine(Attack());
             }
@@ -146,8 +130,8 @@ public class AIController : MonoBehaviour
             randomIndex = Random.Range(0, waypoints.Length);
         }
         while (currentWaypointIndex == randomIndex);
-
         currentWaypointIndex = randomIndex;
+        
         agent.SetDestination(waypoints[currentWaypointIndex].position);
     }
 

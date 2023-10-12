@@ -9,7 +9,7 @@ public class FlashlightAudio : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            flashlightOn.Play();
+            AudioManager.Instance.PlaySFX("flashlight on", transform.position);
         }
 
         if (Input.GetKey(KeyCode.R))

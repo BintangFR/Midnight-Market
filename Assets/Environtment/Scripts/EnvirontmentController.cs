@@ -94,7 +94,9 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
                     unityEvent.Invoke();
                 }
             }
+
         }
+
 
         if (environtmentType == EnvirontmentType.Electrical) {
             foreach (ItemController item in itemsList)
@@ -117,6 +119,11 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
         if (environtmentType == EnvirontmentType.Telephone)
         {
+            AudioManager audioManager = AudioManager.Instance;
+            if (audioManager != null)
+            {
+                audioManager.PlaySFX("Phone", transform.position);
+            }
             Debug.Log("Telephone Mati");
             unityEvent.Invoke();
         }

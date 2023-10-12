@@ -83,16 +83,20 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     public void Interact()
     {
+
         if (environtmentType == EnvirontmentType.ShelfSponsoredFood) {
             foreach (ItemController item in itemsList)
             {
                 if (ItemManager.instance.items.Contains(item))
                 {
                     item.isPlaced = true;
+                    item.isObtained = false;
+
                     ItemManager.instance.items.Remove(item);
                     unityEvent.Invoke();
                 }
             }
+
         }
 
         if (environtmentType == EnvirontmentType.Electrical) {
@@ -101,6 +105,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
                 if (ItemManager.instance.items.Contains(item))
                 {
                     item.isPlaced = true;
+                    item.isObtained = false;
                     ItemManager.instance.items.Remove(item);
                 }
                 

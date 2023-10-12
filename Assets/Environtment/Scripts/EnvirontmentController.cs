@@ -83,7 +83,8 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     public void Interact()
     {
-        if (environtmentType != EnvirontmentType.Telephone) {
+
+        if (environtmentType == EnvirontmentType.ShelfSponsoredFood) {
             foreach (ItemController item in itemsList)
             {
                 if (ItemManager.instance.items.Contains(item))
@@ -101,20 +102,14 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         if (environtmentType == EnvirontmentType.Electrical) {
             foreach (ItemController item in itemsList)
             {
-                if (ItemManager.instance.items.Contains(item) && item.name == "Storage Fuse")
+                if (ItemManager.instance.items.Contains(item))
                 {
                     item.isPlaced = true;
                     item.isObtained = false;
                     ItemManager.instance.items.Remove(item);
-                    StorageFuseEvent.Invoke();
                 }
-                else if (ItemManager.instance.items.Contains(item) && item.name == "Office Fuse")
-                {
-                    item.isPlaced = true;
-                    item.isObtained = false;
-                    ItemManager.instance.items.Remove(item);
-                    OfficeFuseEvent.Invoke();
-                }
+                
+                
             }
         }
 
@@ -146,6 +141,18 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
     }
 
     private void Update() {
+
+        if (environtmentType == EnvirontmentType.Electrical)
+        {
+            if (itemsList[0].isPlaced)
+            {
+                StorageFuseEvent.Invoke();
+            }
+            if (itemsList[1].isPlaced)
+            {
+                OfficeFuseEvent.Invoke();
+            }
+        }
         foreach (ItemController item in itemsList)
         {
             //bool result = Tiles.All(tile => tile.GetComponent<Stats>().IsEmpty == false);

@@ -56,6 +56,7 @@ public class ObjectiveController : MonoBehaviour
     public void ActivateObjective(ObjectiveController objective)
     {
         objective.isActive = true;
+        objective.gameObject.SetActive(true);
     }
 
 

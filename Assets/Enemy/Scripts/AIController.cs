@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -22,14 +23,23 @@ public class AIController : MonoBehaviour
     [SerializeField] private AIVision aiVision;
     private int currentWaypointIndex = 0;
 
-    enum EnemyState
+
+    public enum EnemyState
     {
         non_active,
         activating,
-        idle,
-        seeking,
-        chasing,
-        attacking
+        idle ,
+        seeking ,
+        chasing ,
+        attacking 
+    }
+
+    //change enemy state for unity events 
+    public void ChangeState(){
+        currentState = EnemyState.seeking;
+    }
+    public void Testing(){
+        Debug.Log("Test");
     }
 
     // Start is called before the first frame update
@@ -143,7 +153,7 @@ public class AIController : MonoBehaviour
         int randomIndex;
         do
         {
-            randomIndex = Random.Range(0, waypoints.Length);
+            randomIndex = UnityEngine.Random.Range(0, waypoints.Length);
         }
         while (currentWaypointIndex == randomIndex);
 

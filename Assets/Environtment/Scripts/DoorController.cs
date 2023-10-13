@@ -44,7 +44,8 @@ public class DoorController : MonoBehaviour, IInteractable
         {
             AnimationCoroutine = StartCoroutine(DoRotationClose());
         }
-
+        
+        AudioManager.Instance.PlaySFX("Door", transform.position);
     }
 
     private IEnumerator DoRotationOpen()

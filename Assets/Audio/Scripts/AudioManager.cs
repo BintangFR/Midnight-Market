@@ -27,7 +27,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        PlayBGM(2);
+        //PlayBGM(2);
     }
 
     public void PlaySFX(int id, Vector3 position)

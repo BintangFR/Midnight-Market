@@ -4,19 +4,39 @@ using UnityEngine;
 
 public class AudioTrigger : MonoBehaviour
 {
-    [SerializeField] private AudioManager audioManager;
+    [SerializeField] private bool playAudio;
     [SerializeField] private int audioID;
     [SerializeField] private Transform soundSource;
+    [SerializeField] private TriggerType triggerType;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (audioManager != null)
+            if (triggerType == TriggerType.Ambience)
+            {
+                AudioManager.Instance.PlayAmbience(audioID);
+            }
+            else if (triggerType == TriggerType.SFX)
             {
                 Vector3 soundPosition = soundSource != null ? soundSource.position : transform.position;
-                audioManager.PlaySFX(audioID, soundPosition);
+                AudioManager.Instance.PlaySFX(audioID, soundPosition);
             }
         }
     }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            AudioManager.Instance.StopAmbience();
+        }
+    }
+}
+
+public enum TriggerType
+{
+    Ambience,
+    BGM,
+    SFX
 }

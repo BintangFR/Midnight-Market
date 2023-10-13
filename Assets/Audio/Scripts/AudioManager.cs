@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 
@@ -14,6 +15,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource ambienceSource;
     [SerializeField] private AudioSource bgmSource;
 
+    private AudioSource enemySource;
+    private AudioSource enemyVocalSource;
+    private float enemyVocalDuration = 0f;
+    private AIController.EnemyState enemyState;
+
+    private float audioCooldown = 0;
+
     private void Awake()
     {
         if (Instance == null)
@@ -27,7 +35,75 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        PlayBGM(2);
+        //PlayBGM(2);
+    }
+
+    private void Start()
+    {
+        GameObject enemyHead = AIController.Instance.GetAIVision().gameObject;
+
+        enemySource = AIController.Instance.GetComponent<AudioSource>();
+        enemyVocalSource = enemyHead.GetComponent<AudioSource>();
+    }
+
+    public void ChangeEnemyState(AIController.EnemyState enemyState)
+    {
+        this.enemyState = enemyState;
+    }
+
+    private void Update()
+    {
+        audioCooldown += Time.deltaTime;
+
+        if (audioCooldown > enemyVocalDuration)
+        {
+            audioCooldown = 0f;
+            enemyVocalDuration = 0f;
+
+            if (enemyState == AIController.EnemyState.chasing)
+            {
+                string[] chasingAudios =
+                {
+                    "Laughing 1",
+                    "Laughing 2",
+                    "Laughing 3"
+                };
+
+                AudioGroup.PreparedAudio selectedAudio = GetPreparedAudio(enemyGroup, chasingAudios);
+
+                enemyVocalSource.clip = selectedAudio.audioClip;
+
+                enemyVocalDuration = selectedAudio.audioClip.length;
+
+                enemyVocalSource.Play();
+            }
+            else if (enemyState == AIController.EnemyState.seeking)
+            {
+                string[] seekingAudios =
+                {
+                    "Vocal Humans Are Inferior",
+                    "Vocal I Love Killing Humans",
+                    "Vocal I Will Have My Revenge",
+                    "Vocal It's Too Late To Run",
+                    "Vocal They Say Robots Have No Hearts",
+                    "Jingle",
+                    "Vocal You Will Die"
+                };
+
+                AudioGroup.PreparedAudio selectedAudio = GetPreparedAudio(enemyGroup, seekingAudios);
+
+                if (selectedAudio == null)
+                {
+                    return;
+                }
+
+                enemyVocalSource.clip = selectedAudio.audioClip;
+
+                enemyVocalDuration = selectedAudio.audioClip.length;
+
+                enemyVocalSource.Play();
+            }
+        }
     }
 
     public void PlaySFX(int id, Vector3 position)
@@ -74,6 +150,31 @@ public class AudioManager : MonoBehaviour
     public void PlayBGM(string audioName)
     {
         PlayLoopingAudio(bgmSource, bgmGroup, audioName);
+    }
+
+    public void PlayEnemy(int id)
+    {
+        PlayLoopingAudio(enemySource, enemyGroup, id);
+    }
+
+    public void PlayEnemy(string audioName)
+    {
+        PlayLoopingAudio(enemySource, enemyGroup, audioName);
+    }
+
+    public void StopAmbience()
+    {
+        ambienceSource.Stop();
+    }
+
+    public void StopBGM()
+    {
+        bgmSource.Stop();
+    }
+
+    public void StopEnemy()
+    {
+        enemySource.Stop();
     }
 
     private void PlayLoopingAudio(AudioSource audioSource, AudioGroup audioGroup, int id)
@@ -123,6 +224,14 @@ public class AudioManager : MonoBehaviour
                 return audioGroup.audioList[i];
             }
         }
+        Debug.Log(audioName);
         return null;
+    }
+
+    private AudioGroup.PreparedAudio GetPreparedAudio(AudioGroup audioGroup, string[] audioNames)
+    {
+        int randomIndex = Random.Range(0, audioNames.Length);
+
+        return GetPreparedAudio(audioGroup, audioNames[randomIndex]);
     }
 }

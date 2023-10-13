@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class AudioTrigger : MonoBehaviour
 {
+    [SerializeField] private AudioManager audioManager;
     [SerializeField] private int audioID;
-    [SerializeField] private bool playAudio;
-    [SerializeField] private AudioSource audioSource;
-    private void OnTriggerEnter(Collider other){
-        //playAudio = !playAudio;
-        if (other.gameObject == GameObject.Find("Player")){
-            AudioManager.Instance.PlayAmbience(audioID);
-            
-        }
-        
-    }
-    private void OnTriggerExit(Collider other) {
-        if (other.gameObject == GameObject.Find("Player"))
-        {
-            audioSource.Stop();
-        }
-    }
+    [SerializeField] private Transform soundSource;
 
-    
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (audioManager != null)
+            {
+                Vector3 soundPosition = soundSource != null ? soundSource.position : transform.position;
+                audioManager.PlaySFX(audioID, soundPosition);
+            }
+        }
+    }
 }

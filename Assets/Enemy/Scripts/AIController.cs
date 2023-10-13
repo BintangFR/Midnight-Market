@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -32,10 +33,18 @@ public class AIController : MonoBehaviour
     {
         non_active,
         activating,
-        idle,
-        seeking,
-        chasing,
-        attacking
+        idle ,
+        seeking ,
+        chasing ,
+        attacking 
+    }
+
+    //change enemy state for unity events 
+    public void ChangeState(){
+        currentState = EnemyState.seeking;
+    }
+    public void Testing(){
+        Debug.Log("Test");
     }
 
     private void Awake()
@@ -61,6 +70,7 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (currentState == EnemyState.non_active)
         {
             // non_active logic
@@ -92,6 +102,7 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.chasing)
         {
+
             agent.stoppingDistance = 1.5f;
             agent.SetDestination(player.position);
             agent.speed = sprintSpeed;
@@ -101,6 +112,7 @@ public class AIController : MonoBehaviour
             if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
             {
                 ChangeEnemyState(EnemyState.seeking);
+
             }
 
             if (Vector3.Distance(transform.position, player.position) <= 1.9f)
@@ -140,7 +152,7 @@ public class AIController : MonoBehaviour
         int randomIndex;
         do
         {
-            randomIndex = Random.Range(0, waypoints.Length);
+            randomIndex = UnityEngine.Random.Range(0, waypoints.Length);
         }
         while (currentWaypointIndex == randomIndex);
         currentWaypointIndex = randomIndex;

@@ -159,6 +159,11 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
             Debug.Log("CCTV sudah dicek");
             unityEvent.Invoke();
         }
+        else if (environtmentType == EnvirontmentType.ShelfSponsoredFood)
+        {
+            Debug.Log("Makanan ditaruh");
+            AudioManager.Instance.PlaySFX("ItemPlaced-Shelf", transform.position);
+        }
     }
 
     private void Update() {

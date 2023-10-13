@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioTrigger : MonoBehaviour
 {
     [SerializeField] private bool playAudio;
-    [SerializeField] private int audioID;
+    [SerializeField] private string audioName;
     [SerializeField] private Transform soundSource;
     [SerializeField] private TriggerType triggerType;
 
@@ -15,12 +15,12 @@ public class AudioTrigger : MonoBehaviour
         {
             if (triggerType == TriggerType.Ambience)
             {
-                AudioManager.Instance.PlayAmbience(audioID);
+                AudioManager.Instance.PlayAmbience(audioName);
             }
             else if (triggerType == TriggerType.SFX)
             {
                 Vector3 soundPosition = soundSource != null ? soundSource.position : transform.position;
-                AudioManager.Instance.PlaySFX(audioID, soundPosition);
+                AudioManager.Instance.PlaySFX(audioName, soundPosition);
             }
         }
     }
@@ -30,6 +30,7 @@ public class AudioTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             AudioManager.Instance.StopAmbience();
+            AudioManager.Instance.PlayAmbience("Rain-Ambience");
         }
     }
 }

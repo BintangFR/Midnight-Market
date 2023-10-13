@@ -38,6 +38,7 @@ public class FusePuzzle1 : MonoBehaviour, IInteractable
             Debug.Log("Fuse is Replaced");
         }
 
+        AudioManager.Instance.PlaySFX("Fuse", transform.position);
     }
 
 

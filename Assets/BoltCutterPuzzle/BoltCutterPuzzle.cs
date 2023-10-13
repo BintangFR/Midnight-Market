@@ -29,5 +29,7 @@ public class BoltCutterPuzzle : MonoBehaviour, IInteractable
             unityEvent.Invoke();
             gameObject.SetActive(false);
         }
+
+        AudioManager.Instance.PlaySFX("Chain", transform.position);
     }
 }

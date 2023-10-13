@@ -8,6 +8,8 @@ using UnityEngine.Rendering;
 
 public class AIController : MonoBehaviour
 {
+    public static AIController Instance { get; private set; }
+
     public Transform player;
     public NavMeshAgent agent;
     // public float sightRange;
@@ -27,7 +29,6 @@ public class AIController : MonoBehaviour
     [SerializeField] private AIVision aiVision;
     private int currentWaypointIndex = 0;
 
-
     public enum EnemyState
     {
         non_active,
@@ -46,12 +47,24 @@ public class AIController : MonoBehaviour
         Debug.Log("Test");
     }
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
 
-        currentState = EnemyState.seeking;
+        ChangeEnemyState(EnemyState.seeking);
     }
 
     // Update is called once per frame
@@ -84,7 +97,7 @@ public class AIController : MonoBehaviour
 
             if (aiVision.GetCanSeePlayer())
             {
-                currentState = EnemyState.chasing;
+                ChangeEnemyState(EnemyState.chasing);
             }
         }
         else if (currentState == EnemyState.chasing)
@@ -98,8 +111,8 @@ public class AIController : MonoBehaviour
 
             if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
             {
+                ChangeEnemyState(EnemyState.seeking);
 
-                currentState = EnemyState.seeking;
             }
 
             if (Vector3.Distance(transform.position, player.position) <= 1.9f)
@@ -115,20 +128,22 @@ public class AIController : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        Debug.Log(Vector3.Distance(transform.position, player.position));
-
-        currentState = EnemyState.attacking;
+        ChangeEnemyState(EnemyState.attacking);
         anim.SetTrigger("Attack");
+
+        AudioManager.Instance.PlaySFX("Attack Before", transform.position);
 
         yield return new WaitForSeconds(1f);
 
-        if (aiVision.GetCanSeePlayer())
-        {                
-            currentState = EnemyState.chasing;
+        AudioManager.Instance.PlaySFX("Attack After", transform.position);
+
+        if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
+        {
+            ChangeEnemyState(EnemyState.seeking);
         }
         else
         {
-            currentState = EnemyState.seeking;
+            ChangeEnemyState(EnemyState.chasing);
         }
     }
 
@@ -143,6 +158,24 @@ public class AIController : MonoBehaviour
         currentWaypointIndex = randomIndex;
         
         agent.SetDestination(waypoints[currentWaypointIndex].position);
+    }
+
+    public void ChangeEnemyState(EnemyState newState)
+    {
+        currentState = newState;
+
+        AudioManager.Instance.StopEnemy();
+        AudioManager.Instance.ChangeEnemyState(newState);
+
+        if (newState == EnemyState.chasing || newState == EnemyState.seeking)
+        {
+            AudioManager.Instance.PlayEnemy("Robot Footstep");
+        }
+    }
+
+    public AIVision GetAIVision()
+    {
+        return aiVision;
     }
 
     /*

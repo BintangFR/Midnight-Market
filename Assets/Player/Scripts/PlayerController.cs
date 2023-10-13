@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Jump") && isGrounded)
         {
             player.velocity = new Vector3(player.velocity.z,jumpHeight);
+            AudioManager.Instance.PlaySFX("jump", transform.position);
 
             //transform.Translate(0, jumpHeight * Time.deltaTime, 0);
             
@@ -60,14 +61,14 @@ public class PlayerController : MonoBehaviour
             speed += (speed * 20/100);
             Debug.Log(speed);
             DepleteStamina(0.01f);
-            cam.fieldOfView = 60;
-
+            cam.fieldOfView = 60;          
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             //chage speed to default and change fov to normal
             cam.fieldOfView = defaultFOV;
             speed = defaultSpeed;
+            AudioManager.Instance.PlaySFX("tired", transform.position);
         }
         if (canCrouch)
         {
@@ -88,8 +89,12 @@ public class PlayerController : MonoBehaviour
                 gameObject.layer = 3;
             }
         }
-
         
+        // test AudioManager
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            AudioManager.Instance.PlaySFX("Male Pain", transform.position);
+        }
     }
 
     private void DepleteStamina(float amount)
@@ -105,8 +110,10 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage()
     {
         maxHealth -= 1;
+        AudioManager.Instance.PlaySFX("hit", transform.position);
         if (maxHealth == 0)
         {
+            AudioManager.Instance.PlaySFX("die", transform.position);
             Die();
         }
     }

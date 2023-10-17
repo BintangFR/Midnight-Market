@@ -102,4 +102,8 @@ public class DoorController : MonoBehaviour, IInteractable
             time += Time.deltaTime * Speed;
         }
     }
+
+    public void OpenLock(){
+        isLocked = false;       
+    }
 }

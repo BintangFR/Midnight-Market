@@ -988,12 +988,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64070057}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -1.01, y: 1.5, z: 14.73}
   m_LocalScale: {x: 1, y: 3, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2056924809}
+  m_Father: {fileID: 1766143861}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &64070062
 MonoBehaviour:
@@ -15381,7 +15381,7 @@ PrefabInstance:
     - target: {fileID: 8532904184626889218, guid: 40dd82bfda41def4bbe23359ef4f7619,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -42.08
+      value: -45.04
       objectReference: {fileID: 0}
     - target: {fileID: 8532904184626889218, guid: 40dd82bfda41def4bbe23359ef4f7619,
         type: 3}
@@ -15389,7 +15389,8 @@ PrefabInstance:
       value: 19.08
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8170925777300095597, guid: 40dd82bfda41def4bbe23359ef4f7619, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40dd82bfda41def4bbe23359ef4f7619, type: 3}
@@ -16543,7 +16544,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 736280602}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: set_layer
         m_Mode: 3
@@ -16555,10 +16556,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: set_layer
-        m_Mode: 3
+      - m_Target: {fileID: 736280605}
+        m_TargetAssemblyTypeName: DoubleDoorController, Assembly-CSharp
+        m_MethodName: OpenLock
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -17773,6 +17774,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895004756b66bac4f9d00fd394a59ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1276620983}
+  camera: {fileID: 1924815680}
 --- !u!4 &1426760366
 Transform:
   m_ObjectHideFlags: 0
@@ -19482,7 +19485,7 @@ PrefabInstance:
     - target: {fileID: 8957904981946491363, guid: 63652ff6266a97743b057c46e73c5603,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -28173,6 +28176,11 @@ PrefabInstance:
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1307426682}
+    - target: {fileID: 1636755235818211021, guid: 8995c8b063ffd8c4ebb546868d49946c,
+        type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1962349298364768019, guid: 8995c8b063ffd8c4ebb546868d49946c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28325,6 +28333,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1933766258}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1924815680 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 264192317681391015, guid: c6f86b952f2627840b0faa9b89a3b274,
+    type: 3}
+  m_PrefabInstance: {fileID: 1933766258}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9acb31038980d34181addf52bbc7844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1925622030
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30506,9 +30526,49 @@ PrefabInstance:
       objectReference: {fileID: 174733445}
     - target: {fileID: 8884930372527939951, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884930372527939951, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884930372527939951, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 769799026}
+    - target: {fileID: 8884930372527939951, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884930372527939951, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: OpenLock
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884930372527939951, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
+      value: DoorController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884930372527939951, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2077016909}
+    - target: {fileID: 8884930372527939951, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8884930372527939951, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -31915,7 +31975,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 64070061}
   - {fileID: 1261940044}
   m_Father: {fileID: 39470533}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -33915,7 +33974,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3553266287344353940, guid: 68c3235326076cb488d9c706cbffe7c1,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 64070061}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68c3235326076cb488d9c706cbffe7c1, type: 3}
 --- !u!1001 &7350596400090413491

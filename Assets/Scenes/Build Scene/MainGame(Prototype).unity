@@ -14473,6 +14473,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1374245573}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!1 &1267126267
 GameObject:
   m_ObjectHideFlags: 0
@@ -14602,7 +14614,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276620982}
-  m_Material: {fileID: 13400000, guid: 9bbd680c550a9f148ba4f7d80587e5f3, type: 2}
+  m_Material: {fileID: 13400000, guid: 192863d2d03a6ac40a20f6f514fc99c9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -14714,7 +14726,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 2
+  m_CollisionDetection: 1
 --- !u!114 &1276620989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16500,7 +16512,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1374245574
 Transform:
   m_ObjectHideFlags: 0
@@ -16511,10 +16523,10 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: -42.62001, y: 1.7209997, z: 21.920002}
-  m_LocalScale: {x: 0.38487002, y: 0.80331, z: 0.26542}
+  m_LocalScale: {x: 0.38487005, y: 0.80331, z: 0.26542}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1533488967}
+  m_Father: {fileID: 1548788896}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &1374245575
 MonoBehaviour:
@@ -19427,6 +19439,11 @@ PrefabInstance:
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1388884426}
+    - target: {fileID: 6623173824588140391, guid: 63652ff6266a97743b057c46e73c5603,
+        type: 3}
+      propertyPath: isActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8777747542415294086, guid: 63652ff6266a97743b057c46e73c5603,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -19489,11 +19506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 8777747542415294086, guid: 63652ff6266a97743b057c46e73c5603,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1374245574}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 63652ff6266a97743b057c46e73c5603, type: 3}
 --- !u!114 &1533488966 stripped
@@ -19667,6 +19680,7 @@ Transform:
   - {fileID: 1813006456}
   - {fileID: 2081544447}
   - {fileID: 2077016910}
+  - {fileID: 1374245574}
   - {fileID: 1533488967}
   - {fileID: 1388884427}
   - {fileID: 1140223830}
@@ -31057,7 +31071,7 @@ PrefabInstance:
     - target: {fileID: 4706236729176638143, guid: e67345570e5e19148a1f1fb5cd5a77dd,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4743445611889594016, guid: e67345570e5e19148a1f1fb5cd5a77dd,
         type: 3}

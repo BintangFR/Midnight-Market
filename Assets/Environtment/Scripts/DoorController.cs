@@ -30,23 +30,6 @@ public class DoorController : MonoBehaviour, IInteractable
         }
     }
 
-    public void InteractDoor() //Interact without audio
-    {
-        if (AnimationCoroutine != null)
-        {
-            StopCoroutine(AnimationCoroutine);
-        }
-
-        if (!isOpen)
-        {
-            AnimationCoroutine = StartCoroutine(DoRotationOpen());
-        }
-        else
-        {
-            AnimationCoroutine = StartCoroutine(DoRotationClose());
-        }
-    }
-
     public void Interact()
     {
         if (!isLocked)
@@ -68,8 +51,25 @@ public class DoorController : MonoBehaviour, IInteractable
             AudioManager.Instance.PlaySFX("Door-Locked", transform.position);
         }
         
+
     }
 
+    public void InteractDoor()
+    {
+        if (AnimationCoroutine != null)
+        {
+            StopCoroutine(AnimationCoroutine);
+        }
+
+        if (!isOpen)
+        {
+            AnimationCoroutine = StartCoroutine(DoRotationOpen());
+        }
+        else
+        {
+            AnimationCoroutine = StartCoroutine(DoRotationClose());
+        }
+    }
 
     private IEnumerator DoRotationOpen()
     {
@@ -101,5 +101,12 @@ public class DoorController : MonoBehaviour, IInteractable
             yield return null;
             time += Time.deltaTime * Speed;
         }
+    }
+
+    public void ReverseRotation()
+    {
+        // Reverse the rotation 
+        Rotation *= -1;
+        
     }
 }

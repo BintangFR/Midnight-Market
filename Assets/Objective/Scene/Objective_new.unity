@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13439,6 +13439,7 @@ GameObject:
   - component: {fileID: 1276620985}
   - component: {fileID: 1276620984}
   - component: {fileID: 1276620983}
+  - component: {fileID: 1276620990}
   - component: {fileID: 1276620988}
   - component: {fileID: 1276620989}
   m_Layer: 6
@@ -13455,7 +13456,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276620982}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9770cbde7e8f59c4e8bd533635d35207, type: 3}
   m_Name: 
@@ -13480,7 +13481,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276620982}
-  m_Material: {fileID: 13400000, guid: 9bbd680c550a9f148ba4f7d80587e5f3, type: 2}
+  m_Material: {fileID: 13400000, guid: 192863d2d03a6ac40a20f6f514fc99c9, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -13608,6 +13609,30 @@ MonoBehaviour:
   interactLayer:
     serializedVersion: 2
     m_Bits: 128
+--- !u!114 &1276620990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1276620982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf52383b26dbb1740acd736817c9db53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  jumpHeight: 5
+  orientation: {fileID: 259819382}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheck: {fileID: 670524838}
+  radCircle: 0.34
+  isGrounded: 0
+  stamina: 100
+  canCrouch: 1
+  canMove: 1
 --- !u!1 &1294059011
 GameObject:
   m_ObjectHideFlags: 0
@@ -20843,6 +20868,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 996779899307867168, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2317619468396060881, guid: c6f86b952f2627840b0faa9b89a3b274,
         type: 3}
       propertyPath: m_Enabled
@@ -20852,6 +20882,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3274209264291143183, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3481287265776454345, guid: c6f86b952f2627840b0faa9b89a3b274,
         type: 3}
@@ -20863,6 +20898,11 @@ PrefabInstance:
       propertyPath: cameraPosition
       value: 
       objectReference: {fileID: 168714920}
+    - target: {fileID: 3672190233367487003, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4223048241556990666, guid: c6f86b952f2627840b0faa9b89a3b274,
         type: 3}
       propertyPath: m_Name
@@ -20872,6 +20912,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4934204157445260853, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939777364838616687, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6065786915116669873, guid: c6f86b952f2627840b0faa9b89a3b274,
         type: 3}
@@ -20947,6 +20997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_projectionMatrixMode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8450036095093959751, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8989975167717423003, guid: c6f86b952f2627840b0faa9b89a3b274,
         type: 3}

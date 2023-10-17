@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource ambienceSource;
     [SerializeField] private AudioSource bgmSource;
 
+
     private AudioSource enemySource;
     private AudioSource enemyVocalSource;
     private float enemyVocalDuration = 0f;
@@ -34,6 +35,9 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        //PlayBGM(2);
+
     }
 
     private void Start()
@@ -152,6 +156,7 @@ public class AudioManager : MonoBehaviour
         PlayLoopingAudio(bgmSource, bgmGroup, audioName);
     }
 
+
     public void PlayEnemy(int id)
     {
         PlayLoopingAudio(enemySource, enemyGroup, id);
@@ -224,6 +229,7 @@ public class AudioManager : MonoBehaviour
                 return audioGroup.audioList[i];
             }
         }
+
         Debug.Log(audioName);
         return null;
     }

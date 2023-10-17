@@ -39,4 +39,8 @@ public class DoubleDoorController : MonoBehaviour, IInteractable
         }
         
     }
+
+    public void OpenLock(){
+        isLocked = false;       
+    }
 }

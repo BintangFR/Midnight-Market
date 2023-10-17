@@ -36,8 +36,8 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-
         //PlayBGM(2);
+
     }
 
     private void Start()
@@ -46,6 +46,8 @@ public class AudioManager : MonoBehaviour
 
         enemySource = AIController.Instance.GetComponent<AudioSource>();
         enemyVocalSource = enemyHead.GetComponent<AudioSource>();
+
+        PlayAmbience("Rain-Ambience");
     }
 
     public void ChangeEnemyState(AIController.EnemyState enemyState)

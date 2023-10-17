@@ -24,7 +24,7 @@ public class AIController : MonoBehaviour
     public Transform[] waypoints;
     private Animator anim;
 
-    [SerializeField] private EnemyState currentState;
+    [SerializeField] private EnemyState currentState = EnemyState.seeking;
     [SerializeField] private float losingPlayerTimer = 0f;
     [SerializeField] private AIVision aiVision;
     private int currentWaypointIndex = 0;
@@ -40,12 +40,14 @@ public class AIController : MonoBehaviour
     }
 
     //change enemy state for unity events 
+    /*
     public void ChangeState(){
         currentState = EnemyState.seeking;
     }
     public void Testing(){
         Debug.Log("Test");
     }
+    */
 
     private void Awake()
     {
@@ -63,8 +65,6 @@ public class AIController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-
-        ChangeEnemyState(EnemyState.seeking);
     }
 
     // Update is called once per frame
@@ -85,9 +85,9 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.seeking)
         {
+            agent.stoppingDistance = 0f;
             anim.SetFloat("Speed", agent.speed);
             agent.speed = normalSpeed;
-            agent.stoppingDistance = 0f;
 
             if (!agent.hasPath && waypoints.Length > 0)
             {
@@ -102,7 +102,6 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.chasing)
         {
-
             agent.stoppingDistance = 1.5f;
             agent.SetDestination(player.position);
             agent.speed = sprintSpeed;
@@ -112,7 +111,6 @@ public class AIController : MonoBehaviour
             if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
             {
                 ChangeEnemyState(EnemyState.seeking);
-
             }
 
             if (Vector3.Distance(transform.position, player.position) <= 1.9f)
@@ -164,13 +162,16 @@ public class AIController : MonoBehaviour
     {
         currentState = newState;
 
-        AudioManager.Instance.StopEnemy();
-        AudioManager.Instance.ChangeEnemyState(newState);
-
         if (newState == EnemyState.chasing || newState == EnemyState.seeking)
         {
             AudioManager.Instance.PlayEnemy("Robot Footstep");
         }
+        else
+        {
+            AudioManager.Instance.StopEnemy();
+        }
+
+        AudioManager.Instance.ChangeEnemyState(newState);
     }
 
     public AIVision GetAIVision()

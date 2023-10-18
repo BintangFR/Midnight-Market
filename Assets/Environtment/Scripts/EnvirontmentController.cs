@@ -170,10 +170,13 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         {
             if (itemsList[0].isPlaced)
             {
+                itemsList[0].isPlaced = false;
                 StorageFuseEvent.Invoke();
+                
             }
             if (itemsList[1].isPlaced)
             {
+                itemsList[1].isPlaced = false;
                 OfficeFuseEvent.Invoke();
             }
         }

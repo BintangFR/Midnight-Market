@@ -23,7 +23,6 @@ public class PlayerControllerNew : MonoBehaviour
     public bool canMove = true;
     public int maxHealth = 3;
 
-
     //Variabel untuk player berenti smooth
     private float timeToStop = 0.3f; 
     private float stopTimer = 0f;
@@ -77,6 +76,7 @@ public class PlayerControllerNew : MonoBehaviour
         }
 
 
+
         isGrounded = Physics.CheckSphere(groundCheck.position, radCircle, whatIsGround);
 
         if (Input.GetButton("Jump") && isGrounded)
@@ -116,6 +116,16 @@ public class PlayerControllerNew : MonoBehaviour
                 transform.localScale = defaultScale;
                 gameObject.layer = 3;
                 
+                gameObject.layer = 0; // Assuming you want to reset the layer to default
+                transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
+                Debug.Log(speed);
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                // Reset speed, player's scale, and layer
+                speed = defaultSpeed;
+                transform.localScale = defaultScale;
+                gameObject.layer = 3; // Assuming you want to set the layer back to the previous value
             }
         }
     }
@@ -125,6 +135,7 @@ public class PlayerControllerNew : MonoBehaviour
         Vector3 flatVel = new Vector3(player.velocity.x, 0f, player.velocity.z);
 
         if (flatVel.magnitude > speed || flatVel.magnitude < speed)
+
         {
             Vector3 limitedVel = flatVel.normalized * speed;
             player.velocity = new Vector3(limitedVel.x, player.velocity.y, limitedVel.z);

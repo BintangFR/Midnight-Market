@@ -107,6 +107,8 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         // Reverse the rotation 
         Rotation *= -1;
-        
+        }
+    public void OpenLock(){
+        isLocked = false;       
     }
 }

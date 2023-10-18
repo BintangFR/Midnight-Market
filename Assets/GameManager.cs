@@ -6,7 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     // Start is called before the first frame update
-
+    [SerializeField] private PlayerController player;
+    [SerializeField] private CameraController camera;
     void Awake() {
         if (Instance == null)
         {
@@ -33,5 +34,10 @@ public class GameManager : MonoBehaviour
 
     public void FinishGame(){
         Debug.Log("game complete");
+    }
+    public void GameOver(){
+        player.enabled = false;
+        camera.enabled = false;
+        
     }
 }

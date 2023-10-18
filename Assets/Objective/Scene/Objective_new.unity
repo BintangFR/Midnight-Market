@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -399,6 +399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIDescription: {fileID: 885674445}
+  UIHint: {fileID: 0}
   objectiveDatas:
   - {fileID: 965313834}
   - {fileID: 1339096465}
@@ -6973,7 +6974,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e56cc8bd75582647905382cbe1cb885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 1924815673}
+  camera: {fileID: 0}
   light: {fileID: 648452894}
   minBrightness: 0.01
   maxBrightness: 13.5
@@ -13084,58 +13085,10 @@ MonoBehaviour:
       m_Calls: []
   StorageFuseEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1307426682}
-        m_TargetAssemblyTypeName: ObjectiveController, Assembly-CSharp
-        m_MethodName: MarkObjectiveAsComplete
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1307426682}
-        m_TargetAssemblyTypeName: ObjectiveController, Assembly-CSharp
-        m_MethodName: ActivateObjective
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 288549861}
-          m_ObjectArgumentAssemblyTypeName: ObjectiveController, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OfficeFuseEvent:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2077016909}
-        m_TargetAssemblyTypeName: ObjectiveController, Assembly-CSharp
-        m_MethodName: MarkObjectiveAsComplete
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2077016909}
-        m_TargetAssemblyTypeName: ObjectiveController, Assembly-CSharp
-        m_MethodName: ActivateObjective
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 1533488966}
-          m_ObjectArgumentAssemblyTypeName: ObjectiveController, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1267126267
 GameObject:
   m_ObjectHideFlags: 0
@@ -14541,7 +14494,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1276620983}
+      objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[0]
@@ -18685,7 +18638,7 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 1276620983}
+      objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: gotFlashlight.m_PersistentCalls.m_Calls.Array.size
@@ -20514,12 +20467,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916861148}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1924815673 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5337728834863974938, guid: c6f86b952f2627840b0faa9b89a3b274,
-    type: 3}
-  m_PrefabInstance: {fileID: 1933766258}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1928131740
 GameObject:
   m_ObjectHideFlags: 0
@@ -22031,6 +21978,11 @@ PrefabInstance:
         type: 3}
       propertyPath: description
       value: Place fuse in electrical
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: requirement.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6413622677641247597, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}

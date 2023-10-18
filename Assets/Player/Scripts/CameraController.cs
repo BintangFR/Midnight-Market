@@ -13,13 +13,23 @@ public class CameraController : MonoBehaviour
     private float xRotation;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.Instance.isPaused)
+        {
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
         //rotate camera based of sensitivity
         Camera.main.transform.position = cameraPosition.transform.position;
         float camrotx = Input.GetAxis("Mouse X") * sensx * Time.deltaTime;

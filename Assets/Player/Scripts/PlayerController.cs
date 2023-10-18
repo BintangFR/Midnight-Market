@@ -37,19 +37,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        float moveZ = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        float moveX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float moveZ = Input.GetAxisRaw("Vertical");
+        float moveX = Input.GetAxisRaw("Horizontal");
+        
+        SpeedControl();
+        
         if (canMove)
         {
-        transform.Translate(moveX,0,0);
-        transform.Translate(0,0,moveZ);
+
+            Vector3 moveDirection = orientation.forward * moveZ + orientation.right * moveX;
+            moveDirection.y = 0;
+            player.velocity = moveDirection.normalized * speed;
+            //transform.Translate(moveX,0,moveZ);
+        }
+        else
+        {
+            player.velocity = Vector3.zero;
         }
         gameObject.transform.rotation = orientation.transform.rotation;
         isGrounded = Physics.CheckSphere(groundCheck.position, radCircle, whatIsGround);
 
         if (Input.GetButton("Jump") && isGrounded)
         {
-            player.velocity = new Vector3(player.velocity.z,jumpHeight);
+           player.AddForce(new Vector3(0,jumpHeight,0), ForceMode.Impulse);
 
             //transform.Translate(0, jumpHeight * Time.deltaTime, 0);
             
@@ -88,8 +98,8 @@ public class PlayerController : MonoBehaviour
                 gameObject.layer = 3;
             }
         }
-
         
+
     }
 
     private void DepleteStamina(float amount)
@@ -102,6 +112,17 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawSphere(groundCheck.position, radCircle);
 
     }
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(player.velocity.x, 0f, player.velocity.z);
+
+        if (flatVel.magnitude > speed)
+        {
+            Vector3 limitedVel = flatVel.normalized * speed;
+            player.velocity = new Vector3(limitedVel.x, player.velocity.y, limitedVel.z);
+        }
+    }
+
     public void TakeDamage()
     {
         maxHealth -= 1;
@@ -112,6 +133,6 @@ public class PlayerController : MonoBehaviour
     }
     private void Die()
     {
-        gameObject.active = false;
+        gameObject.SetActive(false);
     }
 }

@@ -21,7 +21,13 @@ public class PlayerControllerNew : MonoBehaviour
     public float stamina = 100;
     public bool canCrouch = true;
     public bool canMove = true;
-    private int maxHealth = 3;
+    public int maxHealth = 3;
+
+    //Variabel untuk player berenti smooth
+    private float timeToStop = 0.3f; 
+    private float stopTimer = 0f;
+    private Vector3 previousVelocity;
+
 
     private void Start()
     {
@@ -44,11 +50,32 @@ public class PlayerControllerNew : MonoBehaviour
             Vector3 moveDirection = orientation.forward * moveZ + orientation.right * moveX;
             moveDirection.y = 0;
             player.velocity = moveDirection.normalized * speed;
+
         }
         else
         {
             player.velocity = Vector3.zero;
         }
+
+        //Biar pas berenti gk lgsg berenti
+        if (player.velocity != Vector3.zero)
+        {
+            stopTimer = 0f; 
+            previousVelocity = player.velocity; 
+        }
+        else
+        {
+            stopTimer += Time.deltaTime; 
+
+            //decrease player speed
+            if (stopTimer < timeToStop)
+            {
+                float t = stopTimer / timeToStop;
+                player.velocity = Vector3.Lerp(previousVelocity, Vector3.zero, t);
+            }
+        }
+
+
 
         isGrounded = Physics.CheckSphere(groundCheck.position, radCircle, whatIsGround);
 
@@ -78,6 +105,17 @@ public class PlayerControllerNew : MonoBehaviour
             {
                 // Change speed to 50% and adjust player's scale
                 speed -= (speed * 50 / 100);
+                gameObject.layer = default;
+                transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
+                Debug.Log(speed);
+               
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftControl))
+            {
+                speed = defaultSpeed;
+                transform.localScale = defaultScale;
+                gameObject.layer = 3;
+                
                 gameObject.layer = 0; // Assuming you want to reset the layer to default
                 transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
                 Debug.Log(speed);
@@ -96,7 +134,8 @@ public class PlayerControllerNew : MonoBehaviour
     {
         Vector3 flatVel = new Vector3(player.velocity.x, 0f, player.velocity.z);
 
-        if (flatVel.magnitude > speed)
+        if (flatVel.magnitude > speed || flatVel.magnitude < speed)
+
         {
             Vector3 limitedVel = flatVel.normalized * speed;
             player.velocity = new Vector3(limitedVel.x, player.velocity.y, limitedVel.z);

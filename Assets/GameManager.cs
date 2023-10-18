@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager Instance;
     // Start is called before the first frame update
     [SerializeField] private PlayerController player;
     [SerializeField] private CameraController camera;
@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     public bool isPaused;
     void Awake() {
-        instance = this;    
+        Instance = this;    
     }
     void Start()
     {

@@ -35,9 +35,13 @@ public class ObjectiveController : MonoBehaviour
             elapsedTime += 1f;
         }
 
-        if (!isComplete)
+        if(!isComplete && objectiveManager != null && objectiveManager.UIHint != null)
         {
-            objectiveManager.ShowHint(hint);
+            string hint = ObjectiveHint.Description;
+            if (!string.IsNullOrEmpty(hint))
+            {
+                objectiveManager.ShowHint(hint);
+            }
         }
     }
 
@@ -108,15 +112,24 @@ public class ObjectiveController : MonoBehaviour
         }
     }
 
+    [System.Serializable]
     public class HintData
     {
-        public string Description;
+        [SerializeField]
+        private string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
         public HintType Type;
         public bool isActive;
 
         public HintData(string description, HintType type)
         {
-            Description = description;
+            this.description = description;
             Type = type;
             isActive = false;
         }

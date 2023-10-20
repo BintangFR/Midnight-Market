@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CameraController camera;
     [SerializeField] private GameObject pausedMenu;
     [SerializeField] private GameObject GameOverScreen;
+    [SerializeField] private GameObject FinishedScreen;
 
     public bool isPaused;
     void Awake() {
@@ -32,6 +33,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void FinishGame(){
+        player.enabled = false;
+        camera.enabled = false;
+        FinishedScreen.SetActive(true);
         Debug.Log("game complete");
     }
     public void GameOver(){

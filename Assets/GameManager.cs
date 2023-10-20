@@ -5,21 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance;
     // Start is called before the first frame update
     [SerializeField] private PlayerController player;
     [SerializeField] private CameraController camera;
     [SerializeField] private GameObject pausedMenu;
     [SerializeField] private GameObject GameOverScreen;
     [SerializeField] private GameObject FinishedScreen;
-
     public bool isPaused;
-    void Awake() {
-
     public static GameManager Instance { get; private set; }
-    // Start is called before the first frame update
-    [SerializeField] private PlayerController player;
-    [SerializeField] private CameraController camera;
     void Awake() {
         if (Instance == null)
         {
@@ -65,6 +58,8 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainGame(Prototype)");
     }
     public void PausedGame(){
+        player.enabled = false;
+        camera.enabled = false;
         Time.timeScale = 0f;
         pausedMenu.SetActive(true);
         isPaused = true;
@@ -78,10 +73,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         pausedMenu.SetActive(false);
         SceneManager.LoadScene("Prototype-MainMenu");
-    }
-    
-        player.enabled = false;
-        camera.enabled = false;
         
     }
 }
+

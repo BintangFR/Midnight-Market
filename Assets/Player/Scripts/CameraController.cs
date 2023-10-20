@@ -11,6 +11,7 @@ public class CameraController : MonoBehaviour
     public float sensy;
     private float yRotation;
     private float xRotation;
+    public float minClippingDistance = 0.1f;
     void Start()
     {
 
@@ -24,6 +25,8 @@ public class CameraController : MonoBehaviour
             
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
+            Camera.main.nearClipPlane = minClippingDistance;
+
         }
         else
         {
@@ -41,6 +44,6 @@ public class CameraController : MonoBehaviour
         // rotate cam and orientation
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        
+
     }
 }

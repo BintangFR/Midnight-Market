@@ -8,6 +8,8 @@ using UnityEngine.Rendering;
 
 public class AIController : MonoBehaviour
 {
+    public static AIController Instance { get; private set; }
+
     public Transform player;
     public NavMeshAgent agent;
     // public float sightRange;
@@ -22,11 +24,10 @@ public class AIController : MonoBehaviour
     public Transform[] waypoints;
     private Animator anim;
 
-    [SerializeField] private EnemyState currentState;
+    [SerializeField] private EnemyState currentState = EnemyState.seeking;
     [SerializeField] private float losingPlayerTimer = 0f;
     [SerializeField] private AIVision aiVision;
     private int currentWaypointIndex = 0;
-
 
     public enum EnemyState
     {
@@ -39,19 +40,31 @@ public class AIController : MonoBehaviour
     }
 
     //change enemy state for unity events 
+    /*
     public void ChangeState(){
         currentState = EnemyState.seeking;
     }
     public void Testing(){
         Debug.Log("Test");
     }
+    */
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-
-        currentState = EnemyState.seeking;
     }
 
     // Update is called once per frame
@@ -72,9 +85,9 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.seeking)
         {
+            agent.stoppingDistance = 0f;
             anim.SetFloat("Speed", agent.speed);
             agent.speed = normalSpeed;
-            agent.stoppingDistance = 0f;
 
             if (!agent.hasPath && waypoints.Length > 0)
             {
@@ -84,12 +97,11 @@ public class AIController : MonoBehaviour
 
             if (aiVision.GetCanSeePlayer())
             {
-                currentState = EnemyState.chasing;
+                ChangeEnemyState(EnemyState.chasing);
             }
         }
         else if (currentState == EnemyState.chasing)
         {
-
             agent.stoppingDistance = 1.5f;
             agent.SetDestination(player.position);
             agent.speed = sprintSpeed;
@@ -98,8 +110,7 @@ public class AIController : MonoBehaviour
 
             if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
             {
-
-                currentState = EnemyState.seeking;
+                ChangeEnemyState(EnemyState.seeking);
             }
 
             if (Vector3.Distance(transform.position, player.position) <= 1.9f)
@@ -115,20 +126,22 @@ public class AIController : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        Debug.Log(Vector3.Distance(transform.position, player.position));
-
-        currentState = EnemyState.attacking;
+        ChangeEnemyState(EnemyState.attacking);
         anim.SetTrigger("Attack");
+
+        AudioManager.Instance.PlaySFX("Attack Before", transform.position);
 
         yield return new WaitForSeconds(1f);
 
-        if (aiVision.GetCanSeePlayer())
-        {                
-            currentState = EnemyState.chasing;
+        AudioManager.Instance.PlaySFX("Attack After", transform.position);
+
+        if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
+        {
+            ChangeEnemyState(EnemyState.seeking);
         }
         else
         {
-            currentState = EnemyState.seeking;
+            ChangeEnemyState(EnemyState.chasing);
         }
     }
 
@@ -143,6 +156,27 @@ public class AIController : MonoBehaviour
         currentWaypointIndex = randomIndex;
         
         agent.SetDestination(waypoints[currentWaypointIndex].position);
+    }
+
+    public void ChangeEnemyState(EnemyState newState)
+    {
+        currentState = newState;
+
+        if (newState == EnemyState.chasing || newState == EnemyState.seeking)
+        {
+            AudioManager.Instance.PlayEnemy("Robot Footstep");
+        }
+        else
+        {
+            AudioManager.Instance.StopEnemy();
+        }
+
+        AudioManager.Instance.ChangeEnemyState(newState);
+    }
+
+    public AIVision GetAIVision()
+    {
+        return aiVision;
     }
 
     /*

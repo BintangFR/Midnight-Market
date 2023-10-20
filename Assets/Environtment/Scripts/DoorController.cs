@@ -5,6 +5,7 @@ using UnityEngine;
 public class DoorController : MonoBehaviour, IInteractable
 {
     public bool isOpen = false;
+    public bool isLocked = false;
     [SerializeField] private float Speed = 1f;
     [SerializeField] private float Rotation = 90f;
     [SerializeField] private Transform pivot;
@@ -31,6 +32,30 @@ public class DoorController : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (!isLocked)
+        {
+            InteractDoor();
+
+            if (!isOpen)
+            {
+                AudioManager.Instance.PlaySFX("Door-Open", transform.position);
+            }
+            else
+            {
+                AudioManager.Instance.PlaySFX("Door-Close", transform.position);
+            }
+        }
+        else
+        {
+            Debug.Log("Pintu Terkunci");
+            AudioManager.Instance.PlaySFX("Door-Locked", transform.position);
+        }
+        
+
+    }
+
+    public void InteractDoor()
+    {
         if (AnimationCoroutine != null)
         {
             StopCoroutine(AnimationCoroutine);
@@ -44,7 +69,6 @@ public class DoorController : MonoBehaviour, IInteractable
         {
             AnimationCoroutine = StartCoroutine(DoRotationClose());
         }
-
     }
 
     private IEnumerator DoRotationOpen()
@@ -77,5 +101,14 @@ public class DoorController : MonoBehaviour, IInteractable
             yield return null;
             time += Time.deltaTime * Speed;
         }
+    }
+
+    public void ReverseRotation()
+    {
+        // Reverse the rotation 
+        Rotation *= -1;
+        }
+    public void OpenLock(){
+        isLocked = false;       
     }
 }

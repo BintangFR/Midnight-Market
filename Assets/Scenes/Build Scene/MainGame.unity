@@ -13261,7 +13261,6 @@ GameObject:
   - component: {fileID: 1276620983}
   - component: {fileID: 1276620988}
   - component: {fileID: 1276620989}
-  - component: {fileID: 1276620990}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -13276,7 +13275,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276620982}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9770cbde7e8f59c4e8bd533635d35207, type: 3}
   m_Name: 
@@ -13286,7 +13285,7 @@ MonoBehaviour:
   orientation: {fileID: 259819382}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 0
   groundCheck: {fileID: 670524838}
   radCircle: 0.34
   isGrounded: 0
@@ -13429,30 +13428,6 @@ MonoBehaviour:
   interactLayer:
     serializedVersion: 2
     m_Bits: 128
---- !u!114 &1276620990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276620982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf52383b26dbb1740acd736817c9db53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 10
-  jumpHeight: 5
-  orientation: {fileID: 259819382}
-  whatIsGround:
-    serializedVersion: 2
-    m_Bits: 8
-  groundCheck: {fileID: 670524838}
-  radCircle: 3
-  isGrounded: 0
-  stamina: 100
-  canCrouch: 1
-  canMove: 1
 --- !u!1001 &1277608400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15448,7 +15423,7 @@ GameObject:
   - component: {fileID: 1401870517}
   - component: {fileID: 1401870516}
   - component: {fileID: 1401870515}
-  m_Layer: 3
+  m_Layer: 6
   m_Name: Lantai
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15781,8 +15756,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895004756b66bac4f9d00fd394a59ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  camera: {fileID: 0}
 --- !u!4 &1426760366
 Transform:
   m_ObjectHideFlags: 0
@@ -20453,7 +20426,7 @@ PrefabInstance:
     - target: {fileID: 6898337143203041955, guid: 3082c580014ee034fae97cb46bf7260a,
         type: 3}
       propertyPath: currentState
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6898337143203041955, guid: 3082c580014ee034fae97cb46bf7260a,
         type: 3}

@@ -38,7 +38,7 @@ public class ObjectivesManager : MonoBehaviour
                 ShowDescription(objectiveController);
                 elapsedTime += Time.deltaTime;
 
-                if (elapsedTime >= 120f)
+                if (elapsedTime >= 5f)
                 {
                     if (!objectiveController.isComplete)
                     {

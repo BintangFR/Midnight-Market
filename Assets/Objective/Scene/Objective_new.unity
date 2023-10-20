@@ -362,6 +362,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 885674444}
+  - {fileID: 766461814}
   m_Father: {fileID: 956850902}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -399,7 +400,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIDescription: {fileID: 885674445}
-  UIHint: {fileID: 885674445}
+  UIHint: {fileID: 766461815}
   objectiveDatas:
   - {fileID: 965313836}
   - {fileID: 1339096465}
@@ -3334,6 +3335,16 @@ PrefabInstance:
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1971782918}
+    - target: {fileID: 6324395119398789837, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
+        type: 3}
+      propertyPath: hint
+      value: find out who borrowed the fuse on the taskboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324395119398789837, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 6439526843031910762, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3823,6 +3834,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1772494780035413920, guid: 0cdd48d1bd11b0c49a77336d0a8ecf9b,
+        type: 3}
+      propertyPath: hint
+      value: go to office 1 to call 911 (next to breakroom)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772494780035413920, guid: 0cdd48d1bd11b0c49a77336d0a8ecf9b,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 3888715673227438224, guid: 0cdd48d1bd11b0c49a77336d0a8ecf9b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4696,6 +4717,16 @@ PrefabInstance:
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1955871220}
+    - target: {fileID: 7722914885599891178, guid: a54cda190ef1a4d44a1912fff7e31abb,
+        type: 3}
+      propertyPath: hint
+      value: go to security room to check cctv
+      objectReference: {fileID: 0}
+    - target: {fileID: 7722914885599891178, guid: a54cda190ef1a4d44a1912fff7e31abb,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6417,6 +6448,16 @@ PrefabInstance:
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7138791393965980204, guid: bcf1942cedfa30942a17ddafb1499c1c,
+        type: 3}
+      propertyPath: hint
+      value: try to escape from main door
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138791393965980204, guid: bcf1942cedfa30942a17ddafb1499c1c,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 7875936636403576053, guid: bcf1942cedfa30942a17ddafb1499c1c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7658,6 +7699,140 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760367488}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &766461813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 766461814}
+  - component: {fileID: 766461816}
+  - component: {fileID: 766461815}
+  m_Layer: 5
+  m_Name: Hint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &766461814
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766461813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0951, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 45722131}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 747, y: 339}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &766461815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766461813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 29.22
+  m_fontSizeBase: 29.22
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: -72.56946, y: 0, z: -90.220184, w: -44.809093}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &766461816
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766461813}
+  m_CullTransparentMesh: 1
 --- !u!1 &770806134
 GameObject:
   m_ObjectHideFlags: 0
@@ -9195,9 +9370,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5636353937819383271, guid: 40dd82bfda41def4bbe23359ef4f7619,
         type: 3}
+      propertyPath: hint
+      value: escape now!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5636353937819383271, guid: 40dd82bfda41def4bbe23359ef4f7619,
+        type: 3}
       propertyPath: description
       value: Escape through Main Door
       objectReference: {fileID: 0}
+    - target: {fileID: 5636353937819383271, guid: 40dd82bfda41def4bbe23359ef4f7619,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 7796124521168504696, guid: 40dd82bfda41def4bbe23359ef4f7619,
         type: 3}
       propertyPath: objectiveType
@@ -10445,6 +10630,16 @@ PrefabInstance:
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1955871220}
+    - target: {fileID: 6363678603035126086, guid: 23dbe55a5513d1d4b987316b2b2f862d,
+        type: 3}
+      propertyPath: hint
+      value: ' Check the sound sources around the mainstage'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363678603035126086, guid: 23dbe55a5513d1d4b987316b2b2f862d,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13807,9 +14002,19 @@ PrefabInstance:
       objectReference: {fileID: 288549861}
     - target: {fileID: 1636755235818211021, guid: 8995c8b063ffd8c4ebb546868d49946c,
         type: 3}
+      propertyPath: hint
+      value: place fuse in electrical and find another one
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636755235818211021, guid: 8995c8b063ffd8c4ebb546868d49946c,
+        type: 3}
       propertyPath: description
       value: Place Fuse in electrical
       objectReference: {fileID: 0}
+    - target: {fileID: 1636755235818211021, guid: 8995c8b063ffd8c4ebb546868d49946c,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 1962349298364768019, guid: 8995c8b063ffd8c4ebb546868d49946c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14570,7 +14775,7 @@ PrefabInstance:
         type: 3}
       propertyPath: gotFlashlight.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1339096465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: gotFlashlight.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -15154,6 +15359,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2536448968931055935, guid: fd4dcdd4838a0b74f8dd0ab3425c3bd3,
+        type: 3}
+      propertyPath: hint
+      value: find bolt cutter in storage to cut the chain
+      objectReference: {fileID: 0}
+    - target: {fileID: 2536448968931055935, guid: fd4dcdd4838a0b74f8dd0ab3425c3bd3,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 3588309856707861248, guid: fd4dcdd4838a0b74f8dd0ab3425c3bd3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15973,9 +16188,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6623173824588140391, guid: 63652ff6266a97743b057c46e73c5603,
         type: 3}
+      propertyPath: hint
+      value: try to escape through main door
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623173824588140391, guid: 63652ff6266a97743b057c46e73c5603,
+        type: 3}
       propertyPath: isActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6623173824588140391, guid: 63652ff6266a97743b057c46e73c5603,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 8777747542415294086, guid: 63652ff6266a97743b057c46e73c5603,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -18109,6 +18334,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1022975234469880319, guid: 2588cc2be63e3204ebaea60348a4b385,
+        type: 3}
+      propertyPath: hint
+      value: turn off fan from security room and you can access vent
+      objectReference: {fileID: 0}
+    - target: {fileID: 1022975234469880319, guid: 2588cc2be63e3204ebaea60348a4b385,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 4424242800702011253, guid: 2588cc2be63e3204ebaea60348a4b385,
         type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.size
@@ -18699,12 +18934,12 @@ PrefabInstance:
         type: 3}
       propertyPath: gotFlashlight.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1339096465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: gotFlashlight.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 1339096465}
+      objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: gotFlashlight.m_PersistentCalls.m_Calls.Array.data[3].m_Target
@@ -20172,6 +20407,16 @@ PrefabInstance:
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1307426682}
+    - target: {fileID: 1636755235818211021, guid: 8995c8b063ffd8c4ebb546868d49946c,
+        type: 3}
+      propertyPath: hint
+      value: look for the fuse in storage to reset generator
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636755235818211021, guid: 8995c8b063ffd8c4ebb546868d49946c,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 1962349298364768019, guid: 8995c8b063ffd8c4ebb546868d49946c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20919,6 +21164,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3357298785008055772, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
+      propertyPath: hint
+      value: ' tell the npc what you''ve seen'
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357298785008055772, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 6262968960286902507, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
       propertyPath: m_Name
@@ -21199,6 +21454,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3374357329659623237, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
+      propertyPath: hint
+      value: find another way in, you can check around toilets
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374357329659623237, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 4165315695374463849, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21504,6 +21769,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: hint
+      value: 'take the fuse '
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 6413622677641247597, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -22002,9 +22277,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}
+      propertyPath: hint
+      value: place fuse in electrical and reset generator
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
       propertyPath: description
       value: Place fuse in electrical
       objectReference: {fileID: 0}
+    - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}
       propertyPath: requirement.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -22146,6 +22431,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1540985972873336857, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
+        type: 3}
+      propertyPath: hint
+      value: check what's going on at electrical room
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540985972873336857, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 2362672970983242981, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -23416,6 +23711,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7265732431108218122, guid: 5e316b98d480f1a4e854a2794bcddb7d,
+        type: 3}
+      propertyPath: hint
+      value: talk to npc
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265732431108218122, guid: 5e316b98d480f1a4e854a2794bcddb7d,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 8700738035350514087, guid: 5e316b98d480f1a4e854a2794bcddb7d,
         type: 3}
       propertyPath: m_Name
@@ -23499,6 +23804,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8839864038313193554, guid: 7779522a6996e2b4fa1a6e18ac5795e5,
+        type: 3}
+      propertyPath: hint
+      value: take the food from storage
+      objectReference: {fileID: 0}
+    - target: {fileID: 8839864038313193554, guid: 7779522a6996e2b4fa1a6e18ac5795e5,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23710,6 +24025,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9110732246031060775, guid: 68c3235326076cb488d9c706cbffe7c1,
+        type: 3}
+      propertyPath: hint
+      value: bring the food and place at shelf
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110732246031060775, guid: 68c3235326076cb488d9c706cbffe7c1,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -23733,6 +24058,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8173688956592277131, guid: 1dce1dd70f58ee1418b1199fc5985221,
+        type: 3}
+      propertyPath: hint
+      value: talk to npc at the breakroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173688956592277131, guid: 1dce1dd70f58ee1418b1199fc5985221,
+        type: 3}
+      propertyPath: objectiveManager
+      value: 
+      objectReference: {fileID: 51028162}
     - target: {fileID: 8173688956592277131, guid: 1dce1dd70f58ee1418b1199fc5985221,
         type: 3}
       propertyPath: requirement.m_PersistentCalls.m_Calls.Array.data[0].m_Target

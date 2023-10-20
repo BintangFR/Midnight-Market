@@ -20,28 +20,31 @@ public class ObjectiveController : MonoBehaviour
 
     private float elapsedTime;
     public string hint;
+    private bool isTimerActive = false;
 
     public void StartObjectiveTimer()
     {
         elapsedTime = 0f;
-        StartCoroutine(ObjectiveTimer());
     }
 
     private IEnumerator ObjectiveTimer()
     {
         while (elapsedTime < 120f)
         {
-            yield return new WaitForSeconds(1f);
-            elapsedTime += 1f;
+            if (isTimerActive) 
+            {
+                yield return new WaitForSeconds(1f);
+                elapsedTime += 1f;
+            }
+            else
+            {
+                yield return null;
+            }
         }
 
-        if(!isComplete && objectiveManager != null && objectiveManager.UIHint != null)
+        if (!isComplete)
         {
-            string hint = ObjectiveHint.Description;
-            if (!string.IsNullOrEmpty(hint))
-            {
-                objectiveManager.ShowHint(hint);
-            }
+            objectiveManager.ShowHint(hint);
         }
     }
 
@@ -83,6 +86,7 @@ public class ObjectiveController : MonoBehaviour
     {
         objective.isActive = true;
         objective.gameObject.SetActive(true);
+        objective.isTimerActive = true;
         objective.StartObjectiveTimer();
     }
 

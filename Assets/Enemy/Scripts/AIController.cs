@@ -10,33 +10,28 @@ public class AIController : MonoBehaviour
 {
     public static AIController Instance { get; private set; }
 
-    public Transform player;
-    public NavMeshAgent agent;
-    // public float sightRange;
-    // private bool playerInSight = false;
-    public LayerMask whatIsPlayer;
-    public PlayerController playerController;
-    public Vector3 range;
-
+    [SerializeField] NavMeshAgent agent;
     [SerializeField] private float normalSpeed;
     [SerializeField] private float sprintSpeed;
-    
-    public Transform[] waypoints;
-    private Animator anim;
-
-    [SerializeField] private EnemyState currentState = EnemyState.seeking;
+    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private EnemyState currentState = EnemyState.non_active;
     [SerializeField] private float losingPlayerTimer = 0f;
     [SerializeField] private AIVision aiVision;
+    [SerializeField] private Transform idleTransform;
+
+    private Transform player;
+    public LayerMask whatIsPlayer;
+    private Animator anim;
     private int currentWaypointIndex = 0;
 
     public enum EnemyState
     {
         non_active,
         activating,
-        idle ,
-        seeking ,
-        chasing ,
-        attacking 
+        idle,
+        seeking,
+        chasing,
+        attacking
     }
 
     //change enemy state for unity events 
@@ -58,7 +53,10 @@ public class AIController : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Start is called before the first frame update
@@ -70,7 +68,6 @@ public class AIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (currentState == EnemyState.non_active)
         {
             // non_active logic
@@ -81,7 +78,10 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.idle)
         {
-            // idle logic
+            if (aiVision.GetCanSeePlayer())
+            {
+                ChangeEnemyState(EnemyState.chasing);
+            }
         }
         else if (currentState == EnemyState.seeking)
         {
@@ -122,6 +122,11 @@ public class AIController : MonoBehaviour
         {
             // attacking logic
         }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            ChangeEnemyState(EnemyState.idle);
+        }
     }
 
     private IEnumerator Attack()
@@ -154,13 +159,19 @@ public class AIController : MonoBehaviour
         }
         while (currentWaypointIndex == randomIndex);
         currentWaypointIndex = randomIndex;
-        
+
         agent.SetDestination(waypoints[currentWaypointIndex].position);
     }
 
     public void ChangeEnemyState(EnemyState newState)
     {
         currentState = newState;
+
+        if (newState == EnemyState.idle)
+        {
+            transform.position = idleTransform.position;
+            transform.rotation = idleTransform.rotation;
+        }
 
         if (newState == EnemyState.chasing || newState == EnemyState.seeking)
         {
@@ -177,6 +188,11 @@ public class AIController : MonoBehaviour
     public AIVision GetAIVision()
     {
         return aiVision;
+    }
+
+    public Transform GetPlayer()
+    {
+        return player;
     }
 
     /*

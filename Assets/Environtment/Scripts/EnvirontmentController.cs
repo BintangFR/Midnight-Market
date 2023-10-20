@@ -168,16 +168,19 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
         if (environtmentType == EnvirontmentType.Electrical)
         {
-            if (itemsList[0].isPlaced)
+            if (itemsList.Length > 0)
             {
-                itemsList[0].isPlaced = false;
-                StorageFuseEvent.Invoke();
+                if (itemsList[0].isPlaced)
+                {
+                    itemsList[0].isPlaced = false;
+                    StorageFuseEvent.Invoke();
                 
-            }
-            if (itemsList[1].isPlaced)
-            {
-                itemsList[1].isPlaced = false;
-                OfficeFuseEvent.Invoke();
+                }
+                if (itemsList[1].isPlaced)
+                {
+                    itemsList[1].isPlaced = false;
+                    OfficeFuseEvent.Invoke();
+                }
             }
         }
         foreach (ItemController item in itemsList)

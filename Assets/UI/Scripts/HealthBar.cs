@@ -6,13 +6,13 @@ public class HealthBar : MonoBehaviour
 {
 
     public GameObject health;
-    public PlayerController playerHealth;
+    private PlayerController playerHealth;
 
     private int heart;
-    // Start is called before the first frame update
-    void Start()
-    {
 
+    private void Awake()
+    {
+        playerHealth = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
     }
 
     // Update is called once per frame

@@ -1,0 +1,143 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class CCTVControllerNew : MonoBehaviour, IInteractable
+{
+    public string name;
+    public string interactText;
+    public GameObject cctvUI;
+    public TextMeshProUGUI cameraLabel;
+    public Camera[] cameras;
+    private int currentCameraIndex = 0;
+
+    private bool isCCTVActive = false;
+
+    public PlayerControllerNew playerController;
+    public GameObject mainCamera;
+    public GameObject enemy;
+
+    private bool hasInteracted = false;
+
+    void Start()
+    {
+        cctvUI.SetActive(false);
+        
+    }
+
+    void Update()
+    {
+        if (isCCTVActive && Input.GetKeyDown(KeyCode.Backspace))
+        {
+            ExitCCTV();
+        }
+        else if (isCCTVActive && Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            SwitchToNextCamera();
+        }
+        else if (isCCTVActive && Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            SwitchToPreviousCamera();
+        }
+    }
+
+    public string GetInteractText()
+    {
+        return interactText;
+    }
+
+    private void SetCameraLabel(int index)
+    {
+        if (cameraLabel != null)
+        {
+            cameraLabel.text = "Camera " + (index + 1).ToString("D2");
+        }
+    }
+
+    private void OpenCCTV()
+    {
+        mainCamera.SetActive(false);
+        isCCTVActive = true;
+        cctvUI.SetActive(true);
+        playerController.enabled = false;
+        gameObject.layer = 0;
+
+        for (int i = 1; i < cameras.Length; i++)
+        {
+            cameras[i].gameObject.SetActive(false);
+        }
+        cameras[0].gameObject.SetActive(true);
+    }
+
+    private void ExitCCTV()
+    {
+        mainCamera.SetActive(true);
+        cctvUI.SetActive(false);
+        isCCTVActive = false;
+        playerController.enabled = true;
+        gameObject.layer = 7;
+
+        //deactivate all cctv camera
+        foreach (Camera camera in cameras)
+        {
+            camera.gameObject.SetActive(false);
+        }
+
+        //deactivate enemy
+        enemy.gameObject.SetActive(false);
+    }
+
+    public void Interact()
+    {
+        if (!isCCTVActive)
+        {
+            //Trigger cutscene pertama kali
+            if (!hasInteracted)
+            {
+                Debug.Log("Cutscene Muncul"); 
+                hasInteracted = true; 
+                enemy.gameObject.SetActive(true);
+                
+            }
+
+            OpenCCTV();
+            SetCameraLabel(0);
+        }
+    }
+
+    private void SwitchToNextCamera()
+    {
+        // Disable the current camera
+        cameras[currentCameraIndex].gameObject.SetActive(false);
+        
+
+        // Move to the next camera 
+        currentCameraIndex = (currentCameraIndex + 1) % cameras.Length;
+
+        // Enable the next camera
+        cameras[currentCameraIndex].gameObject.SetActive(true);
+        
+
+        // Update the camera label
+        SetCameraLabel(currentCameraIndex);
+    }
+
+    private void SwitchToPreviousCamera()
+    {
+      
+        cameras[currentCameraIndex].gameObject.SetActive(false);
+        
+       
+        currentCameraIndex = (currentCameraIndex - 1 + cameras.Length) % cameras.Length;
+
+        
+        cameras[currentCameraIndex].gameObject.SetActive(true);
+        
+        
+        SetCameraLabel(currentCameraIndex);
+    }
+
+}

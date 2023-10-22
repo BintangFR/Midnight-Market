@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerControllerNew : MonoBehaviour
 {
-    public float speed = 10.0f;
+    public float speed;
     public float jumpHeight;
     public Transform orientation;
     public LayerMask whatIsGround;
@@ -21,13 +21,16 @@ public class PlayerControllerNew : MonoBehaviour
     public float stamina = 100;
     public bool canCrouch = true;
     public bool canMove = true;
+    public bool canRun = true;
     public int maxHealth = 3;
+    public bool notInVent = true;
 
-    //Variabel untuk player berenti smooth
+    //Variables to stop player movement smoothly
     private float timeToStop = 0.3f; 
     private float stopTimer = 0f;
     private Vector3 previousVelocity;
 
+    private Vector3 smoothVelocity;
 
     private void Start()
     {
@@ -36,6 +39,7 @@ public class PlayerControllerNew : MonoBehaviour
         cam = Camera.main;
         defaultFOV = cam.fieldOfView;
         defaultScale = transform.localScale;
+        player.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     private void Update()
@@ -49,7 +53,13 @@ public class PlayerControllerNew : MonoBehaviour
         {
             Vector3 moveDirection = orientation.forward * moveZ + orientation.right * moveX;
             moveDirection.y = 0;
-            player.velocity = moveDirection.normalized * speed;
+            Vector3 newVelocity = moveDirection.normalized * speed;
+
+            newVelocity.y = player.velocity.y;
+
+            player.velocity = newVelocity;
+
+            player.velocity = Vector3.SmoothDamp(player.velocity, newVelocity, ref smoothVelocity, 0.1f);
 
         }
         else
@@ -57,7 +67,7 @@ public class PlayerControllerNew : MonoBehaviour
             player.velocity = Vector3.zero;
         }
 
-        //Biar pas berenti gk lgsg berenti
+        //Stop player movement smoothly
         if (player.velocity != Vector3.zero)
         {
             stopTimer = 0f; 
@@ -84,50 +94,46 @@ public class PlayerControllerNew : MonoBehaviour
             player.velocity = new Vector3(player.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics.gravity.y)), player.velocity.z);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (canRun)
         {
-            // Change speed to 120% and change FOV to a closer value
-            speed += (speed * 20 / 100);
-            Debug.Log(speed);
-            DepleteStamina(0.01f);
-            cam.fieldOfView = 60;
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                // Change speed to 120% and change FOV to a closer value
+                speed += (speed * 20 / 100);
+                Debug.Log(speed);
+                DepleteStamina(0.01f);
+                cam.fieldOfView = 60;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                // Reset speed and FOV to default
+                cam.fieldOfView = defaultFOV;
+                speed = defaultSpeed;
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            // Reset speed and FOV to default
-            cam.fieldOfView = defaultFOV;
-            speed = defaultSpeed;
-        }
+        
 
         if (canCrouch)
         {
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                // Change speed to 50% and adjust player's scale
+                // Change speed to 50% and adjust player's scale and position
+                canRun = false;
                 speed -= (speed * 50 / 100);
                 gameObject.layer = default;
                 transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
                 Debug.Log(speed);
-               
+
             }
             else if (Input.GetKeyUp(KeyCode.LeftControl))
             {
+                canRun = true;
                 speed = defaultSpeed;
                 transform.localScale = defaultScale;
-                gameObject.layer = 3;
-                
-                gameObject.layer = 0; // Assuming you want to reset the layer to default
-                transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
-                Debug.Log(speed);
-            }
-            else if (Input.GetKeyUp(KeyCode.LeftControl))
-            {
-                // Reset speed, player's scale, and layer
-                speed = defaultSpeed;
-                transform.localScale = defaultScale;
-                gameObject.layer = 3; // Assuming you want to set the layer back to the previous value
+                gameObject.layer = 6;
             }
         }
+
     }
 
     private void SpeedControl()

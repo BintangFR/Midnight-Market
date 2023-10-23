@@ -38,7 +38,7 @@ public class CCTVController : MonoBehaviour, IInteractable
 
     public void Interact()
     {
-        //SceneManager.LoadScene("Prototype-CCTV System");
+        
         ChangeCamera();
         isLooking = true;
     }

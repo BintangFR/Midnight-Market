@@ -37,12 +37,22 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        float moveZ = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        float moveX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        float moveZ = Input.GetAxisRaw("Vertical");
+        float moveX = Input.GetAxisRaw("Horizontal");
+        
+        SpeedControl();
+        
         if (canMove)
         {
-        transform.Translate(moveX,0,0);
-        transform.Translate(0,0,moveZ);
+
+            Vector3 moveDirection = orientation.forward * moveZ + orientation.right * moveX;
+            moveDirection.y = 0;
+            player.velocity = moveDirection.normalized * speed;
+            //transform.Translate(moveX,0,moveZ);
+        }
+        else
+        {
+            player.velocity = Vector3.zero;
         }
         gameObject.transform.rotation = orientation.transform.rotation;
         isGrounded = Physics.CheckSphere(groundCheck.position, radCircle, whatIsGround);
@@ -50,6 +60,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Jump") && isGrounded)
         {
             player.velocity = new Vector3(player.velocity.z,jumpHeight);
+            AudioManager.Instance.PlaySFX("jump", transform.position);
 
             //transform.Translate(0, jumpHeight * Time.deltaTime, 0);
             
@@ -60,14 +71,14 @@ public class PlayerController : MonoBehaviour
             speed += (speed * 20/100);
             Debug.Log(speed);
             DepleteStamina(0.01f);
-            cam.fieldOfView = 60;
-
+            cam.fieldOfView = 60;          
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             //chage speed to default and change fov to normal
             cam.fieldOfView = defaultFOV;
             speed = defaultSpeed;
+            AudioManager.Instance.PlaySFX("tired", transform.position);
         }
         if (canCrouch)
         {
@@ -88,8 +99,6 @@ public class PlayerController : MonoBehaviour
                 gameObject.layer = 3;
             }
         }
-
-        
     }
 
     private void DepleteStamina(float amount)
@@ -102,16 +111,29 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawSphere(groundCheck.position, radCircle);
 
     }
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(player.velocity.x, 0f, player.velocity.z);
+
+        if (flatVel.magnitude > speed)
+        {
+            Vector3 limitedVel = flatVel.normalized * speed;
+            player.velocity = new Vector3(limitedVel.x, player.velocity.y, limitedVel.z);
+        }
+    }
+
     public void TakeDamage()
     {
         maxHealth -= 1;
+        AudioManager.Instance.PlaySFX("hit", transform.position);
         if (maxHealth == 0)
         {
+            AudioManager.Instance.PlaySFX("die", transform.position);
             Die();
         }
     }
     private void Die()
     {
-        gameObject.active = false;
+        gameObject.SetActive(false);
     }
 }

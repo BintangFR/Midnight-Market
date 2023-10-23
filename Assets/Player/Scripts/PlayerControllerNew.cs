@@ -102,7 +102,7 @@ public class PlayerControllerNew : MonoBehaviour
                 speed += (speed * 20 / 100);
                 Debug.Log(speed);
                 DepleteStamina(0.01f);
-                cam.fieldOfView = 60;
+                cam.fieldOfView = defaultFOV - 20;
             }
             else if (Input.GetKeyUp(KeyCode.LeftShift))
             {

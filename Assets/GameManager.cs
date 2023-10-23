@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject GameOverScreen;
     [SerializeField] private GameObject FinishedScreen;
     public bool isPaused;
+    
     public static GameManager Instance { get; private set; }
     void Awake() {
         if (Instance == null)

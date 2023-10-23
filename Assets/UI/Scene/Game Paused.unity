@@ -264,11 +264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 1024739651}
 --- !u!65 &13351764
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -387,11 +382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 0.9
-  Rotation: 90
-  pivot: {fileID: 1534026757}
 --- !u!65 &19138326
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1911,11 +1901,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 423188239}
 --- !u!65 &116932813
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1999,7 +1984,7 @@ GameObject:
   - component: {fileID: 120283482}
   - component: {fileID: 120283481}
   - component: {fileID: 120283480}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Hallway Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2303,7 +2288,7 @@ GameObject:
   - component: {fileID: 133689468}
   - component: {fileID: 133689467}
   - component: {fileID: 133689466}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Office Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2443,11 +2428,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 1771592094}
 --- !u!65 &135884749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3284,11 +3264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 0.9
-  Rotation: 90
-  pivot: {fileID: 975233728}
 --- !u!65 &219819169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4247,11 +4222,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 1107854848}
 --- !u!65 &291119616
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4919,7 +4889,7 @@ GameObject:
   - component: {fileID: 346108750}
   - component: {fileID: 346108749}
   - component: {fileID: 346108748}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Hallway Floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5433,11 +5403,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 1947892767}
 --- !u!65 &384494278
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6656,7 +6621,7 @@ GameObject:
   - component: {fileID: 539317306}
   - component: {fileID: 539317305}
   - component: {fileID: 539317304}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Office Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7109,7 +7074,7 @@ GameObject:
   - component: {fileID: 607246036}
   - component: {fileID: 607246035}
   - component: {fileID: 607246034}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Toilet Floor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7424,7 +7389,7 @@ GameObject:
   - component: {fileID: 623881067}
   - component: {fileID: 623881066}
   - component: {fileID: 623881065}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Break Room Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9004,11 +8969,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 1
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 1440794012}
 --- !u!65 &769799027
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9323,7 +9283,7 @@ GameObject:
   - component: {fileID: 787187625}
   - component: {fileID: 787187624}
   - component: {fileID: 787187623}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Hallway Floor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11124,7 +11084,7 @@ GameObject:
   - component: {fileID: 959333323}
   - component: {fileID: 959333322}
   - component: {fileID: 959333321}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Hallway Floor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11565,11 +11525,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 0.9
-  Rotation: 90
-  pivot: {fileID: 300027749}
 --- !u!65 &975043854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12632,7 +12587,7 @@ GameObject:
   - component: {fileID: 1086282231}
   - component: {fileID: 1086282230}
   - component: {fileID: 1086282229}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Hallway Floor (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14600,7 +14555,7 @@ MonoBehaviour:
   orientation: {fileID: 259819382}
   whatIsGround:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 256
   groundCheck: {fileID: 670524838}
   radCircle: 0.34
   isGrounded: 0
@@ -14946,7 +14901,7 @@ GameObject:
   - component: {fileID: 1280324452}
   - component: {fileID: 1280324451}
   - component: {fileID: 1280324450}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Hallway Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15419,7 +15374,7 @@ GameObject:
   - component: {fileID: 1310539027}
   - component: {fileID: 1310539026}
   - component: {fileID: 1310539025}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Storage Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15524,7 +15479,7 @@ GameObject:
   - component: {fileID: 1311328038}
   - component: {fileID: 1311328037}
   - component: {fileID: 1311328036}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Security Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17238,7 +17193,7 @@ GameObject:
   - component: {fileID: 1389928794}
   - component: {fileID: 1389928793}
   - component: {fileID: 1389928792}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Hallway Floor (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17577,11 +17532,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 2033826522}
 --- !u!65 &1401186878
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17790,6 +17740,8 @@ MonoBehaviour:
   player: {fileID: 1276620983}
   camera: {fileID: 1924815680}
   pausedMenu: {fileID: 1479242764}
+  GameOverScreen: {fileID: 0}
+  FinishedScreen: {fileID: 0}
   isPaused: 0
 --- !u!4 &1426760366
 Transform:
@@ -20394,7 +20346,7 @@ GameObject:
   - component: {fileID: 1620743313}
   - component: {fileID: 1620743312}
   - component: {fileID: 1620743311}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Kitchen Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20534,11 +20486,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 0.9
-  Rotation: -90
-  pivot: {fileID: 1427958595}
 --- !u!65 &1640458964
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25140,7 +25087,7 @@ GameObject:
   - component: {fileID: 1680930126}
   - component: {fileID: 1680930125}
   - component: {fileID: 1680930124}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Storage Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25350,7 +25297,7 @@ GameObject:
   - component: {fileID: 1687084909}
   - component: {fileID: 1687084908}
   - component: {fileID: 1687084907}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Main Room Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26177,7 +26124,7 @@ GameObject:
   - component: {fileID: 1755926053}
   - component: {fileID: 1755926052}
   - component: {fileID: 1755926051}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Freezer Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26317,11 +26264,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 0.9
-  Rotation: -90
-  pivot: {fileID: 214478950}
 --- !u!65 &1763431123
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26862,7 +26804,7 @@ GameObject:
   - component: {fileID: 1788147792}
   - component: {fileID: 1788147791}
   - component: {fileID: 1788147790}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Electrical Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -27523,11 +27465,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 1810253719}
 --- !u!65 &1833373887
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27737,7 +27674,7 @@ GameObject:
   - component: {fileID: 1855493479}
   - component: {fileID: 1855493478}
   - component: {fileID: 1855493477}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Toilet Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28442,11 +28379,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 0.9
-  Rotation: -90
-  pivot: {fileID: 2009099425}
 --- !u!65 &1931621897
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28783,7 +28715,7 @@ GameObject:
   - component: {fileID: 1935913005}
   - component: {fileID: 1935913004}
   - component: {fileID: 1935913003}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Toilet Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29130,7 +29062,7 @@ GameObject:
   - component: {fileID: 1949664153}
   - component: {fileID: 1949664152}
   - component: {fileID: 1949664151}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Hallway Floor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -30062,7 +29994,7 @@ GameObject:
   - component: {fileID: 1972308157}
   - component: {fileID: 1972308156}
   - component: {fileID: 1972308155}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Freezer Floor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31677,7 +31609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2043825990}
   - component: {fileID: 2043825991}
-  m_Layer: 3
+  m_Layer: 8
   m_Name: Floors
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32692,11 +32624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 1538554335}
 --- !u!65 &2095644884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33147,11 +33074,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f6a3f1577b08149bfe6d2b76f45a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isOpen: 0
-  isLocked: 0
-  Speed: 1.6
-  Rotation: 90
-  pivot: {fileID: 768776499}
 --- !u!65 &2118997888
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34065,6 +33987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerInteractUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5594391825428900948, guid: 8c5f41e880065f742a8eb9b67a46dd70,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

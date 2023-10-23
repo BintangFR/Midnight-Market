@@ -41,6 +41,18 @@ public class GameManager : MonoBehaviour
         {
             PausedGame();
         }
+        if (!isPaused)
+        {
+            
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     public void FinishGame(){

@@ -8,7 +8,7 @@ public class VentController : MonoBehaviour,IInteractable
 {
     public String name;
 
-    PlayerControllerNew playerController;
+    PlayerController playerController;
 
     [SerializeField] private bool isAllow;
     [SerializeField] Transform destination;
@@ -89,7 +89,7 @@ public class VentController : MonoBehaviour,IInteractable
    
     private void ApplyCrouching(GameObject player)
     {
-        PlayerControllerNew playerController = player.GetComponent<PlayerControllerNew>();
+        PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerController != null)
         {
             // Modify player's speed, layer, and scale for crouching.

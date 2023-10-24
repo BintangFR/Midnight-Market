@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 767609009717874241}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -43.37, y: 9.06, z: -40.06}
-  m_LocalScale: {x: 18.792356, y: 2.9827597, z: 26.24369}
+  m_LocalPosition: {x: -38.7, y: 9.06, z: -33.59}
+  m_LocalScale: {x: 18.792356, y: 2.9827597, z: 20.83936}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2261797565426900145}
@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 1725069602726814730}
   - component: {fileID: 7275379023749120813}
   - component: {fileID: 9109206436683675214}
+  - component: {fileID: 440130718157514861}
   m_Layer: 0
   m_Name: Electrical room
   m_TagString: Untagged
@@ -151,7 +152,7 @@ Transform:
   m_GameObject: {fileID: 857811557457952790}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.52, y: 8.79, z: 8.16}
+  m_LocalPosition: {x: -1.02, y: 8.79, z: 17.71}
   m_LocalScale: {x: 9.956997, y: 3.191592, z: 7.8489156}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -244,6 +245,22 @@ MonoBehaviour:
   audioID: 5
   rainElectricClip: {fileID: 8300000, guid: 451dc5596f6d73648bfaabe163029e4c, type: 3}
   defaultAudioClip: {fileID: 8300000, guid: 17ea83290cbf3fd4390fb122659f2737, type: 3}
+--- !u!114 &440130718157514861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 857811557457952790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef4bf799ff95c17449e54ea4ba0e2a32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playAudio: 0
+  audioName: Electrical Room
+  soundSource: {fileID: 0}
+  triggerType: 0
 --- !u!1 &1399560138944138630
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +286,7 @@ Transform:
   m_GameObject: {fileID: 1399560138944138630}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 162.52414, y: -8.355352, z: -14.860577}
+  m_LocalPosition: {x: 39.6, y: -8.355352, z: 11.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -308,8 +325,8 @@ Transform:
   m_GameObject: {fileID: 3113921940460454542}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -66.89, y: 9.06, z: -28.98}
-  m_LocalScale: {x: 4.197735, y: 2.9827597, z: 23.32064}
+  m_LocalPosition: {x: -53.15, y: 9.06, z: -18.65}
+  m_LocalScale: {x: 3.4706452, y: 2.9827597, z: 48.304424}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2261797565426900145}
@@ -430,8 +447,8 @@ Transform:
   m_GameObject: {fileID: 4979672581269592965}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -9.9, y: 22.27, z: -24.1}
-  m_LocalScale: {x: 41.162342, y: 2.9827597, z: 20.323336}
+  m_LocalPosition: {x: -5.47, y: 16.83, z: -21.2}
+  m_LocalScale: {x: 56.70936, y: 2.9827597, z: 20.323336}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2261797565426900145}

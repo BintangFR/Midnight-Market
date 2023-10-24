@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     {
         // AudioManager.Instance.PlayBGM("Music Box");
         pausedMenu.SetActive(false);
+        GameOverScreen.SetActive(false);
+        FinishedScreen.SetActive(false);
 
     }
 
@@ -78,6 +80,8 @@ public class GameManager : MonoBehaviour
         isPaused = true;
     }
     public void ResumeGame(){
+        player.enabled = true;
+        camera.enabled = true;
         Time.timeScale = 1f;
         pausedMenu.SetActive(false);
         isPaused = false;

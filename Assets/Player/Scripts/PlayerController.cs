@@ -4,16 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float speed = 10.0f;
+    public float speed;
     public float jumpHeight;
     public Transform orientation;
     public LayerMask whatIsGround;
     public Transform groundCheck;
     public float radCircle;
-    public bool isGrounded; 
-    
-    public int maxHealth = 3;
+    public bool isGrounded;
+
     private Rigidbody player;
     private float defaultSpeed;
     private Vector3 defaultScale;
@@ -23,8 +21,17 @@ public class PlayerController : MonoBehaviour
     public float stamina = 100;
     public bool canCrouch = true;
     public bool canMove = true;
+    public bool canRun = true;
+    public int maxHealth = 3;
+    public bool notInVent = true;
 
-    
+    //Variables to stop player movement smoothly
+    private float timeToStop = 0.3f;
+    private float stopTimer = 0f;
+    private Vector3 previousVelocity;
+
+    private Vector3 smoothVelocity;
+
     private void Start()
     {
         player = GetComponent<Rigidbody>();
@@ -32,72 +39,112 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         defaultFOV = cam.fieldOfView;
         defaultScale = transform.localScale;
+        player.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
-    // Update is called once per frame
     private void Update()
     {
         float moveZ = Input.GetAxisRaw("Vertical");
         float moveX = Input.GetAxisRaw("Horizontal");
-        
+
         SpeedControl();
-        
+
         if (canMove)
         {
-
             Vector3 moveDirection = orientation.forward * moveZ + orientation.right * moveX;
             moveDirection.y = 0;
-            player.velocity = moveDirection.normalized * speed;
-            //transform.Translate(moveX,0,moveZ);
+            Vector3 newVelocity = moveDirection.normalized * speed;
+
+            newVelocity.y = player.velocity.y;
+
+            player.velocity = newVelocity;
+
+            player.velocity = Vector3.SmoothDamp(player.velocity, newVelocity, ref smoothVelocity, 0.1f);
+
         }
         else
         {
             player.velocity = Vector3.zero;
         }
-        gameObject.transform.rotation = orientation.transform.rotation;
+
+        //Stop player movement smoothly
+        if (player.velocity != Vector3.zero)
+        {
+            stopTimer = 0f;
+            previousVelocity = player.velocity;
+        }
+        else
+        {
+            stopTimer += Time.deltaTime;
+
+            //decrease player speed
+            if (stopTimer < timeToStop)
+            {
+                float t = stopTimer / timeToStop;
+                player.velocity = Vector3.Lerp(previousVelocity, Vector3.zero, t);
+            }
+        }
+
+
+
         isGrounded = Physics.CheckSphere(groundCheck.position, radCircle, whatIsGround);
 
         if (Input.GetButton("Jump") && isGrounded)
         {
-            player.velocity = new Vector3(player.velocity.z,jumpHeight);
-            AudioManager.Instance.PlaySFX("jump", transform.position);
+            player.velocity = new Vector3(player.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics.gravity.y)), player.velocity.z);
+        }
 
-            //transform.Translate(0, jumpHeight * Time.deltaTime, 0);
-            
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (canRun)
         {
-            //chage speed to 120% and change fov to close one
-            speed += (speed * 20/100);
-            Debug.Log(speed);
-            DepleteStamina(0.01f);
-            cam.fieldOfView = 60;          
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                // Change speed to 120% and change FOV to a closer value
+                speed += (speed * 20 / 100);
+                Debug.Log(speed);
+                DepleteStamina(0.01f);
+                cam.fieldOfView = defaultFOV - 20;
+            }
+            else if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                // Reset speed and FOV to default
+                cam.fieldOfView = defaultFOV;
+                speed = defaultSpeed;
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            //chage speed to default and change fov to normal
-            cam.fieldOfView = defaultFOV;
-            speed = defaultSpeed;
-            AudioManager.Instance.PlaySFX("tired", transform.position);
-        }
+
+
         if (canCrouch)
         {
-            
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                //chage speed to 50%
-                speed -= (speed * 50/100);
+                // Change speed to 50% and adjust player's scale and position
+                canRun = false;
+                speed -= (speed * 50 / 100);
                 gameObject.layer = default;
-                transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z); 
+                transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
                 Debug.Log(speed);
 
             }
             else if (Input.GetKeyUp(KeyCode.LeftControl))
             {
+                canRun = true;
                 speed = defaultSpeed;
                 transform.localScale = defaultScale;
-                gameObject.layer = 3;
+                gameObject.layer = 6;
             }
+        }
+
+    }
+
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(player.velocity.x, 0f, player.velocity.z);
+
+        if (flatVel.magnitude > speed || flatVel.magnitude < speed)
+
+        {
+            Vector3 limitedVel = flatVel.normalized * speed;
+            player.velocity = new Vector3(limitedVel.x, player.velocity.y, limitedVel.z);
         }
     }
 
@@ -109,29 +156,17 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(groundCheck.position, radCircle);
-
-    }
-    private void SpeedControl()
-    {
-        Vector3 flatVel = new Vector3(player.velocity.x, 0f, player.velocity.z);
-
-        if (flatVel.magnitude > speed)
-        {
-            Vector3 limitedVel = flatVel.normalized * speed;
-            player.velocity = new Vector3(limitedVel.x, player.velocity.y, limitedVel.z);
-        }
     }
 
     public void TakeDamage()
     {
         maxHealth -= 1;
-        AudioManager.Instance.PlaySFX("hit", transform.position);
         if (maxHealth == 0)
         {
-            AudioManager.Instance.PlaySFX("die", transform.position);
             Die();
         }
     }
+
     private void Die()
     {
         gameObject.SetActive(false);

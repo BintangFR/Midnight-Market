@@ -16,7 +16,7 @@ public class CCTVControllerNew : MonoBehaviour, IInteractable
 
     private bool isCCTVActive = false;
 
-    public PlayerControllerNew playerController;
+    public PlayerController playerController;
     public GameObject mainCamera;
     public GameObject enemy;
 

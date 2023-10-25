@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class CCTVControllerNew : MonoBehaviour, IInteractable
@@ -21,6 +23,12 @@ public class CCTVControllerNew : MonoBehaviour, IInteractable
     public GameObject enemy;
 
     private bool hasInteracted = false;
+
+    [SerializeField] private NavMeshAgent shadowMan;
+    [SerializeField] private Transform shadowManTarget;
+    [SerializeField] private float shadowManDissappearence;
+    [SerializeField] private bool canExitCCTV;
+    public UnityEvent unityEvent;
 
     void Start()
     {
@@ -74,20 +82,24 @@ public class CCTVControllerNew : MonoBehaviour, IInteractable
 
     private void ExitCCTV()
     {
-        mainCamera.SetActive(true);
-        cctvUI.SetActive(false);
-        isCCTVActive = false;
-        playerController.enabled = true;
-        gameObject.layer = 7;
-
-        //deactivate all cctv camera
-        foreach (Camera camera in cameras)
+        if (canExitCCTV)
         {
-            camera.gameObject.SetActive(false);
+            
+            mainCamera.SetActive(true);
+            cctvUI.SetActive(false);
+            isCCTVActive = false;
+            playerController.enabled = true;
+            gameObject.layer = 7;
+
+            //deactivate all cctv camera
+            foreach (Camera camera in cameras)
+            {
+                camera.gameObject.SetActive(false);
+            }
         }
 
         //deactivate enemy
-        enemy.gameObject.SetActive(false);
+        //enemy.gameObject.SetActive(false);
     }
 
     public void Interact()
@@ -97,15 +109,29 @@ public class CCTVControllerNew : MonoBehaviour, IInteractable
             //Trigger cutscene pertama kali
             if (!hasInteracted)
             {
-                Debug.Log("Cutscene Muncul"); 
-                hasInteracted = true; 
-                enemy.gameObject.SetActive(true);
+                Debug.Log("Cutscene Muncul");
+                OpenCCTV();
+                StartCoroutine(Cutscene());
+                hasInteracted = true;
+                //enemy.gameObject.SetActive(true);
                 
             }
 
             OpenCCTV();
             SetCameraLabel(0);
         }
+    }
+    
+    private IEnumerator Cutscene(){
+        shadowMan.SetDestination(shadowManTarget.position);
+        yield return new WaitForSeconds(shadowManDissappearence);
+        canExitCCTV = true;
+        yield return new WaitForEndOfFrame();
+        ExitCCTV();
+        unityEvent.Invoke();
+        yield return new WaitForEndOfFrame();
+        shadowMan.gameObject.SetActive(false);
+        
     }
 
     private void SwitchToNextCamera()

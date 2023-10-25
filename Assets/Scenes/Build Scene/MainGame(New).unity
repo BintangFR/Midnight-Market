@@ -12595,36 +12595,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 39470533}
     m_Modifications:
-    - target: {fileID: 128284373153815313, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: audioID
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 128284373153815313, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: audioName
-      value: Vent_Ambient
-      objectReference: {fileID: 0}
-    - target: {fileID: 128284373153815313, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: soundSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 440130718157514861, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: audioID
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 440130718157514861, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: audioName
-      value: Electrical_Room
-      objectReference: {fileID: 0}
-    - target: {fileID: 440130718157514861, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: soundSource
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1399560138944138630, guid: 489c6227ab56eb34687909ca0c79b9ff,
         type: 3}
       propertyPath: m_Name
@@ -12679,36 +12649,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7374407462804920874, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: audioID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7374407462804920874, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: audioName
-      value: Freezer_Room_Ambient_AC
-      objectReference: {fileID: 0}
-    - target: {fileID: 7374407462804920874, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: soundSource
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7575576686999722830, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: audioID
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7575576686999722830, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: audioName
-      value: Freezer_Room_Ambient_AC
-      objectReference: {fileID: 0}
-    - target: {fileID: 7575576686999722830, guid: 489c6227ab56eb34687909ca0c79b9ff,
-        type: 3}
-      propertyPath: soundSource
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 9109206436683675214, guid: 489c6227ab56eb34687909ca0c79b9ff,
         type: 3}
@@ -13364,6 +13304,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7.5
   jumpHeight: 5
+  stamina: 100
+  maxHealth: 3
   orientation: {fileID: 259819382}
   whatIsGround:
     serializedVersion: 2
@@ -13371,11 +13313,12 @@ MonoBehaviour:
   groundCheck: {fileID: 670524838}
   radCircle: 0.34
   isGrounded: 0
-  stamina: 100
+  maxStamina: 100
+  staminaDrainRate: 0
+  staminaRechargeRate: 0
   canCrouch: 1
   canMove: 1
   canRun: 1
-  maxHealth: 3
   notInVent: 1
 --- !u!136 &1276620984
 CapsuleCollider:

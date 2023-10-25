@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Rigidbody>();
         defaultSpeed = speed;
         cam = Camera.main;
-        defaultFOV = cam.fieldOfView;
+        //defaultFOV = cam.fieldOfView;
         defaultScale = transform.localScale;
         player.interpolation = RigidbodyInterpolation.Interpolate;
     }
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
                 if (stamina > 0 && !isFatigued)
                 {
                     speed += (speed * 20 / 100); 
-                    cam.fieldOfView = defaultFOV - 20;
+                    //cam.fieldOfView = defaultFOV - 20;
                     isRunning = true;
                 }
                 else
@@ -127,7 +127,7 @@ public class PlayerController : MonoBehaviour
                     if (isRunning || isFatigued)
                     {
                         speed = defaultSpeed; 
-                        cam.fieldOfView = defaultFOV;
+                        //cam.fieldOfView = defaultFOV;
                         isRunning = false;
                     }
                 }
@@ -138,7 +138,7 @@ public class PlayerController : MonoBehaviour
                 if (isRunning || isFatigued)
                 {
                     speed = defaultSpeed;
-                    cam.fieldOfView = defaultFOV;
+                    //cam.fieldOfView = defaultFOV;
                     isRunning = false;
                 }
             }
@@ -157,7 +157,7 @@ public class PlayerController : MonoBehaviour
             {
                 isFatigued = true;
                 speed = 5.0f;
-                cam.fieldOfView = defaultFOV;
+                //cam.fieldOfView = defaultFOV;
                 fatigueTimer += Time.deltaTime;
             }
             else if (fatigueTimer >= 5) 

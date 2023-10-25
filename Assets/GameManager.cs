@@ -89,7 +89,7 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu(){
         Time.timeScale = 1f;
         pausedMenu.SetActive(false);
-        SceneManager.LoadScene("Prototype-MainMenu");
+        SceneManager.LoadScene(0);
         
     }
 }

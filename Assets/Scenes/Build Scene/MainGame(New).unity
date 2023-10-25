@@ -5927,7 +5927,6 @@ GameObject:
   m_Component:
   - component: {fileID: 593246740}
   - component: {fileID: 593246742}
-  - component: {fileID: 593246741}
   m_Layer: 0
   m_Name: CCTVCameraScreen
   m_TagString: Untagged
@@ -5950,14 +5949,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 378629291}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &593246741
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 593246739}
-  m_Enabled: 1
 --- !u!20 &593246742
 Camera:
   m_ObjectHideFlags: 0
@@ -26637,6 +26628,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9acb31038980d34181addf52bbc7844, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1924815689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608472072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dca7232eb6e4094bb308cf9890cd478, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &1925622030
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26666,6 +26669,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 264192317681391015, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      propertyPath: sens
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 264192317681391015, guid: c6f86b952f2627840b0faa9b89a3b274,
         type: 3}
       propertyPath: orientation
@@ -26804,7 +26812,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1437222630388322938, guid: c6f86b952f2627840b0faa9b89a3b274,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1924815689}
   m_SourcePrefab: {fileID: 100100000, guid: c6f86b952f2627840b0faa9b89a3b274, type: 3}
 --- !u!1 &1934203977
 GameObject:
@@ -31713,6 +31725,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 956850902}
     m_Modifications:
+    - target: {fileID: 892808250849588500, guid: 2bd0f2bc2c9ffba46abd976bd63142e3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1924815680}
+    - target: {fileID: 892808250849588500, guid: 2bd0f2bc2c9ffba46abd976bd63142e3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetSens
+      objectReference: {fileID: 0}
     - target: {fileID: 920348759949226296, guid: 2bd0f2bc2c9ffba46abd976bd63142e3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -31817,6 +31839,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3745895260560470477, guid: 2bd0f2bc2c9ffba46abd976bd63142e3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1924815689}
+    - target: {fileID: 3745895260560470477, guid: 2bd0f2bc2c9ffba46abd976bd63142e3,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetFOV
       objectReference: {fileID: 0}
     - target: {fileID: 4463077913792566266, guid: 2bd0f2bc2c9ffba46abd976bd63142e3,
         type: 3}

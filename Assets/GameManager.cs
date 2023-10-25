@@ -62,15 +62,19 @@ public class GameManager : MonoBehaviour
         camera.enabled = false;
         FinishedScreen.SetActive(true);
         Debug.Log("game complete");
+        isPaused = true;
+
     }
     public void GameOver(){
 
         player.enabled = false;
         camera.enabled = false;
-        GameOverScreen.SetActive(true);    
+        GameOverScreen.SetActive(true);
+        isPaused = true;
+
     }
     public void RestartGame(){
-        SceneManager.LoadScene("MainGame(Prototype)");
+        SceneManager.LoadScene(1);
     }
     public void PausedGame(){
         player.enabled = false;

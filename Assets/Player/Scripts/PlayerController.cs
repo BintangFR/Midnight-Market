@@ -224,5 +224,6 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         gameObject.SetActive(false);
+        GameManager.Instance.GameOver();
     }
 }

@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Player Movement & Health")]
     public float speed;
     public float jumpHeight;
+    public float stamina = 100;
+    public int maxHealth = 3;
+
+    [Header("Player Physics")]
     public Transform orientation;
     public LayerMask whatIsGround;
     public Transform groundCheck;
@@ -18,12 +23,22 @@ public class PlayerController : MonoBehaviour
     private Camera cam;
     private float defaultFOV;
     private bool isOn = true;
-    public float stamina = 100;
+
+    [Header("Player Stamina")]
+    public float maxStamina = 100f;
+    public float staminaDrainRate;
+    public float staminaRechargeRate;
+    private float fatigueTimer = 0f;
+    private bool isFatigued;
+    private bool isRunning;
+
+    [Header("Player Condition")]
     public bool canCrouch = true;
     public bool canMove = true;
     public bool canRun = true;
-    public int maxHealth = 3;
     public bool notInVent = true;
+
+    
 
     //Variables to stop player movement smoothly
     private float timeToStop = 0.3f;
@@ -34,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        stamina = maxStamina;
         player = GetComponent<Rigidbody>();
         defaultSpeed = speed;
         cam = Camera.main;
@@ -86,33 +102,76 @@ public class PlayerController : MonoBehaviour
         }
 
 
-
         isGrounded = Physics.CheckSphere(groundCheck.position, radCircle, whatIsGround);
 
+        // Player Jump
         if (Input.GetButton("Jump") && isGrounded)
         {
             player.velocity = new Vector3(player.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics.gravity.y)), player.velocity.z);
         }
 
+
+        //Player Run & Stamina
         if (canRun)
         {
             if (Input.GetKeyDown(KeyCode.LeftShift))
             {
-                // Change speed to 120% and change FOV to a closer value
-                speed += (speed * 20 / 100);
-                Debug.Log(speed);
-                DepleteStamina(0.01f);
-                cam.fieldOfView = defaultFOV - 20;
+                if (stamina > 0 && !isFatigued)
+                {
+                    speed += (speed * 20 / 100); 
+                    cam.fieldOfView = defaultFOV - 20;
+                    isRunning = true;
+                }
+                else
+                {
+                    if (isRunning || isFatigued)
+                    {
+                        speed = defaultSpeed; 
+                        cam.fieldOfView = defaultFOV;
+                        isRunning = false;
+                    }
+                }
             }
-            else if (Input.GetKeyUp(KeyCode.LeftShift))
+
+            if (Input.GetKeyUp(KeyCode.LeftShift))
             {
-                // Reset speed and FOV to default
-                cam.fieldOfView = defaultFOV;
-                speed = defaultSpeed;
+                if (isRunning || isFatigued)
+                {
+                    speed = defaultSpeed;
+                    cam.fieldOfView = defaultFOV;
+                    isRunning = false;
+                }
             }
+
+            if (isRunning)
+            {
+                stamina -= Time.deltaTime * staminaDrainRate;
+            }
+            else if (!isRunning && stamina > 0 && stamina < maxStamina)
+            {
+                stamina += Time.deltaTime * staminaRechargeRate;
+            }
+           
+
+            if (stamina <= 0 && fatigueTimer <= 5)
+            {
+                isFatigued = true;
+                speed = 5.0f;
+                cam.fieldOfView = defaultFOV;
+                fatigueTimer += Time.deltaTime;
+            }
+            else if (fatigueTimer >= 5) 
+            {
+                isFatigued = false;
+                speed = defaultSpeed;
+                stamina += 100;
+                fatigueTimer = 0;
+            }
+
+            stamina = Mathf.Clamp(stamina, 0, maxStamina);
         }
 
-
+        //Player Crouch
         if (canCrouch)
         {
             if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -146,11 +205,6 @@ public class PlayerController : MonoBehaviour
             Vector3 limitedVel = flatVel.normalized * speed;
             player.velocity = new Vector3(limitedVel.x, player.velocity.y, limitedVel.z);
         }
-    }
-
-    private void DepleteStamina(float amount)
-    {
-        stamina -= amount;
     }
 
     private void OnDrawGizmos()

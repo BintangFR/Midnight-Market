@@ -67,16 +67,14 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            //chage speed to 120% and change fov to close one
+            //chage speed to 120% 
             speed += (speed * 20/100);
             Debug.Log(speed);
-            DepleteStamina(0.01f);
-            cam.fieldOfView = 60;          
+            DepleteStamina(0.01f);            
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            //chage speed to default and change fov to normal
-            cam.fieldOfView = defaultFOV;
+            //chage speed to default          
             speed = defaultSpeed;
             AudioManager.Instance.PlaySFX("tired", transform.position);
         }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public float stamina = 100;
     public int maxHealth = 3;
+    public bool isWalking;
 
     [Header("Player Physics")]
     public Transform orientation;
@@ -31,12 +33,15 @@ public class PlayerController : MonoBehaviour
     private float fatigueTimer = 0f;
     private bool isFatigued;
     private bool isRunning;
+    [SerializeField] private Slider staminaBar;
 
     [Header("Player Condition")]
     public bool canCrouch = true;
     public bool canMove = true;
     public bool canRun = true;
     public bool notInVent = true;
+
+
 
     
 
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        staminaBar.value = stamina;
         float moveZ = Input.GetAxisRaw("Vertical");
         float moveX = Input.GetAxisRaw("Horizontal");
 
@@ -88,6 +94,7 @@ public class PlayerController : MonoBehaviour
         {
             stopTimer = 0f;
             previousVelocity = player.velocity;
+            isWalking = true;
         }
         else
         {
@@ -99,6 +106,8 @@ public class PlayerController : MonoBehaviour
                 float t = stopTimer / timeToStop;
                 player.velocity = Vector3.Lerp(previousVelocity, Vector3.zero, t);
             }
+            isWalking = false;
+
         }
 
 
@@ -114,13 +123,14 @@ public class PlayerController : MonoBehaviour
         //Player Run & Stamina
         if (canRun)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isWalking)
             {
                 if (stamina > 0 && !isFatigued)
                 {
                     speed += (speed * 20 / 100); 
                     //cam.fieldOfView = defaultFOV - 20;
                     isRunning = true;
+                    staminaBar.gameObject.SetActive(true);
                 }
                 else
                 {
@@ -135,6 +145,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
+                staminaBar.gameObject.SetActive(false);
                 if (isRunning || isFatigued)
                 {
                     speed = defaultSpeed;
@@ -179,7 +190,7 @@ public class PlayerController : MonoBehaviour
                 // Change speed to 50% and adjust player's scale and position
                 canRun = false;
                 speed -= (speed * 50 / 100);
-                gameObject.layer = default;
+                //gameObject.layer = default;
                 transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
                 Debug.Log(speed);
 
@@ -189,7 +200,7 @@ public class PlayerController : MonoBehaviour
                 canRun = true;
                 speed = defaultSpeed;
                 transform.localScale = defaultScale;
-                gameObject.layer = 6;
+                //gameObject.layer = 6;
             }
         }
 

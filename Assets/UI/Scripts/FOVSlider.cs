@@ -6,10 +6,12 @@ public class FOVSlider : MonoBehaviour
 {
     private Camera cam;
     private float defaultFOV;
+    [SerializeField] private PlayerController player;
 
 
     void Start()
     {
+
         cam = GetComponent<Camera>();
         cam = Camera.main;
         defaultFOV = cam.fieldOfView;    
@@ -17,11 +19,11 @@ public class FOVSlider : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && player.isWalking)
         {
             cam.fieldOfView = defaultFOV - 20;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        else if (Input.GetKeyUp(KeyCode.LeftShift) && !player.isWalking)
         {
             cam.fieldOfView = defaultFOV + 20;  
         }

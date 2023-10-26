@@ -19,10 +19,12 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     public EnvirontmentType environtmentType;
     public ItemController[] itemsList;
-    public UnityEvent unityEvent;
+    [SerializeField] private  UnityEvent unityEvent;
 
-    public UnityEvent StorageFuseEvent;
-    public UnityEvent OfficeFuseEvent;
+    [SerializeField] private  UnityEvent StorageFuseEvent;
+    [SerializeField] private  UnityEvent OfficeFuseEvent;
+    [SerializeField] private GameObject storageFuse;
+    [SerializeField] private GameObject officeFuse;
 
 
     private bool fanInteracted = false;
@@ -130,13 +132,8 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
         if (environtmentType == EnvirontmentType.Telephone)
         {
-            AudioManager audioManager = AudioManager.Instance;
-            if (audioManager != null)
-            {
-                audioManager.PlaySFX("Phone", transform.position);
-            }
-            Debug.Log("Telephone Mati");
-            unityEvent.Invoke();
+            StartCoroutine(Calling());
+
         }
 
         else if (environtmentType == EnvirontmentType.Fan)
@@ -164,6 +161,19 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         }
     }
 
+    private IEnumerator Calling(){
+        AudioManager audioManager = AudioManager.Instance;
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX("Phone", transform.position);
+        }
+        Debug.Log("Telephone Mati");
+        yield return new WaitForSeconds(6.0f);
+        unityEvent.Invoke();
+        yield return new WaitForEndOfFrame();
+        gameObject.layer = 0;
+    }
+
     private void Update() {
 
         if (environtmentType == EnvirontmentType.Electrical)
@@ -172,12 +182,14 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
             {
                 itemsList[0].isPlaced = false;
                 StorageFuseEvent.Invoke();
+                storageFuse.SetActive(true);
                 
             }
             if (itemsList[1].isPlaced)
             {
                 itemsList[1].isPlaced = false;
                 OfficeFuseEvent.Invoke();
+                officeFuse.SetActive(true);
             }
         }
         foreach (ItemController item in itemsList)

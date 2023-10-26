@@ -22,6 +22,7 @@ public class AIController : MonoBehaviour
     private Transform player;
     public LayerMask whatIsPlayer;
     private Animator anim;
+    private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex = 0;
 
     public enum EnemyState
@@ -57,6 +58,8 @@ public class AIController : MonoBehaviour
         }
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.enabled = false;
     }
 
     // Start is called before the first frame update
@@ -171,6 +174,8 @@ public class AIController : MonoBehaviour
         {
             transform.position = idleTransform.position;
             transform.rotation = idleTransform.rotation;
+
+            navMeshAgent.enabled = true;
         }
 
         if (newState == EnemyState.chasing || newState == EnemyState.seeking)

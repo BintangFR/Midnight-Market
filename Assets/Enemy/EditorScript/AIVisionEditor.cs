@@ -22,6 +22,7 @@ public class AIVisionEditor : Editor
 
         Handles.color = new Color(1f, 0f, 0f, 0.1f);
         Handles.DrawSolidArc(aiv.transform.position, Vector3.up, viewAngleA, aiv.GetViewAngle(), aiv.GetViewRange());
+        Handles.DrawSolidArc(aiv.transform.position, Vector3.up, viewAngleB, 360 - aiv.GetViewAngle(), aiv.GetHearingRange());
 
         if (aiv.GetCanSeePlayer())
         {

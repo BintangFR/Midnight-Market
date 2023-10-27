@@ -19,11 +19,11 @@ public class FOVSlider : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && player.isWalking)
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             cam.fieldOfView = defaultFOV - 20;
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift) && !player.isWalking)
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             cam.fieldOfView = defaultFOV + 20;  
         }

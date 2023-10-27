@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class FlashlightAudio : MonoBehaviour
 {
-    public AudioSource flashlightOn, pumpFlashlight;
+    public AudioSource pumpFlashlight;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            AudioManager.Instance.PlaySFX("flashlight on", transform.position);
+            AudioManager.Instance.PlaySFX("Flashlight", transform.position);
         }
 
         if (Input.GetKey(KeyCode.R))

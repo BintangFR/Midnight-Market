@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementAudio : MonoBehaviour
 {
-    public AudioSource footstepsSound, sprintSound, tiredSound;
+    public AudioSource footstepsSound, sprintSound;
     void Update()
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.D))

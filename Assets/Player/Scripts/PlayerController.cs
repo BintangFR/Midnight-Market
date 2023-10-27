@@ -117,6 +117,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButton("Jump") && isGrounded)
         {
             player.velocity = new Vector3(player.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics.gravity.y)), player.velocity.z);
+            AudioManager.Instance.PlaySFX("Jump", transform.position);
         }
 
 
@@ -151,6 +152,7 @@ public class PlayerController : MonoBehaviour
                     speed = defaultSpeed;
                     //cam.fieldOfView = defaultFOV;
                     isRunning = false;
+                    AudioManager.Instance.PlaySFX("Tired", transform.position);
                 }
             }
 
@@ -226,8 +228,10 @@ public class PlayerController : MonoBehaviour
     public void TakeDamage()
     {
         maxHealth -= 1;
+        AudioManager.Instance.PlaySFX("Hit", transform.position);
         if (maxHealth == 0)
         {
+            AudioManager.Instance.PlaySFX("Dead", transform.position);
             Die();
         }
     }

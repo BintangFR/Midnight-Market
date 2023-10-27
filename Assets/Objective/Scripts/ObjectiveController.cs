@@ -17,17 +17,32 @@ public class ObjectiveController : MonoBehaviour
     public UnityEvent requirement;
 
     public ObjectivesManager objectiveManager;
+
+   
+    public string hint;
+    private bool isTimerActive = false;
+    private bool hasShownHint = false;
+
+    public void StartObjectiveTimer()
+    {
+        objectiveManager.elapsedTime = 0f;
+    }
+
     
 
     public void MarkObjectiveAsComplete()
     {
-       isComplete = true;
-       isActive = false;
-       gameObject.SetActive(false);
-       AudioManager.Instance.PlaySFX("Objective Complete", Vector3.zero);
+        isComplete = true;
+        isActive = false;
+        gameObject.SetActive(false);
+        hasShownHint = false;
+        isTimerActive = false;
+        objectiveManager.elapsedTime = 0f;
+        objectiveManager.UIHint.text = "";
+
     }
 
- 
+
 
 
     private bool CheckConditionsForObjective2()
@@ -58,7 +73,9 @@ public class ObjectiveController : MonoBehaviour
     {
         objective.isActive = true;
         objective.gameObject.SetActive(true);
-        
+        objective.isTimerActive = true;
+        objective.StartObjectiveTimer();
+
     }
 
 
@@ -87,15 +104,24 @@ public class ObjectiveController : MonoBehaviour
         }
     }
 
+    [System.Serializable]
     public class HintData
     {
-        public string Description;
+        [SerializeField]
+        private string description;
+
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
+
         public HintType Type;
         public bool isActive;
 
         public HintData(string description, HintType type)
         {
-            Description = description;
+            this.description = description;
             Type = type;
             isActive = false;
         }
@@ -116,4 +142,3 @@ public class ObjectiveController : MonoBehaviour
     }
 
 }
-

@@ -3308,7 +3308,12 @@ PrefabInstance:
     - target: {fileID: 233439794174980304, guid: 23dbe55a5513d1d4b987316b2b2f862d,
         type: 3}
       propertyPath: m_Radius
-      value: 2
+      value: 0.45000857
+      objectReference: {fileID: 0}
+    - target: {fileID: 233439794174980304, guid: 23dbe55a5513d1d4b987316b2b2f862d,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -1.5499915
       objectReference: {fileID: 0}
     - target: {fileID: 825389691482639651, guid: 23dbe55a5513d1d4b987316b2b2f862d,
         type: 3}
@@ -3393,7 +3398,7 @@ PrefabInstance:
     - target: {fileID: 7489962213226694354, guid: 23dbe55a5513d1d4b987316b2b2f862d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.47
+      value: 29.67
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6769,6 +6774,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5162836531290660999, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162836531290660999, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
+        type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 182404097}
@@ -6782,10 +6792,15 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 27.71
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5162836531290660999, guid: 188df2aadf4be7445b28dd6ff9a5bf68, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8192638731205769195, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2024808793}
   m_SourcePrefab: {fileID: 100100000, guid: 188df2aadf4be7445b28dd6ff9a5bf68, type: 3}
 --- !u!114 &361842078 stripped
 MonoBehaviour:
@@ -19579,6 +19594,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7265732431108218122, guid: 5e316b98d480f1a4e854a2794bcddb7d,
         type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265732431108218122, guid: 5e316b98d480f1a4e854a2794bcddb7d,
+        type: 3}
       propertyPath: objectiveManager
       value: 
       objectReference: {fileID: 1643566553}
@@ -22263,7 +22283,7 @@ PrefabInstance:
     - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
@@ -22272,12 +22292,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 969249493}
     - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 6010740096812453755}
+    - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
@@ -22287,8 +22322,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: set_layer
+      objectReference: {fileID: 0}
+    - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_TargetAssemblyTypeName
       value: ObjectiveController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
@@ -22302,8 +22352,18 @@ PrefabInstance:
       objectReference: {fileID: 1022975234409209413}
     - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: ObjectiveController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2444885133548002136, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
@@ -24723,8 +24783,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_Mode
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
@@ -24733,8 +24803,23 @@ PrefabInstance:
       objectReference: {fileID: 1175265554}
     - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_Target
+      value: 
+      objectReference: {fileID: 177175184}
+    - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
       value: ActivateEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_MethodName
+      value: set_layer
       objectReference: {fileID: 0}
     - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
@@ -24743,9 +24828,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_IntArgument
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 1603018686}
+    - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
+      propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[3].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8222050743108439004, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29051,6 +29151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hint
       value: Find Food Shelf in the market
+      objectReference: {fileID: 0}
+    - target: {fileID: 9110732246031060775, guid: 68c3235326076cb488d9c706cbffe7c1,
+        type: 3}
+      propertyPath: isActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9110732246031060775, guid: 68c3235326076cb488d9c706cbffe7c1,
         type: 3}
@@ -44182,6 +44287,55 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3106300604700527910, guid: 523cfa1b432fae94d82a5716da12a2f2, type: 3}
+--- !u!1 &2024808788 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8192638731205769195, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
+    type: 3}
+  m_PrefabInstance: {fileID: 361842077}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2024808793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2024808788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ff1309ea9f71f54b930a0e7616057d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectiveType: 1
+  startObjective:
+    m_PersistentCalls:
+      m_Calls: []
+  endObjective:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 361842078}
+        m_TargetAssemblyTypeName: ObjectiveController, Assembly-CSharp
+        m_MethodName: ActivateObjective
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 182404097}
+          m_ObjectArgumentAssemblyTypeName: ObjectiveController, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 361842078}
+        m_TargetAssemblyTypeName: ObjectiveController, Assembly-CSharp
+        m_MethodName: MarkObjectiveAsComplete
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!64 &2035236715
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -46759,6 +46913,11 @@ PrefabInstance:
       objectReference: {fileID: 1643566553}
     - target: {fileID: 2734507983352975294, guid: ec86369af1c376243b5f43d57e456f88,
         type: 3}
+      propertyPath: requirement.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734507983352975294, guid: ec86369af1c376243b5f43d57e456f88,
+        type: 3}
       propertyPath: requirement.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1642374558}
@@ -46858,7 +47017,7 @@ GameObject:
   - component: {fileID: 2867968956309200624}
   - component: {fileID: 7065706043565812614}
   - component: {fileID: 4424242800762996943}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Fan
   m_TagString: Untagged
   m_Icon: {fileID: 0}

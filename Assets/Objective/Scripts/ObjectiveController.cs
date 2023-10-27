@@ -15,47 +15,33 @@ public class ObjectiveController : MonoBehaviour
     public Requirement ObjectiveRequirement;
     public HintData ObjectiveHint;
     public UnityEvent requirement;
-    
+
     public ObjectivesManager objectiveManager;
 
-    private float elapsedTime;
+   
     public string hint;
     private bool isTimerActive = false;
+    private bool hasShownHint = false;
 
     public void StartObjectiveTimer()
     {
-        elapsedTime = 0f;
+        objectiveManager.elapsedTime = 0f;
     }
 
-    private IEnumerator ObjectiveTimer()
-    {
-        while (elapsedTime < 120f)
-        {
-            if (isTimerActive) 
-            {
-                yield return new WaitForSeconds(1f);
-                elapsedTime += 1f;
-            }
-            else
-            {
-                yield return null;
-            }
-        }
-
-        if (!isComplete)
-        {
-            objectiveManager.ShowHint(hint);
-        }
-    }
+    
 
     public void MarkObjectiveAsComplete()
     {
-       isComplete = true;
-       isActive = false;
-       gameObject.SetActive(false);
+        isComplete = true;
+        isActive = false;
+        gameObject.SetActive(false);
+        hasShownHint = false;
+        isTimerActive = false;
+        objectiveManager.elapsedTime = 0f;
+        objectiveManager.UIHint.text = "";
     }
 
- 
+
 
 
     private bool CheckConditionsForObjective2()
@@ -154,4 +140,3 @@ public class ObjectiveController : MonoBehaviour
     }
 
 }
-

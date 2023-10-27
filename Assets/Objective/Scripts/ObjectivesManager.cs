@@ -10,7 +10,7 @@ public class ObjectivesManager : MonoBehaviour
     public TextMeshProUGUI UIDescription;
     public TextMeshProUGUI UIHint;
     public ObjectiveController[] objectiveDatas;
-    private float elapsedTime = 0f;
+    public float elapsedTime = 0f;
 
    public void AddObjective(ObjectiveController objective)
    {
@@ -38,14 +38,24 @@ public class ObjectivesManager : MonoBehaviour
                 ShowDescription(objectiveController);
                 elapsedTime += Time.deltaTime;
 
-                if (elapsedTime >= 5f)
+                if (elapsedTime >= 10f)
                 {
                     if (!objectiveController.isComplete)
                     {
                         ShowHint(objectiveController.hint); // pake hint dari ObjectiveController
                     }
+
                 }
+
+                else
+                {
+                    UIHint.text = "";
+
+                }
+
+                break;
             }
+
         }
 
 

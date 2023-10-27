@@ -39,6 +39,8 @@ public class ObjectiveController : MonoBehaviour
         isTimerActive = false;
         objectiveManager.elapsedTime = 0f;
         objectiveManager.UIHint.text = "";
+        AudioManager.Instance.PlaySFX("Objective Complete", Vector3.zero);
+
 
     }
 

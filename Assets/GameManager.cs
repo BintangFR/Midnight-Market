@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject GameOverScreen;
     [SerializeField] private GameObject FinishedScreen;
     public bool isPaused;
+
+    public bool isLooking; //Look at something else
     
     public static GameManager Instance { get; private set; }
     void Awake() {
@@ -39,7 +41,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isLooking)
         {
             PausedGame();
         }

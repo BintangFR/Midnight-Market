@@ -7,23 +7,24 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private Transform cameraPosition;
     public Transform orientation;
-    public float sensx;
-    public float sensy;
+    public float sens;
     private float yRotation;
     private float xRotation;
+    public float minClippingDistance = 0.1f;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Camera.main.nearClipPlane = minClippingDistance;
+
         //rotate camera based of sensitivity
         Camera.main.transform.position = cameraPosition.transform.position;
-        float camrotx = Input.GetAxis("Mouse X") * sensx * Time.deltaTime;
-        float camroty = Input.GetAxis("Mouse Y") * sensy * Time.deltaTime;
+        float camrotx = Input.GetAxis("Mouse X") * sens * Time.deltaTime;
+        float camroty = Input.GetAxis("Mouse Y") * sens * Time.deltaTime;
 
         yRotation += camrotx;
         xRotation -= camroty;
@@ -31,6 +32,10 @@ public class CameraController : MonoBehaviour
         // rotate cam and orientation
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
-        
+    }
+
+    public void SetSens (float camSens)
+    {
+        sens = camSens;
     }
 }

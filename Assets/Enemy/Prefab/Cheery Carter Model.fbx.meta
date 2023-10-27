@@ -1,0 +1,195 @@
+fileFormatVersion: 2
+guid: 48413fc6adb6845489875de1bc1740eb
+ModelImporter:
+  serializedVersion: 22200
+  internalIDToNameTable: []
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importPhysicalCameras: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    strictVertexDataChecks: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 0
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: CHEERY(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Sphere
+      parentName: CHEERY(Clone)
+      position: {x: 0.002011778, y: 0.60194147, z: 0.34790346}
+      rotation: {x: -0.6716092, y: -0.00043299838, z: -0.00038512045, w: 0.7409054}
+      scale: {x: 23.499893, y: 23.499895, z: 23.499897}
+    - name: Sphere.001
+      parentName: CHEERY(Clone)
+      position: {x: 0.002011778, y: 0.2613248, z: 0.12954187}
+      rotation: {x: -0.6514152, y: 0, z: -0, w: 0.7587214}
+      scale: {x: 31.405363, y: 31.405361, z: 31.405361}
+    - name: Sphere.004
+      parentName: CHEERY(Clone)
+      position: {x: 0.002011778, y: 0.005026948, z: 0.110561505}
+      rotation: {x: -0.68699855, y: 0, z: -0, w: 0.7266588}
+      scale: {x: 20.887259, y: 16.990583, z: 16.990583}
+    - name: Cube
+      parentName: CHEERY(Clone)
+      position: {x: -1.0231614, y: 0.38239697, z: 0.16618069}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 9.587882, y: 8.533073, z: 3.372128}
+    - name: Cylinder.002
+      parentName: CHEERY(Clone)
+      position: {x: -0.31434554, y: 0.38258997, z: 0.16710748}
+      rotation: {x: 0.50000006, y: -0.50000006, z: 0.49999997, w: -0.49999994}
+      scale: {x: 6.6593223, y: 6.6593223, z: 6.6593223}
+    - name: Sphere.002
+      parentName: CHEERY(Clone)
+      position: {x: -0.25004676, y: 0.38223067, z: 0.16547962}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: -11.422059, y: -10.942972, z: -10.917852}
+    - name: Cube.001
+      parentName: CHEERY(Clone)
+      position: {x: 1.0307882, y: 0.38239697, z: 0.16618064}
+      rotation: {x: 0.7071068, y: 0.00000013767878, z: -0.0000001376788, w: 0.7071067}
+      scale: {x: -9.587882, y: -8.533073, z: -3.372128}
+    - name: Cylinder.003
+      parentName: CHEERY(Clone)
+      position: {x: 0.32197234, y: 0.38258997, z: 0.16710754}
+      rotation: {x: 0.50000006, y: 0.5000001, z: 0.49999994, w: 0.49999985}
+      scale: {x: -6.6593223, y: -6.6593223, z: -6.6593223}
+    - name: Sphere.003
+      parentName: CHEERY(Clone)
+      position: {x: 0.25407034, y: 0.38223067, z: 0.16547962}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: -11.422059, y: -10.942972, z: -10.917852}
+    - name: Cube.002
+      parentName: CHEERY(Clone)
+      position: {x: -0.14206234, y: -0.9009352, z: 0.1985037}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 9.615536, y: 15.096396, z: 9.615536}
+    - name: Cube.003
+      parentName: CHEERY(Clone)
+      position: {x: 0.14608584, y: -0.9009352, z: 0.1985037}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: -9.615536, y: -15.096396, z: -9.615536}
+    - name: Cylinder
+      parentName: CHEERY(Clone)
+      position: {x: -0.14318083, y: -0.3528692, z: 0.12341531}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 6.6593223, y: 6.6593223, z: 7.4361467}
+    - name: Cylinder.001
+      parentName: CHEERY(Clone)
+      position: {x: 0.14720447, y: -0.3528692, z: 0.12341531}
+      rotation: {x: 0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: -6.6593223, y: -6.6593223, z: -7.4361467}
+    - name: Sphere.005
+      parentName: CHEERY(Clone)
+      position: {x: 0.002011778, y: -0.20569849, z: 0.10547758}
+      rotation: {x: -0.000000030288895, y: 0.72100574, z: 0.6929291, w: 0.000000031516162}
+      scale: {x: -24.77081, y: -24.980923, z: -20.693613}
+    - name: Sphere.006
+      parentName: CHEERY(Clone)
+      position: {x: -0.14312592, y: -0.27787313, z: 0.12478785}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 9.708494, y: 8.709831, z: 8.709831}
+    - name: Sphere.007
+      parentName: CHEERY(Clone)
+      position: {x: 0.14714941, y: -0.27787313, z: 0.12478785}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 9.708494, y: 8.709831, z: 8.709831}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 3
+  humanoidOversampling: 1
+  avatarSetup: 1
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  importBlendShapeDeformPercent: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

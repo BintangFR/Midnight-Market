@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 1440490295222895583}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 141.58, y: 0.57, z: -30.29}
-  m_LocalScale: {x: 1, y: 3.53536, z: 3.7579}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1378387748518817162}
@@ -85,8 +85,8 @@ Transform:
   m_GameObject: {fileID: 2343477100660932622}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.64, y: 0.041, z: 5.661}
-  m_LocalScale: {x: 5.650825, y: 1.0181298, z: 0.16947505}
+  m_LocalPosition: {x: 22.36, y: 2.13, z: 27.46}
+  m_LocalScale: {x: 3, y: 2, z: 0.16947505}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5904495568144327988}
@@ -169,12 +169,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2343477100660932622}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47e1e84187cef6e42a91dd562af28324, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  environtmentType: 5
+  environtmentType: 7
   itemsList: []
   unityEvent:
     m_PersistentCalls:
@@ -209,6 +209,8 @@ MonoBehaviour:
   OfficeFuseEvent:
     m_PersistentCalls:
       m_Calls: []
+  StorageFuse: {fileID: 0}
+  OfficeFuse: {fileID: 0}
 --- !u!1 &7223686245409115176
 GameObject:
   m_ObjectHideFlags: 0
@@ -237,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 7223686245409115176}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.19, y: 0, z: 5.869}
+  m_LocalPosition: {x: 33.44, y: 1.35, z: 27.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -258,7 +260,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7223686245409115176}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

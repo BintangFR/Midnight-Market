@@ -19,13 +19,16 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     public EnvirontmentType environtmentType;
     public ItemController[] itemsList;
-    public UnityEvent unityEvent;
+    [SerializeField] private  UnityEvent unityEvent;
 
-    public UnityEvent StorageFuseEvent;
-    public UnityEvent OfficeFuseEvent;
+    [SerializeField] private  UnityEvent StorageFuseEvent;
+    [SerializeField] private  UnityEvent OfficeFuseEvent;
+    [SerializeField] private GameObject storageFuse;
+    [SerializeField] private GameObject officeFuse;
 
 
     private bool fanInteracted = false;
+
 
     public string GetInteractText()
     {
@@ -51,17 +54,29 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
             }
         }
-    //     else if (ItemManager.instance.items.Contains(fuseOffice))
-    //     {
-    //         return "Place " + fuseOffice.name; 
-    //     }
-    //     else if (ItemManager.instance.items.Contains(boltCutter))
-    //     {
-    //         return "Cut chain with " + boltCutter.name; 
-    //     }
-    //     else{
-    //         return "Look For Fuse";
-    //     }
+
+        if (environtmentType != EnvirontmentType.Electrical)
+        {
+
+            foreach (ItemController item in itemsList)
+            {
+                if (ItemManager.instance.items.Contains(item))
+                {
+                    return "Place " + item.name;
+                }
+            }
+        }
+        //     else if (ItemManager.instance.items.Contains(fuseOffice))
+        //     {
+        //         return "Place " + fuseOffice.name; 
+        //     }
+        //     else if (ItemManager.instance.items.Contains(boltCutter))
+        //     {
+        //         return "Cut chain with " + boltCutter.name; 
+        //     }
+        //     else{
+        //         return "Look For Fuse";
+        //     }
 
         if (environtmentType == EnvirontmentType.Telephone)
         {
@@ -83,17 +98,22 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     public void Interact()
     {
+
         if (environtmentType == EnvirontmentType.ShelfSponsoredFood) {
             foreach (ItemController item in itemsList)
             {
                 if (ItemManager.instance.items.Contains(item))
                 {
                     item.isPlaced = true;
+                    item.isObtained = false;
+
                     ItemManager.instance.items.Remove(item);
                     unityEvent.Invoke();
                 }
             }
+
         }
+
 
         if (environtmentType == EnvirontmentType.Electrical) {
             foreach (ItemController item in itemsList)
@@ -101,6 +121,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
                 if (ItemManager.instance.items.Contains(item))
                 {
                     item.isPlaced = true;
+                    item.isObtained = false;
                     ItemManager.instance.items.Remove(item);
                 }
                 
@@ -111,8 +132,8 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
         if (environtmentType == EnvirontmentType.Telephone)
         {
-            Debug.Log("Telephone Mati");
-            unityEvent.Invoke();
+            StartCoroutine(Calling());
+
         }
 
         else if (environtmentType == EnvirontmentType.Fan)
@@ -133,6 +154,24 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
             Debug.Log("CCTV sudah dicek");
             unityEvent.Invoke();
         }
+        else if (environtmentType == EnvirontmentType.ShelfSponsoredFood)
+        {
+            Debug.Log("Makanan ditaruh");
+            AudioManager.Instance.PlaySFX("ItemPlaced-Shelf", transform.position);
+        }
+    }
+
+    private IEnumerator Calling(){
+        AudioManager audioManager = AudioManager.Instance;
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX("Phone", transform.position);
+        }
+        Debug.Log("Telephone Mati");
+        yield return new WaitForSeconds(6.0f);
+        unityEvent.Invoke();
+        yield return new WaitForEndOfFrame();
+        gameObject.layer = 0;
     }
 
     private void Update() {
@@ -141,11 +180,16 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         {
             if (itemsList[0].isPlaced)
             {
+                itemsList[0].isPlaced = false;
                 StorageFuseEvent.Invoke();
+                storageFuse.SetActive(true);
+                
             }
             if (itemsList[1].isPlaced)
             {
+                itemsList[1].isPlaced = false;
                 OfficeFuseEvent.Invoke();
+                officeFuse.SetActive(true);
             }
         }
         foreach (ItemController item in itemsList)

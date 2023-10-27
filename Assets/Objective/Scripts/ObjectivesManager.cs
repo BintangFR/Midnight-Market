@@ -65,7 +65,7 @@ public class ObjectivesManager : MonoBehaviour
 
             if (ObjectiveResult)
             {
-                GameManager.instance.FinishGame();
+                GameManager.Instance.FinishGame();
             }
             
             if (objectiveController.isActive)

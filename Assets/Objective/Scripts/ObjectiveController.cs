@@ -39,6 +39,7 @@ public class ObjectiveController : MonoBehaviour
         isTimerActive = false;
         objectiveManager.elapsedTime = 0f;
         objectiveManager.UIHint.text = "";
+
     }
 
 
@@ -74,6 +75,7 @@ public class ObjectiveController : MonoBehaviour
         objective.gameObject.SetActive(true);
         objective.isTimerActive = true;
         objective.StartObjectiveTimer();
+
     }
 
 

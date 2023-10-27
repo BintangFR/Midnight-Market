@@ -14,7 +14,7 @@ public class AIVision : MonoBehaviour
 
     private void Start()
     {
-        player = aiController.player;
+        player = aiController.GetPlayer();
     }
 
     private void Update()

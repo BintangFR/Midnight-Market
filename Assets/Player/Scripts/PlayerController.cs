@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
             stopTimer = 0f;
             previousVelocity = player.velocity;
             isWalking = true;
+            
         }
         else
         {

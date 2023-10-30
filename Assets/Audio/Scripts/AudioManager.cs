@@ -224,6 +224,11 @@ public class AudioManager : MonoBehaviour
     {
         for (int i = 0; i < audioGroup.audioList.Length; i++)
         {
+            if (audioGroup.audioList[i].audioClip == null)
+            {
+                continue;
+            }
+
             if (audioGroup.audioList[i].audioClip.name == audioName)
             {
                 return audioGroup.audioList[i];

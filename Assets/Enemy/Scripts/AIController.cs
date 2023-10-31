@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,22 +8,24 @@ using UnityEngine.Rendering;
 
 public class AIController : MonoBehaviour
 {
-    public Transform player;
-    public NavMeshAgent agent;
-    // public float sightRange;
-    // private bool playerInSight = false;
-    public LayerMask whatIsPlayer;
-    public PlayerController playerController;
-    public Vector3 range;
-    public Transform[] waypoints;
-    private Animator anim;
+    public static AIController Instance { get; private set; }
 
-    [SerializeField] private EnemyState currentState;
+    [SerializeField] NavMeshAgent agent;
+    [SerializeField] private float normalSpeed;
+    [SerializeField] private float sprintSpeed;
+    [SerializeField] private Transform[] waypoints;
+    [SerializeField] private EnemyState currentState = EnemyState.non_active;
     [SerializeField] private float losingPlayerTimer = 0f;
     [SerializeField] private AIVision aiVision;
+    [SerializeField] private Transform idleTransform;
+
+    private Transform player;
+    public LayerMask whatIsPlayer;
+    private Animator anim;
+    private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex = 0;
 
-    enum EnemyState
+    public enum EnemyState
     {
         non_active,
         activating,
@@ -32,46 +35,42 @@ public class AIController : MonoBehaviour
         attacking
     }
 
+    //change enemy state for unity events 
+    /*
+    public void ChangeState(){
+        currentState = EnemyState.seeking;
+    }
+    public void Testing(){
+        Debug.Log("Test");
+    }
+    */
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        navMeshAgent = GetComponent<NavMeshAgent>();
+        navMeshAgent.enabled = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
-
-        currentState = EnemyState.seeking;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*if ()
-                playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-
-                if (playerInSightRange)
-                {
-                    agent.SetDestination(player.transform.position);
-                }
-                else
-                {
-                    agent.ResetPath();
-                }
-        // Direction from the enemy to the player
-        Vector3 directionToPlayer = player.position - transform.position;
-
-        // Check if there's a clear line of sight between the enemy and the player
-        RaycastHit hitInfo;
-        if (Physics.Raycast(transform.position, directionToPlayer, out hitInfo, sightRange, whatIsPlayer))
-        {
-            // The ray hit something on the player's layer, meaning the enemy can see the player
-            agent.SetDestination(player.transform.position);
-            // Debug.DrawRay(transform.position, directionToPlayer, Color.green);
-        }
-        else
-        {
-            // The ray did not hit the player's layer, meaning the player is not in sight
-            // Debug.DrawRay(transform.position, directionToPlayer, Color.red);
-            EnemyPatrol();
-        }
-        */
         if (currentState == EnemyState.non_active)
         {
             // non_active logic
@@ -82,33 +81,42 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.idle)
         {
-            // idle logic
+            if (aiVision.GetCanSeePlayer())
+            {
+                ChangeEnemyState(EnemyState.chasing);
+            }
         }
         else if (currentState == EnemyState.seeking)
         {
             agent.stoppingDistance = 0f;
+            anim.SetFloat("Speed", agent.speed);
+            agent.speed = normalSpeed;
 
             if (!agent.hasPath && waypoints.Length > 0)
             {
+                anim.SetBool("Seek", true);
                 MoveToWaypoint();
             }
 
             if (aiVision.GetCanSeePlayer())
             {
-                currentState = EnemyState.chasing;
+                ChangeEnemyState(EnemyState.chasing);
             }
         }
         else if (currentState == EnemyState.chasing)
         {
             agent.stoppingDistance = 1.5f;
             agent.SetDestination(player.position);
+            agent.speed = sprintSpeed;
+            anim.SetFloat("Speed", agent.speed);
+            anim.SetBool("Seek", false);
 
             if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
             {
-                currentState = EnemyState.seeking;
+                ChangeEnemyState(EnemyState.seeking);
             }
 
-            if (Vector3.Distance(transform.position, player.position) <= 1.5f)
+            if (Vector3.Distance(transform.position, player.position) <= 1.9f)
             {
                 StartCoroutine(Attack());
             }
@@ -117,24 +125,31 @@ public class AIController : MonoBehaviour
         {
             // attacking logic
         }
+
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            ActivateEnemy();
+        }
     }
 
     private IEnumerator Attack()
     {
-        Debug.Log(Vector3.Distance(transform.position, player.position));
-
-        currentState = EnemyState.attacking;
+        ChangeEnemyState(EnemyState.attacking);
         anim.SetTrigger("Attack");
+
+        AudioManager.Instance.PlaySFX("Attack Before", transform.position);
 
         yield return new WaitForSeconds(1f);
 
-        if (aiVision.GetCanSeePlayer())
-        {                
-            currentState = EnemyState.chasing;
+        AudioManager.Instance.PlaySFX("Attack After", transform.position);
+
+        if (aiVision.GetLastAwareTimer() >= losingPlayerTimer)
+        {
+            ChangeEnemyState(EnemyState.seeking);
         }
         else
         {
-            currentState = EnemyState.seeking;
+            ChangeEnemyState(EnemyState.chasing);
         }
     }
 
@@ -143,12 +158,47 @@ public class AIController : MonoBehaviour
         int randomIndex;
         do
         {
-            randomIndex = Random.Range(0, waypoints.Length);
+            randomIndex = UnityEngine.Random.Range(0, waypoints.Length);
         }
         while (currentWaypointIndex == randomIndex);
-
         currentWaypointIndex = randomIndex;
+
         agent.SetDestination(waypoints[currentWaypointIndex].position);
+    }
+
+    public void ActivateEnemy()
+    {
+        transform.position = idleTransform.position;
+        transform.rotation = idleTransform.rotation;
+        navMeshAgent.enabled = true;
+
+        ChangeEnemyState(EnemyState.idle);
+    }
+
+    public void ChangeEnemyState(EnemyState newState)
+    {
+        currentState = newState;
+
+        if (newState == EnemyState.chasing || newState == EnemyState.seeking)
+        {
+            AudioManager.Instance.PlayEnemy("Robot Footstep");
+        }
+        else
+        {
+            AudioManager.Instance.StopEnemy();
+        }
+
+        AudioManager.Instance.ChangeEnemyState(newState);
+    }
+
+    public AIVision GetAIVision()
+    {
+        return aiVision;
+    }
+
+    public Transform GetPlayer()
+    {
+        return player;
     }
 
     /*

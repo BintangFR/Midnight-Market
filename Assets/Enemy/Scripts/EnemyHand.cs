@@ -8,7 +8,7 @@ public class EnemyHand : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            aIController.playerController.TakeDamage();
+            aIController.GetPlayer().GetComponent<PlayerController>().TakeDamage();
         }
     }
 }

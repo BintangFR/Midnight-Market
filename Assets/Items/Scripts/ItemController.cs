@@ -10,8 +10,9 @@ public class ItemController : MonoBehaviour,IInteractable
     public String Description;
     public UnityEvent unityEvent;
     
-    [SerializeField] private bool isObtained;
+    public bool isObtained;
     public bool isPlaced;
+    [SerializeField] private GameObject icon;
 
     public string GetInteractText()
     {
@@ -22,8 +23,24 @@ public class ItemController : MonoBehaviour,IInteractable
     {
         isObtained = true;
         ItemManager.instance.AddItem(this);
-        gameObject.active = false;
+        //gameObject.active = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+        gameObject.GetComponent<BoxCollider>().enabled = false;
         unityEvent.Invoke();
+
+        if (name == "Office Fuse")
+        {
+            Debug.Log("Keambil fuse");
+            AudioManager.Instance.PlaySFX("Fuse-Picked", transform.position);
+        }
+        else if(name == "Bolt Cutter")
+        {
+            AudioManager.Instance.PlaySFX("BoltCutter-Picked", transform.position);
+        }
+        else if (name == "Food")
+        {
+            AudioManager.Instance.PlaySFX("Box-Picked", transform.position);
+        }
     }
 
     // Start is called before the first frame update
@@ -35,6 +52,13 @@ public class ItemController : MonoBehaviour,IInteractable
     // Update is called once per frame
     void Update()
     {
-        
+        if (isObtained && icon != null)
+        {
+            icon.SetActive(true);
+        }
+        else if(!isObtained && icon != null)
+        {
+            icon.SetActive(false);
+        }
     }
 }

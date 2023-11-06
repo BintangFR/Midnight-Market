@@ -41,7 +41,6 @@ public class ObjectiveController : MonoBehaviour
         objectiveManager.UIHint.text = "";
         AudioManager.Instance.PlaySFX("Objective Complete", Vector3.zero);
 
-
     }
 
 

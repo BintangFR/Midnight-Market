@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;  
 
@@ -11,11 +12,24 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject pausedMenu;
     [SerializeField] private GameObject GameOverScreen;
     [SerializeField] private GameObject FinishedScreen;
+    [SerializeField] private GameObject ObjectiveScreen;
+    [SerializeField] private GameObject OptionsScreen;
+    [SerializeField] private GameObject controlScreen;
+
+    public UIState uiState;
+    public enum UIState{
+        Objective = 0,
+        Options = 1,
+        Control = 2
+
+    }
     public bool isPaused;
 
     public bool isLooking; //Look at something else
     
     public static GameManager Instance { get; private set; }
+
+    private UIState currentState;
     void Awake() {
         if (Instance == null)
         {
@@ -31,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        currentState = UIState.Objective;
         // AudioManager.Instance.PlayBGM("Music Box");
         pausedMenu.SetActive(false);
         GameOverScreen.SetActive(false);
@@ -50,12 +65,32 @@ public class GameManager : MonoBehaviour
             
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
-
         }
         else
         {
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
+        }
+
+        switch (currentState)
+        {
+            case UIState.Objective:
+                ObjectiveScreen.SetActive(true);
+                OptionsScreen.SetActive(false);
+                controlScreen.SetActive(false);
+                break;
+            case UIState.Options:
+                ObjectiveScreen.SetActive(false);
+                OptionsScreen.SetActive(true);
+                controlScreen.SetActive(false);
+                break;
+            case UIState.Control:
+                ObjectiveScreen.SetActive(false);
+                OptionsScreen.SetActive(false);
+                controlScreen.SetActive(true);                
+                break;
+
+
         }
     }
 
@@ -82,6 +117,7 @@ public class GameManager : MonoBehaviour
         player.enabled = false;
         camera.enabled = false;
         Time.timeScale = 0f;
+        currentState = UIState.Objective;
         pausedMenu.SetActive(true);
         isPaused = true;
     }
@@ -97,6 +133,14 @@ public class GameManager : MonoBehaviour
         pausedMenu.SetActive(false);
         SceneManager.LoadScene(0);
         
+    }
+
+    public void ChangeState(int newState){
+        currentState = (UIState)newState;
+    }
+    public void OpenObjective(){
+        ObjectiveScreen.SetActive(true);
+
     }
 }
 

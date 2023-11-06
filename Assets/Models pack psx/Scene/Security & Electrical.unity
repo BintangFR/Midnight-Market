@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 2.01
   m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0, g: 0, b: 0, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.000018079056, g: 0.000000031741585, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -48503,7 +48503,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &2082572828
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -50423,6 +50423,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5786384734608152783, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+        type: 3}
+      propertyPath: enemy
+      value: 
+      objectReference: {fileID: 2082572827}
     - target: {fileID: 5786384734608152783, guid: 9f35b7f84be55f44a8b5bddf3177429d,
         type: 3}
       propertyPath: cctvUI

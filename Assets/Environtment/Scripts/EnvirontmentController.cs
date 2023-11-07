@@ -158,6 +158,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         {
             Debug.Log("Makanan ditaruh");
             AudioManager.Instance.PlaySFX("ItemPlaced-Shelf", transform.position);
+            AudioManager.Instance.PlaySFX("Boom", transform.position);
         }
     }
 

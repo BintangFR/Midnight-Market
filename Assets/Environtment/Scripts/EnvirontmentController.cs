@@ -20,12 +20,12 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
     public EnvirontmentType environtmentType;
     public ItemController[] itemsList;
     [SerializeField] private  UnityEvent unityEvent;
-
     [SerializeField] private  UnityEvent StorageFuseEvent;
     [SerializeField] private  UnityEvent OfficeFuseEvent;
     [SerializeField] private GameObject storageFuse;
     [SerializeField] private GameObject officeFuse;
 
+    private bool hasInteracted;
 
     private bool fanInteracted = false;
 
@@ -130,7 +130,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         }
 
 
-        if (environtmentType == EnvirontmentType.Telephone)
+        if (environtmentType == EnvirontmentType.Telephone && !hasInteracted)
         {
             StartCoroutine(Calling());
 
@@ -163,6 +163,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     private IEnumerator Calling(){
         AudioManager audioManager = AudioManager.Instance;
+        hasInteracted = true;
         if (audioManager != null)
         {
             audioManager.PlaySFX("Phone", transform.position);
@@ -194,6 +195,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         }
         foreach (ItemController item in itemsList)
         {
+            
             //bool result = Tiles.All(tile => tile.GetComponent<Stats>().IsEmpty == false);
             bool allResult = itemsList.All(item => item.isPlaced);
             if (allResult)

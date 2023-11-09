@@ -11,9 +11,18 @@ public class CameraController : MonoBehaviour
     private float yRotation;
     private float xRotation;
     public float minClippingDistance = 0.1f;
+
+    private bool isShaking = false;
+    private float shakeDuration = 0f;
+    private float shakeStrength = 0f;
+
+    private PlayerController playerController;
+
+
     void Start()
     {
-
+        playerController = FindObjectOfType<PlayerController>();
+        playerController.OnTakeDamage.AddListener(() => ShakeCamera(1.0f, 0.1f));
     }
 
     // Update is called once per frame
@@ -32,10 +41,33 @@ public class CameraController : MonoBehaviour
         // rotate cam and orientation
         transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
         orientation.rotation = Quaternion.Euler(0, yRotation, 0);
+
+        if (isShaking)
+        {
+            float randomX = Random.Range(-shakeStrength, shakeStrength);
+            float randomY = Random.Range(-shakeStrength, shakeStrength);
+
+            transform.Rotate(randomY, randomX, 0);
+
+            shakeDuration -= Time.deltaTime;
+
+            if (shakeDuration <= 0)
+            {
+                isShaking = false;
+            }
+        }
+    }
+
+    public void ShakeCamera(float strength, float duration)
+    {
+        isShaking = true;
+        shakeStrength = strength;
+        shakeDuration = duration;
     }
 
     public void SetSens (float camSens)
     {
         sens = camSens;
     }
+
 }

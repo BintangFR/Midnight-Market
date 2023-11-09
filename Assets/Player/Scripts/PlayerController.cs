@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
@@ -42,15 +43,14 @@ public class PlayerController : MonoBehaviour
     public bool notInVent = true;
 
 
-
-    
-
     //Variables to stop player movement smoothly
     private float timeToStop = 0.3f;
     private float stopTimer = 0f;
     private Vector3 previousVelocity;
-
     private Vector3 smoothVelocity;
+
+    public UnityEvent OnTakeDamage = new UnityEvent();
+
 
     private void Start()
     {
@@ -226,10 +226,12 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawSphere(groundCheck.position, radCircle);
     }
 
+    //Player Taking damage
     public void TakeDamage()
     {
         maxHealth -= 1;
         AudioManager.Instance.PlaySFX("Hit", transform.position);
+        OnTakeDamage.Invoke();
         if (maxHealth == 0)
         {
             AudioManager.Instance.PlaySFX("Dead", transform.position);

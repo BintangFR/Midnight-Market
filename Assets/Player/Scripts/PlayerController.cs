@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight;
     public float stamina = 100;
     public int maxHealth = 3;
+    [SerializeField] private Image bloodSplatterImage = null;
+    [SerializeField] private Image bloodSplatterImage2 = null;
     public bool isWalking;
 
     [Header("Player Physics")]
@@ -232,7 +234,35 @@ public class PlayerController : MonoBehaviour
         maxHealth -= 1;
         AudioManager.Instance.PlaySFX("Hit", transform.position);
         OnTakeDamage.Invoke();
-        if (maxHealth == 0)
+
+        if (maxHealth == 3)
+        {
+            Color splatterAlpha = bloodSplatterImage.color;
+            splatterAlpha.a = 0;
+            bloodSplatterImage.color = splatterAlpha;
+            Color splatterAlpha2 = bloodSplatterImage2.color;
+            splatterAlpha2.a = 0;
+            bloodSplatterImage2.color = splatterAlpha2;
+        }
+        else if (maxHealth == 2)
+        {
+            Color splatterAlpha = bloodSplatterImage.color;
+            splatterAlpha.a = 1;
+            bloodSplatterImage.color = splatterAlpha;
+            Color splatterAlpha2 = bloodSplatterImage2.color;
+            splatterAlpha2.a = 0;
+            bloodSplatterImage2.color = splatterAlpha2;
+        }
+        else if (maxHealth == 1)
+        {
+            Color splatterAlpha = bloodSplatterImage.color;
+            splatterAlpha.a = 0;
+            bloodSplatterImage.color = splatterAlpha;
+            Color splatterAlpha2 = bloodSplatterImage2.color;
+            splatterAlpha2.a = 1;
+            bloodSplatterImage2.color = splatterAlpha2;
+        }
+        else if (maxHealth == 0)
         {
             AudioManager.Instance.PlaySFX("Dead", transform.position);
             Die();

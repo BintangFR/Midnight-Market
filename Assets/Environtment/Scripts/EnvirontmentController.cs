@@ -109,6 +109,8 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
                     ItemManager.instance.items.Remove(item);
                     unityEvent.Invoke();
+                    AudioManager.Instance.PlaySFX("ItemPlaced-Shelf", transform.position);
+                    AudioManager.Instance.PlaySFX("Boom", transform.position);
                 }
             }
 
@@ -157,8 +159,7 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         else if (environtmentType == EnvirontmentType.ShelfSponsoredFood)
         {
             Debug.Log("Makanan ditaruh");
-            AudioManager.Instance.PlaySFX("ItemPlaced-Shelf", transform.position);
-            AudioManager.Instance.PlaySFX("Boom", transform.position);
+
         }
     }
 

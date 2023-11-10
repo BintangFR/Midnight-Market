@@ -13,7 +13,7 @@ public class LightController : MonoBehaviour
     [SerializeField] private Texture2D[] darkLightmapDir, darkLightmapColor;
 
     private LightmapData[] brightLightmap, darkLightmap;
-    private bool isLightingOn = true;
+    public bool isLightingOn = true;
 
     private void Awake()
     {

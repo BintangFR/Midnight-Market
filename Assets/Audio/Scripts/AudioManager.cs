@@ -32,8 +32,8 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
-            return;
+            Destroy(Instance);
+            Instance = this;
         }
 
         //PlayBGM(2);

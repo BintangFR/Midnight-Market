@@ -38,8 +38,8 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
-            return;
+            Destroy(Instance);
+            Instance = this;
         }
     }
 
@@ -47,9 +47,9 @@ public class GameManager : MonoBehaviour
     {
         currentState = UIState.Objective;
         // AudioManager.Instance.PlayBGM("Music Box");
-        pausedMenu.SetActive(false);
-        GameOverScreen.SetActive(false);
-        FinishedScreen.SetActive(false);
+        pausedMenu?.SetActive(false);
+        GameOverScreen?.SetActive(false);
+        FinishedScreen?.SetActive(false);
 
     }
 
@@ -75,19 +75,19 @@ public class GameManager : MonoBehaviour
         switch (currentState)
         {
             case UIState.Objective:
-                ObjectiveScreen.SetActive(true);
-                OptionsScreen.SetActive(false);
-                controlScreen.SetActive(false);
+                ObjectiveScreen?.SetActive(true);
+                OptionsScreen?.SetActive(false);
+                controlScreen?.SetActive(false);
                 break;
             case UIState.Options:
-                ObjectiveScreen.SetActive(false);
-                OptionsScreen.SetActive(true);
-                controlScreen.SetActive(false);
+                ObjectiveScreen?.SetActive(false);
+                OptionsScreen?.SetActive(true);
+                controlScreen?.SetActive(false);
                 break;
             case UIState.Control:
-                ObjectiveScreen.SetActive(false);
-                OptionsScreen.SetActive(false);
-                controlScreen.SetActive(true);                
+                ObjectiveScreen?.SetActive(false);
+                OptionsScreen?.SetActive(false);
+                controlScreen?.SetActive(true);                
                 break;
 
 
@@ -97,7 +97,7 @@ public class GameManager : MonoBehaviour
     public void FinishGame(){
         player.enabled = false;
         camera.enabled = false;
-        FinishedScreen.SetActive(true);
+        FinishedScreen?.SetActive(true);
         Debug.Log("game complete");
         isPaused = true;
 
@@ -106,7 +106,7 @@ public class GameManager : MonoBehaviour
 
         player.enabled = false;
         camera.enabled = false;
-        GameOverScreen.SetActive(true);
+        GameOverScreen?.SetActive(true);
         isPaused = true;
 
     }
@@ -118,19 +118,19 @@ public class GameManager : MonoBehaviour
         camera.enabled = false;
         Time.timeScale = 0f;
         currentState = UIState.Objective;
-        pausedMenu.SetActive(true);
+        pausedMenu?.SetActive(true);
         isPaused = true;
     }
     public void ResumeGame(){
         player.enabled = true;
         camera.enabled = true;
         Time.timeScale = 1f;
-        pausedMenu.SetActive(false);
+        pausedMenu?.SetActive(false);
         isPaused = false;
     }
     public void GoToMainMenu(){
         Time.timeScale = 1f;
-        pausedMenu.SetActive(false);
+        pausedMenu?.SetActive(false);
         SceneManager.LoadScene(0);
         
     }
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviour
         currentState = (UIState)newState;
     }
     public void OpenObjective(){
-        ObjectiveScreen.SetActive(true);
+        ObjectiveScreen?.SetActive(true);
 
     }
 }

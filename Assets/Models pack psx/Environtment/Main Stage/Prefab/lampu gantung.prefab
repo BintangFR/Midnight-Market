@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7858409201315559358}
   - component: {fileID: 492772115140104058}
   - component: {fileID: 2764743820688566889}
+  - component: {fileID: 7605749525688409382}
   m_Layer: 0
   m_Name: Emmisive
   m_TagString: Untagged
@@ -83,6 +84,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &7605749525688409382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2399010384205539368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aae8674facaf48749a7a714759a4628e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lampOffMaterial: {fileID: 2100000, guid: 73b85a92696557f4c8590b4e0d73b8d5, type: 2}
+  lampOnMaterial: {fileID: 2100000, guid: 1ececed2ba607ea4dad8ca9cb532c951, type: 2}
+  realtimeLight: {fileID: 7594282988908279262}
 --- !u!1 &7594282988908279262
 GameObject:
   m_ObjectHideFlags: 0
@@ -93,6 +109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 742262730829051210}
   - component: {fileID: 3079666356745316656}
+  - component: {fileID: 6898039277309661368}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -177,6 +194,29 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &6898039277309661368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7594282988908279262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 474bcb49853aa07438625e644c072ee6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  m_UsePipelineSettings: 1
+  m_AdditionalLightsShadowResolutionTier: 2
+  m_LightLayerMask: 1
+  m_RenderingLayers: 1
+  m_CustomShadowLayers: 0
+  m_ShadowLayerMask: 1
+  m_ShadowRenderingLayers: 1
+  m_LightCookieSize: {x: 1, y: 1}
+  m_LightCookieOffset: {x: 0, y: 0}
+  m_SoftShadowQuality: 0
 --- !u!1001 &2890552644574268809
 PrefabInstance:
   m_ObjectHideFlags: 0

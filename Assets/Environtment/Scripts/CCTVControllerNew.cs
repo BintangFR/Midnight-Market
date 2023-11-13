@@ -113,7 +113,6 @@ public class CCTVControllerNew : MonoBehaviour, IInteractable
                 OpenCCTV();
                 StartCoroutine(Cutscene());
                 hasInteracted = true;
-                enemy.gameObject.SetActive(true);
                 
             }
 
@@ -123,6 +122,8 @@ public class CCTVControllerNew : MonoBehaviour, IInteractable
     }
     
     private IEnumerator Cutscene(){
+        enemy.gameObject.SetActive(true);
+        yield return new WaitForEndOfFrame();
         shadowMan.SetDestination(shadowManTarget.position);
         yield return new WaitForSeconds(shadowManDissappearence);
         canExitCCTV = true;

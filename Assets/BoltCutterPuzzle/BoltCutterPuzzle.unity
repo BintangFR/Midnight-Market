@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -399,8 +399,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIDescription: {fileID: 885674445}
+  UIHint: {fileID: 0}
   objectiveDatas:
-  - {fileID: 965313834}
+  - {fileID: 0}
   - {fileID: 1339096465}
   - {fileID: 108473884}
   - {fileID: 438720809}
@@ -415,12 +416,13 @@ MonoBehaviour:
   - {fileID: 1307426682}
   - {fileID: 288549861}
   - {fileID: 1971782918}
-  - {fileID: 1732763111}
+  - {fileID: 0}
   - {fileID: 2011368500}
   - {fileID: 2077016909}
   - {fileID: 1533488966}
   - {fileID: 1388884426}
   - {fileID: 894681560}
+  elapsedTime: 0
 --- !u!4 &51028163
 Transform:
   m_ObjectHideFlags: 0
@@ -436,18 +438,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &52407652 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4424242800702011253, guid: 2588cc2be63e3204ebaea60348a4b385,
-    type: 3}
-  m_PrefabInstance: {fileID: 1732763110}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e1e84187cef6e42a91dd562af28324, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &64070057
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,6 +604,8 @@ MonoBehaviour:
   OfficeFuseEvent:
     m_PersistentCalls:
       m_Calls: []
+  storageFuse: {fileID: 0}
+  officeFuse: {fileID: 0}
 --- !u!1 &73464754
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,12 +910,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &94527785 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 795263016762207904, guid: 0cdd48d1bd11b0c49a77336d0a8ecf9b,
-    type: 3}
-  m_PrefabInstance: {fileID: 420765673}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &96417337
 GameObject:
   m_ObjectHideFlags: 0
@@ -6892,7 +6878,7 @@ PrefabInstance:
         type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 665381910}
+      objectReference: {fileID: 0}
     - target: {fileID: 5190176689023617092, guid: bcf1942cedfa30942a17ddafb1499c1c,
         type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
@@ -7510,24 +7496,7 @@ MonoBehaviour:
   minBrightness: 0.01
   maxBrightness: 13.5
   drainRate: 200
---- !u!1 &665381910 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1321457499913642083, guid: 8995c8b063ffd8c4ebb546868d49946c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1911386074}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &665381912 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1300357405854576271, guid: 8995c8b063ffd8c4ebb546868d49946c,
-    type: 3}
-  m_PrefabInstance: {fileID: 1911386074}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 665381910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b33c44f2c65e1c4e99bb2af35eed541, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  pumpFlashlight: {fileID: 0}
 --- !u!1 &670524837
 GameObject:
   m_ObjectHideFlags: 0
@@ -10160,6 +10129,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Door1: {fileID: 196961862}
   Door2: {fileID: 1407013538}
+  isOpen: 0
+  isLocked: 0
 --- !u!65 &936156458
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -10767,7 +10738,7 @@ PrefabInstance:
         type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 965313834}
+      objectReference: {fileID: 0}
     - target: {fileID: 3427542506167474401, guid: ec86369af1c376243b5f43d57e456f88,
         type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -10893,18 +10864,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec86369af1c376243b5f43d57e456f88, type: 3}
---- !u!114 &965313834 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3800843389702586253, guid: ec86369af1c376243b5f43d57e456f88,
-    type: 3}
-  m_PrefabInstance: {fileID: 965313833}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82bc5d50edb74cd48ae556638f7191fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &968382488
 GameObject:
   m_ObjectHideFlags: 0
@@ -13676,6 +13635,7 @@ MonoBehaviour:
       m_Calls: []
   isObtained: 0
   isPlaced: 0
+  icon: {fileID: 0}
 --- !u!65 &1204548411
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14446,7 +14406,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   environtmentType: 3
   itemsList:
-  - {fileID: 665381912}
+  - {fileID: 0}
   - {fileID: 1204548410}
   unityEvent:
     m_PersistentCalls:
@@ -14457,6 +14417,8 @@ MonoBehaviour:
   OfficeFuseEvent:
     m_PersistentCalls:
       m_Calls: []
+  storageFuse: {fileID: 0}
+  officeFuse: {fileID: 0}
 --- !u!1 &1267126267
 GameObject:
   m_ObjectHideFlags: 0
@@ -14778,6 +14740,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   jumpHeight: 5
+  stamina: 100
+  maxHealth: 3
+  bloodSplatterImage: {fileID: 0}
+  bloodSplatterImage2: {fileID: 0}
+  isWalking: 0
   orientation: {fileID: 259819382}
   whatIsGround:
     serializedVersion: 2
@@ -14785,10 +14752,17 @@ MonoBehaviour:
   groundCheck: {fileID: 670524838}
   radCircle: 0.34
   isGrounded: 0
-  maxHealth: 3
-  stamina: 100
+  maxStamina: 100
+  staminaDrainRate: 0
+  staminaRechargeRate: 0
+  staminaBar: {fileID: 0}
   canCrouch: 1
   canMove: 1
+  canRun: 1
+  notInVent: 1
+  OnTakeDamage:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &1276620984
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14832,7 +14806,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -15627,7 +15601,7 @@ PrefabInstance:
         type: 3}
       propertyPath: environmentController
       value: 
-      objectReference: {fileID: 52407652}
+      objectReference: {fileID: 0}
     - target: {fileID: 5115650734459198236, guid: 76de7e18ca91cbb4a8fe8b5af2956ddd,
         type: 3}
       propertyPath: m_Name
@@ -17236,6 +17210,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 895004756b66bac4f9d00fd394a59ee7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  camera: {fileID: 0}
+  pausedMenu: {fileID: 0}
+  GameOverScreen: {fileID: 0}
+  FinishedScreen: {fileID: 0}
+  ObjectiveScreen: {fileID: 0}
+  OptionsScreen: {fileID: 0}
+  controlScreen: {fileID: 0}
+  uiState: 0
+  isPaused: 0
+  isLooking: 0
 --- !u!4 &1426760366
 Transform:
   m_ObjectHideFlags: 0
@@ -19975,7 +19960,7 @@ PrefabInstance:
         type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1732763111}
+      objectReference: {fileID: 0}
     - target: {fileID: 4424242800702011253, guid: 2588cc2be63e3204ebaea60348a4b385,
         type: 3}
       propertyPath: unityEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
@@ -20066,18 +20051,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2588cc2be63e3204ebaea60348a4b385, type: 3}
---- !u!114 &1732763111 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1022975234469880319, guid: 2588cc2be63e3204ebaea60348a4b385,
-    type: 3}
-  m_PrefabInstance: {fileID: 1732763110}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82bc5d50edb74cd48ae556638f7191fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1734095155
 GameObject:
   m_ObjectHideFlags: 0
@@ -21880,6 +21853,7 @@ MonoBehaviour:
       m_Calls: []
   isObtained: 0
   isPlaced: 0
+  icon: {fileID: 0}
 --- !u!65 &1884125245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23000,7 +22974,7 @@ PrefabInstance:
         type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 94527785}
+      objectReference: {fileID: 0}
     - target: {fileID: 7055591898793812093, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[2].m_CallState
@@ -23240,7 +23214,7 @@ PrefabInstance:
         type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 1732763111}
+      objectReference: {fileID: 0}
     - target: {fileID: 47492460132824777, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
       propertyPath: endObjective.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -25268,6 +25242,7 @@ MonoBehaviour:
         m_CallState: 2
   isObtained: 0
   isPlaced: 0
+  icon: {fileID: 0}
 --- !u!65 &2132410636
 BoxCollider:
   m_ObjectHideFlags: 0

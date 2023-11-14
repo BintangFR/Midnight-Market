@@ -19,15 +19,6 @@ public class FOVSlider : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            cam.fieldOfView = defaultFOV - 20;
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            cam.fieldOfView = defaultFOV + 20;  
-        }
-
         defaultFOV = cam.fieldOfView;
     }
 

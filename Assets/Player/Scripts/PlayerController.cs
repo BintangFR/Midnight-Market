@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     private float defaultSpeed;
     private Vector3 defaultScale;
     private Camera cam;
-    private float defaultFOV;
     private bool isOn = true;
 
     [Header("Player Stamina")]
@@ -35,8 +34,8 @@ public class PlayerController : MonoBehaviour
     public float staminaRechargeRate;
     private float fatigueTimer = 0f;
     private bool isFatigued;
-    private bool isRunning;
-    [SerializeField] private Slider staminaBar;
+    public bool isRunning;
+    //[SerializeField] private Slider staminaBar;
 
     [Header("Player Condition")]
     public bool canCrouch = true;
@@ -53,6 +52,8 @@ public class PlayerController : MonoBehaviour
 
     public UnityEvent OnTakeDamage = new UnityEvent();
 
+    bool hasPlayedTiredAudio = false;
+
 
     private void Start()
     {
@@ -60,14 +61,13 @@ public class PlayerController : MonoBehaviour
         player = GetComponent<Rigidbody>();
         defaultSpeed = speed;
         cam = Camera.main;
-        //defaultFOV = cam.fieldOfView;
         defaultScale = transform.localScale;
         player.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
     private void Update()
     {
-        staminaBar.value = stamina;
+        //staminaBar.value = stamina;
         float moveZ = Input.GetAxisRaw("Vertical");
         float moveX = Input.GetAxisRaw("Horizontal");
 
@@ -129,33 +129,41 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.LeftShift) && isWalking)
             {
+                canCrouch = false;
                 if (stamina > 0 && !isFatigued)
                 {
                     speed += (speed * 20 / 100); 
-                    //cam.fieldOfView = defaultFOV - 20;
                     isRunning = true;
-                    staminaBar.gameObject.SetActive(true);
-                }
-                else
-                {
-                    if (isRunning || isFatigued)
-                    {
-                        speed = defaultSpeed; 
-                        //cam.fieldOfView = defaultFOV;
-                        isRunning = false;
-                    }
+                    //staminaBar.gameObject.SetActive(true);
                 }
             }
+            else if (isFatigued)
+            {
+                if (!hasPlayedTiredAudio)
+                {
+                    isRunning = false;
+                    speed = defaultSpeed;
+                    AudioManager.Instance.PlaySFX("Tired", transform.position);
+                    hasPlayedTiredAudio = true;
+                }
+            }
+            else
+            {
+                hasPlayedTiredAudio = false;
+            }
+
+
+
+
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
             {
-                staminaBar.gameObject.SetActive(false);
+                //staminaBar.gameObject.SetActive(false);
                 if (isRunning || isFatigued)
                 {
+                    canCrouch = true;
                     speed = defaultSpeed;
-                    //cam.fieldOfView = defaultFOV;
                     isRunning = false;
-                    AudioManager.Instance.PlaySFX("Tired", transform.position);
                 }
             }
 
@@ -173,7 +181,6 @@ public class PlayerController : MonoBehaviour
             {
                 isFatigued = true;
                 speed = 5.0f;
-                //cam.fieldOfView = defaultFOV;
                 fatigueTimer += Time.deltaTime;
             }
             else if (fatigueTimer >= 5) 

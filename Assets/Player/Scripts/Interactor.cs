@@ -21,16 +21,15 @@ public class Interactor : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.E))
         {
-            
 
             // Calculate the position of the sphere in front of the player
             Vector3 spherePosition = transform.position + orientation.transform.forward * interactRange + offset;
 
             // Set the position of the sphere
-            transform.position = spherePosition;
+            //transform.position = spherePosition;
 
             // Find all colliders within the interact range that are on the interact layer              
-            Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, interactLayer);
+            Collider[] colliderArray = Physics.OverlapSphere(spherePosition, interactRange, interactLayer);
             foreach (Collider collider in colliderArray)
             {
                 // Check if the collider has a component that implements the IInteractable interface
@@ -55,6 +54,7 @@ public class Interactor : MonoBehaviour
             if (collider.TryGetComponent(out IInteractable interactable)){
                 return interactable;
             }
+
         }
         return null;
     }

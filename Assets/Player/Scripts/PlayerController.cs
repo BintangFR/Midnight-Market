@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     public bool canRun = true;
     public bool notInVent = true;
-
+    
 
     //Variables to stop player movement smoothly
     private float timeToStop = 0.3f;
@@ -116,6 +116,17 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics.CheckSphere(groundCheck.position, radCircle, whatIsGround);
 
+        if (!isGrounded)
+        {
+            canRun = false;
+            canCrouch = false;
+        }
+        else
+        {
+            canRun = true;
+            canCrouch = true;
+        }
+
         // Player Jump
         if (Input.GetButton("Jump") && isGrounded)
         {
@@ -151,9 +162,6 @@ public class PlayerController : MonoBehaviour
             {
                 hasPlayedTiredAudio = false;
             }
-
-
-
 
 
             if (Input.GetKeyUp(KeyCode.LeftShift))
@@ -204,6 +212,7 @@ public class PlayerController : MonoBehaviour
                 speed -= (speed * 50 / 100);
                 //gameObject.layer = default;
                 transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
+                Physics.gravity *= 15f;
                 Debug.Log(speed);
 
             }
@@ -212,6 +221,7 @@ public class PlayerController : MonoBehaviour
                 canRun = true;
                 speed = defaultSpeed;
                 transform.localScale = defaultScale;
+                Physics.gravity = new Vector3(0, -9.81f, 0);
                 //gameObject.layer = 6;
             }
         }

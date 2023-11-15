@@ -65,6 +65,7 @@ public class AIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("anim found");
         anim = GetComponent<Animator>();
     }
 
@@ -128,7 +129,7 @@ public class AIController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.N))
         {
-            ChangeEnemyState(EnemyState.idle);
+            ActivateEnemy();
         }
     }
 
@@ -166,17 +167,18 @@ public class AIController : MonoBehaviour
         agent.SetDestination(waypoints[currentWaypointIndex].position);
     }
 
+    public void ActivateEnemy()
+    {
+        transform.position = idleTransform.position;
+        transform.rotation = idleTransform.rotation;
+        navMeshAgent.enabled = true;
+
+        ChangeEnemyState(EnemyState.idle);
+    }
+
     public void ChangeEnemyState(EnemyState newState)
     {
         currentState = newState;
-
-        if (newState == EnemyState.idle)
-        {
-            transform.position = idleTransform.position;
-            transform.rotation = idleTransform.rotation;
-
-            navMeshAgent.enabled = true;
-        }
 
         if (newState == EnemyState.chasing || newState == EnemyState.seeking)
         {

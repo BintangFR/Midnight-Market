@@ -8,16 +8,19 @@ public class VentController : MonoBehaviour,IInteractable
 {
     public String name;
 
+    PlayerController playerController;
+
     [SerializeField] private bool isAllow;
     [SerializeField] Transform destination;
 
-    [SerializeField] private Image screenFadeImage; // Reference to a UI image used for screen fading.
-    [SerializeField] private float fadeDuration = 1.0f; // Duration of the fade effect in seconds.
+    [SerializeField] private Image screenFadeImage; 
+    [SerializeField] private float fadeDuration = 1.0f; 
     public String interactText;
+    
 
-    private bool isFading = false; // Flag to prevent overlapping fades.
+    private bool isFading = false; 
 
-    public EnvirontmentController environmentController; //Reference to environment controller
+    public EnvirontmentController environmentController; 
 
     private void OnDrawGizmos()
     {
@@ -25,20 +28,27 @@ public class VentController : MonoBehaviour,IInteractable
         Gizmos.DrawWireSphere(destination.position, .4f);
     }
 
-    // private void OnTriggerEnter(Collider other)
-    // {
-    //     if (other.CompareTag("Player") && !isFading)
-    //     {
-    //         StartCoroutine(FadeScreenInAndOut());
-    //     }
-    // }
+    private void TeleportPlayer(GameObject player)
+    {
+        Rigidbody rb = player.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero; // Stop the player's current movement.
+            rb.position = destination.position;
+        }
+        else
+        {
+            player.transform.position = destination.position;
+        }
+    }
+
 
     private IEnumerator FadeScreenInAndOut()
     {
         isFading = true;
 
         Color startColor = screenFadeImage.color;
-        Color targetColor = new Color(0, 0, 0, 1); // Fully opaque black.
+        Color targetColor = new Color(0, 0, 0, 1); 
 
         float elapsedTime = 0f;
 
@@ -53,17 +63,17 @@ public class VentController : MonoBehaviour,IInteractable
 
         // Move the player to the destination position.
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        player.transform.position = destination.position;
+        TeleportPlayer(player);
 
         // Player Always Crouch
         ApplyCrouching(player);
 
-        yield return new WaitForSeconds(1.0f); // Wait for 1 second.
+        yield return new WaitForSeconds(1.0f); 
 
-        // Fade the screen back to transparent.
+     
         elapsedTime = 0f;
         startColor = targetColor;
-        targetColor = new Color(0, 0, 0, 0); // Fully transparent.
+        targetColor = new Color(0, 0, 0, 0);
 
         while (elapsedTime < fadeDuration)
         {
@@ -76,17 +86,20 @@ public class VentController : MonoBehaviour,IInteractable
         isFading = false;
     }
 
-    // This method applies the crouching behavior.
+   
     private void ApplyCrouching(GameObject player)
     {
         PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerController != null)
         {
             // Modify player's speed, layer, and scale for crouching.
-            playerController.speed -= (playerController.speed * 50 / 100);
+            playerController.canRun = false;
+            playerController.speed = 2.5f;
+
             player.transform.localScale = new Vector3(player.transform.localScale.x, 0.5f, player.transform.localScale.z);
             player.gameObject.layer = 0; // Change the layer to the default layer.
             playerController.canCrouch = !playerController.canCrouch;
+
             Debug.Log(playerController.speed);
         }
     }
@@ -99,7 +112,7 @@ public class VentController : MonoBehaviour,IInteractable
     {
         if (environmentController.HasInteractedWithFan())
         {
-            StartCoroutine(FadeScreenInAndOut());
+        StartCoroutine(FadeScreenInAndOut());
         }
         else
         {

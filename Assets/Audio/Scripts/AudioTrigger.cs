@@ -7,6 +7,7 @@ public class AudioTrigger : MonoBehaviour
     [SerializeField] private Transform soundSource;
     [SerializeField] private TriggerType triggerType;
 
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -14,6 +15,7 @@ public class AudioTrigger : MonoBehaviour
             if (triggerType == TriggerType.Ambience)
             {
                 AudioManager.Instance.PlayAmbience(audioName);
+                Debug.Log("true");
             }
             else if (triggerType == TriggerType.SFX)
             {
@@ -27,7 +29,7 @@ public class AudioTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            AudioManager.Instance.StopAmbience();
+            //AudioManager.Instance.StopAmbience();
             AudioManager.Instance.PlayAmbience("Rain-Ambience");
         }
     }

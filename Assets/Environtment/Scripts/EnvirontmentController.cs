@@ -19,11 +19,13 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
     public EnvirontmentType environtmentType;
     public ItemController[] itemsList;
-    public UnityEvent unityEvent;
+    [SerializeField] private  UnityEvent unityEvent;
+    [SerializeField] private  UnityEvent StorageFuseEvent;
+    [SerializeField] private  UnityEvent OfficeFuseEvent;
+    [SerializeField] private GameObject storageFuse;
+    [SerializeField] private GameObject officeFuse;
 
-    public UnityEvent StorageFuseEvent;
-    public UnityEvent OfficeFuseEvent;
-
+    private bool hasInteracted;
 
     private bool fanInteracted = false;
 
@@ -107,6 +109,8 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
 
                     ItemManager.instance.items.Remove(item);
                     unityEvent.Invoke();
+                    AudioManager.Instance.PlaySFX("ItemPlaced-Shelf", transform.position);
+                    AudioManager.Instance.PlaySFX("Boom", transform.position);
                 }
             }
 
@@ -128,15 +132,10 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         }
 
 
-        if (environtmentType == EnvirontmentType.Telephone)
+        if (environtmentType == EnvirontmentType.Telephone && !hasInteracted)
         {
-            AudioManager audioManager = AudioManager.Instance;
-            if (audioManager != null)
-            {
-                audioManager.PlaySFX("Phone", transform.position);
-            }
-            Debug.Log("Telephone Mati");
-            unityEvent.Invoke();
+            StartCoroutine(Calling());
+
         }
 
         else if (environtmentType == EnvirontmentType.Fan)
@@ -160,31 +159,45 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         else if (environtmentType == EnvirontmentType.ShelfSponsoredFood)
         {
             Debug.Log("Makanan ditaruh");
-            AudioManager.Instance.PlaySFX("ItemPlaced-Shelf", transform.position);
+
         }
+    }
+
+    private IEnumerator Calling(){
+        AudioManager audioManager = AudioManager.Instance;
+        hasInteracted = true;
+        if (audioManager != null)
+        {
+            audioManager.PlaySFX("Phone", transform.position);
+        }
+        Debug.Log("Telephone Mati");
+        yield return new WaitForSeconds(6.0f);
+        unityEvent.Invoke();
+        yield return new WaitForEndOfFrame();
+        gameObject.layer = 0;
     }
 
     private void Update() {
 
         if (environtmentType == EnvirontmentType.Electrical)
         {
-            if (itemsList.Length > 0)
+            if (itemsList[0].isPlaced)
             {
-                if (itemsList[0].isPlaced)
-                {
-                    itemsList[0].isPlaced = false;
-                    StorageFuseEvent.Invoke();
+                itemsList[0].isPlaced = false;
+                StorageFuseEvent.Invoke();
+                storageFuse.SetActive(true);
                 
-                }
-                if (itemsList[1].isPlaced)
-                {
-                    itemsList[1].isPlaced = false;
-                    OfficeFuseEvent.Invoke();
-                }
+            }
+            if (itemsList[1].isPlaced)
+            {
+                itemsList[1].isPlaced = false;
+                OfficeFuseEvent.Invoke();
+                officeFuse.SetActive(true);
             }
         }
         foreach (ItemController item in itemsList)
         {
+            
             //bool result = Tiles.All(tile => tile.GetComponent<Stats>().IsEmpty == false);
             bool allResult = itemsList.All(item => item.isPlaced);
             if (allResult)

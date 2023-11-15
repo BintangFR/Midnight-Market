@@ -8,16 +8,27 @@ public class Interactor : MonoBehaviour
     public static Interactor instance;
     // Update is called once per frame
 
+    [SerializeField] private float interactRange;
+    [SerializeField] private Vector3 offset;
+    [SerializeField] private GameObject orientation;
+
     private void Awake() {
         instance = this;
     }
     void Update()
     {
+        //transform.rotation = orientation.transform.rotation;
         
         if (Input.GetKeyDown(KeyCode.E))
         {
+            
 
-            float interactRange = 2f;
+            // Calculate the position of the sphere in front of the player
+            Vector3 spherePosition = transform.position + orientation.transform.forward * interactRange + offset;
+
+            // Set the position of the sphere
+            transform.position = spherePosition;
+
             // Find all colliders within the interact range that are on the interact layer              
             Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, interactLayer);
             foreach (Collider collider in colliderArray)
@@ -27,14 +38,19 @@ public class Interactor : MonoBehaviour
                 {
                     interactable.Interact();
                 }
-                Debug.Log(collider);
             }
         }
     }
+
+    private void OnDrawGizmosSelected() {
+        //Gizmos.DrawWireSphere(transform.position + offset, interactRange);
+        Gizmos.DrawWireSphere(transform.position + orientation.transform.forward * interactRange + offset, interactRange);
+
+    }
     //this method is for showing a interact text
     public  IInteractable GetInteractableObject(){
-        float interactRange = 2f;
-        Collider[] colliderArray = Physics.OverlapSphere(transform.position, interactRange, interactLayer);
+
+        Collider[] colliderArray = Physics.OverlapSphere(transform.position + orientation.transform.forward * interactRange + offset, interactRange, interactLayer);
         foreach (Collider collider in colliderArray){
             if (collider.TryGetComponent(out IInteractable interactable)){
                 return interactable;

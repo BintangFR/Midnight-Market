@@ -1,124 +1,284 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PlayerController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public float speed = 10.0f;
+    [Header("Player Movement & Health")]
+    public float speed;
     public float jumpHeight;
+    public float stamina = 100;
+    public int maxHealth = 3;
+    [SerializeField] private Image bloodSplatterImage = null;
+    [SerializeField] private Image bloodSplatterImage2 = null;
+    public bool isWalking;
+
+    [Header("Player Physics")]
     public Transform orientation;
     public LayerMask whatIsGround;
     public Transform groundCheck;
     public float radCircle;
-    public bool isGrounded; 
-    
-    public int maxHealth = 3;
+    public bool isGrounded;
+
     private Rigidbody player;
     private float defaultSpeed;
     private Vector3 defaultScale;
     private Camera cam;
-    private float defaultFOV;
     private bool isOn = true;
-    public float stamina = 100;
+
+    [Header("Player Stamina")]
+    public float maxStamina = 100f;
+    public float staminaDrainRate;
+    public float staminaRechargeRate;
+    private float fatigueTimer = 0f;
+    private bool isFatigued;
+    public bool isRunning;
+    //[SerializeField] private Slider staminaBar;
+
+    [Header("Player Condition")]
     public bool canCrouch = true;
     public bool canMove = true;
+    public bool canRun = true;
+    public bool notInVent = true;
 
-    
+
+    //Variables to stop player movement smoothly
+    private float timeToStop = 0.3f;
+    private float stopTimer = 0f;
+    private Vector3 previousVelocity;
+    private Vector3 smoothVelocity;
+
+    public UnityEvent OnTakeDamage = new UnityEvent();
+
+    bool hasPlayedTiredAudio = false;
+
+
     private void Start()
     {
+        stamina = maxStamina;
         player = GetComponent<Rigidbody>();
         defaultSpeed = speed;
         cam = Camera.main;
-        defaultFOV = cam.fieldOfView;
         defaultScale = transform.localScale;
+        player.interpolation = RigidbodyInterpolation.Interpolate;
     }
 
-    // Update is called once per frame
     private void Update()
     {
-        float moveZ = Input.GetAxis("Vertical") * speed * Time.deltaTime;
-        float moveX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
+        //staminaBar.value = stamina;
+        float moveZ = Input.GetAxisRaw("Vertical");
+        float moveX = Input.GetAxisRaw("Horizontal");
+
+        SpeedControl();
+
         if (canMove)
         {
-        transform.Translate(moveX,0,0);
-        transform.Translate(0,0,moveZ);
+            Vector3 moveDirection = orientation.forward * moveZ + orientation.right * moveX;
+            moveDirection.y = 0;
+            Vector3 newVelocity = moveDirection.normalized * speed;
+
+            newVelocity.y = player.velocity.y;
+
+            player.velocity = newVelocity;
+
+            player.velocity = Vector3.SmoothDamp(player.velocity, newVelocity, ref smoothVelocity, 0.1f);
+
         }
-        gameObject.transform.rotation = orientation.transform.rotation;
+        else
+        {
+            player.velocity = Vector3.zero;
+        }
+
+        //Stop player movement smoothly
+        if (player.velocity != Vector3.zero)
+        {
+            stopTimer = 0f;
+            previousVelocity = player.velocity;
+            isWalking = true;
+            
+        }
+        else
+        {
+            stopTimer += Time.deltaTime;
+
+            //decrease player speed
+            if (stopTimer < timeToStop)
+            {
+                float t = stopTimer / timeToStop;
+                player.velocity = Vector3.Lerp(previousVelocity, Vector3.zero, t);
+            }
+            isWalking = false;
+
+        }
+
+
         isGrounded = Physics.CheckSphere(groundCheck.position, radCircle, whatIsGround);
 
+        // Player Jump
         if (Input.GetButton("Jump") && isGrounded)
         {
-            player.velocity = new Vector3(player.velocity.z,jumpHeight);
-            AudioManager.Instance.PlaySFX("jump", transform.position);
+            player.velocity = new Vector3(player.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics.gravity.y)), player.velocity.z);
+            AudioManager.Instance.PlaySFX("Jump", transform.position);
+        }
 
-            //transform.Translate(0, jumpHeight * Time.deltaTime, 0);
-            
-        }
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+
+        //Player Run & Stamina
+        if (canRun)
         {
-            //chage speed to 120% and change fov to close one
-            speed += (speed * 20/100);
-            Debug.Log(speed);
-            DepleteStamina(0.01f);
-            cam.fieldOfView = 60;          
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isWalking)
+            {
+                canCrouch = false;
+                if (stamina > 0 && !isFatigued)
+                {
+                    speed += (speed * 20 / 100); 
+                    isRunning = true;
+                    //staminaBar.gameObject.SetActive(true);
+                }
+            }
+            else if (isFatigued)
+            {
+                if (!hasPlayedTiredAudio)
+                {
+                    isRunning = false;
+                    speed = defaultSpeed;
+                    AudioManager.Instance.PlaySFX("Tired", transform.position);
+                    hasPlayedTiredAudio = true;
+                }
+            }
+            else
+            {
+                hasPlayedTiredAudio = false;
+            }
+
+
+
+
+
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                //staminaBar.gameObject.SetActive(false);
+                if (isRunning || isFatigued)
+                {
+                    canCrouch = true;
+                    speed = defaultSpeed;
+                    isRunning = false;
+                }
+            }
+
+            if (isRunning)
+            {
+                stamina -= Time.deltaTime * staminaDrainRate;
+            }
+            else if (!isRunning && stamina > 0 && stamina < maxStamina)
+            {
+                stamina += Time.deltaTime * staminaRechargeRate;
+            }
+           
+
+            if (stamina <= 0 && fatigueTimer <= 5)
+            {
+                isFatigued = true;
+                speed = 5.0f;
+                fatigueTimer += Time.deltaTime;
+            }
+            else if (fatigueTimer >= 5) 
+            {
+                isFatigued = false;
+                speed = defaultSpeed;
+                stamina += 100;
+                fatigueTimer = 0;
+            }
+
+            stamina = Mathf.Clamp(stamina, 0, maxStamina);
         }
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            //chage speed to default and change fov to normal
-            cam.fieldOfView = defaultFOV;
-            speed = defaultSpeed;
-            AudioManager.Instance.PlaySFX("tired", transform.position);
-        }
+
+        //Player Crouch
         if (canCrouch)
         {
-            
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                //chage speed to 50%
-                speed -= (speed * 50/100);
-                gameObject.layer = default;
-                transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z); 
+                // Change speed to 50% and adjust player's scale and position
+                canRun = false;
+                speed -= (speed * 50 / 100);
+                //gameObject.layer = default;
+                transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
                 Debug.Log(speed);
 
             }
             else if (Input.GetKeyUp(KeyCode.LeftControl))
             {
+                canRun = true;
                 speed = defaultSpeed;
                 transform.localScale = defaultScale;
-                gameObject.layer = 3;
+                //gameObject.layer = 6;
             }
         }
-        
-        // test AudioManager
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            AudioManager.Instance.PlaySFX("Male Pain", transform.position);
-        }
+
     }
 
-    private void DepleteStamina(float amount)
+    private void SpeedControl()
     {
-        stamina -= amount;
+        Vector3 flatVel = new Vector3(player.velocity.x, 0f, player.velocity.z);
+
+        if (flatVel.magnitude > speed || flatVel.magnitude < speed)
+
+        {
+            Vector3 limitedVel = flatVel.normalized * speed;
+            player.velocity = new Vector3(limitedVel.x, player.velocity.y, limitedVel.z);
+        }
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.DrawSphere(groundCheck.position, radCircle);
-
     }
+
+    //Player Taking damage
     public void TakeDamage()
     {
         maxHealth -= 1;
-        AudioManager.Instance.PlaySFX("hit", transform.position);
-        if (maxHealth == 0)
+        AudioManager.Instance.PlaySFX("Hit", transform.position);
+        OnTakeDamage.Invoke();
+
+        if (maxHealth == 3)
         {
-            AudioManager.Instance.PlaySFX("die", transform.position);
+            Color splatterAlpha = bloodSplatterImage.color;
+            splatterAlpha.a = 0;
+            bloodSplatterImage.color = splatterAlpha;
+            Color splatterAlpha2 = bloodSplatterImage2.color;
+            splatterAlpha2.a = 0;
+            bloodSplatterImage2.color = splatterAlpha2;
+        }
+        else if (maxHealth == 2)
+        {
+            Color splatterAlpha = bloodSplatterImage.color;
+            splatterAlpha.a = 1;
+            bloodSplatterImage.color = splatterAlpha;
+            Color splatterAlpha2 = bloodSplatterImage2.color;
+            splatterAlpha2.a = 0;
+            bloodSplatterImage2.color = splatterAlpha2;
+        }
+        else if (maxHealth == 1)
+        {
+            Color splatterAlpha = bloodSplatterImage.color;
+            splatterAlpha.a = 0;
+            bloodSplatterImage.color = splatterAlpha;
+            Color splatterAlpha2 = bloodSplatterImage2.color;
+            splatterAlpha2.a = 1;
+            bloodSplatterImage2.color = splatterAlpha2;
+        }
+        else if (maxHealth == 0)
+        {
+            AudioManager.Instance.PlaySFX("Dead", transform.position);
             Die();
         }
     }
+
     private void Die()
     {
-        gameObject.active = false;
+        gameObject.SetActive(false);
+        GameManager.Instance.GameOver();
     }
 }

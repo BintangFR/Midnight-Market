@@ -67,28 +67,31 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //staminaBar.value = stamina;
-        float moveZ = Input.GetAxisRaw("Vertical");
-        float moveX = Input.GetAxisRaw("Horizontal");
-
-        SpeedControl();
-
-        if (canMove)
+        if (isGrounded)
         {
-            Vector3 moveDirection = orientation.forward * moveZ + orientation.right * moveX;
-            moveDirection.y = 0;
-            Vector3 newVelocity = moveDirection.normalized * speed;
+            //staminaBar.value = stamina;
+            float moveZ = Input.GetAxisRaw("Vertical");
+            float moveX = Input.GetAxisRaw("Horizontal");
 
-            newVelocity.y = player.velocity.y;
+            SpeedControl();
 
-            player.velocity = newVelocity;
+            if (canMove)
+            {
+                Vector3 moveDirection = orientation.forward * moveZ + orientation.right * moveX;
+                moveDirection.y = 0;
+                Vector3 newVelocity = moveDirection.normalized * speed;
 
-            player.velocity = Vector3.SmoothDamp(player.velocity, newVelocity, ref smoothVelocity, 0.1f);
+                newVelocity.y = player.velocity.y;
 
-        }
-        else
-        {
-            player.velocity = Vector3.zero;
+                player.velocity = newVelocity;
+
+                player.velocity = Vector3.SmoothDamp(player.velocity, newVelocity, ref smoothVelocity, 0.1f);
+
+            }
+            else
+            {
+                player.velocity = Vector3.zero;
+            }
         }
 
         //Stop player movement smoothly
@@ -128,7 +131,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Player Jump
-        if (Input.GetButton("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             player.velocity = new Vector3(player.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics.gravity.y)), player.velocity.z);
             AudioManager.Instance.PlaySFX("Jump", transform.position);

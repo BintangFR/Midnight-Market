@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove = true;
     public bool canRun = true;
     public bool notInVent = true;
+    public bool canJump = true;
     
 
     //Variables to stop player movement smoothly
@@ -119,35 +120,44 @@ public class PlayerController : MonoBehaviour
 
         isGrounded = Physics.CheckSphere(groundCheck.position, radCircle, whatIsGround);
 
-        if (!isGrounded)
-        {
-            canRun = false;
-            canCrouch = false;
-        }
-        else
-        {
-            canRun = true;
-            canCrouch = true;
-        }
-
+       
         // Player Jump
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        if (canJump)
         {
-            player.velocity = new Vector3(player.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics.gravity.y)), player.velocity.z);
-            AudioManager.Instance.PlaySFX("Jump", transform.position);
+            if (isGrounded)
+            {
+                canRun = true;
+                canCrouch = true;
+
+                if (isRunning)
+                {
+                    canCrouch = false;
+                }
+            }
+            else
+            {
+                canRun = false;
+                canCrouch = false;
+            }
+
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                player.velocity = new Vector3(player.velocity.x, Mathf.Sqrt(2 * jumpHeight * Mathf.Abs(Physics.gravity.y)), player.velocity.z);
+                AudioManager.Instance.PlaySFX("Jump", transform.position);
+            }
         }
 
 
         //Player Run & Stamina
         if (canRun)
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift) && isWalking)
+            if (Input.GetKeyDown(KeyCode.LeftShift) && isWalking && isGrounded)
             {
                 canCrouch = false;
+                isRunning = true;
                 if (stamina > 0 && !isFatigued)
                 {
                     speed += (speed * 20 / 100); 
-                    isRunning = true;
                     //staminaBar.gameObject.SetActive(true);
                 }
             }
@@ -167,7 +177,7 @@ public class PlayerController : MonoBehaviour
             }
 
 
-            if (Input.GetKeyUp(KeyCode.LeftShift))
+            if (Input.GetKeyUp(KeyCode.LeftShift) && isRunning && isGrounded)
             {
                 //staminaBar.gameObject.SetActive(false);
                 if (isRunning || isFatigued)
@@ -205,6 +215,13 @@ public class PlayerController : MonoBehaviour
             stamina = Mathf.Clamp(stamina, 0, maxStamina);
         }
 
+        if (Input.GetKeyUp(KeyCode.LeftShift) && isRunning && !isGrounded)
+        {
+            isRunning = false;
+            speed = defaultSpeed;
+        }
+        
+
         //Player Crouch
         if (canCrouch)
         {
@@ -212,6 +229,7 @@ public class PlayerController : MonoBehaviour
             {
                 // Change speed to 50% and adjust player's scale and position
                 canRun = false;
+                canJump = false;
                 speed -= (speed * 50 / 100);
                 //gameObject.layer = default;
                 transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
@@ -222,6 +240,7 @@ public class PlayerController : MonoBehaviour
             else if (Input.GetKeyUp(KeyCode.LeftControl))
             {
                 canRun = true;
+                canJump = true;
                 speed = defaultSpeed;
                 transform.localScale = defaultScale;
                 Physics.gravity = new Vector3(0, -9.81f, 0);

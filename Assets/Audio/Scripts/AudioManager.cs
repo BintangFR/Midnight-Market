@@ -58,12 +58,11 @@ public class AudioManager : MonoBehaviour
     private void Update()
     {
         audioCooldown += Time.deltaTime;
-
+        
         if (audioCooldown > enemyVocalDuration)
         {
             audioCooldown = 0f;
             enemyVocalDuration = 0f;
-
             if (enemyState == AIController.EnemyState.chasing)
             {
                 string[] chasingAudios =

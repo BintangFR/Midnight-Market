@@ -11655,7 +11655,7 @@ PrefabInstance:
     - target: {fileID: 1924389437219139625, guid: e67345570e5e19148a1f1fb5cd5a77dd,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2742188006855289658, guid: e67345570e5e19148a1f1fb5cd5a77dd,
         type: 3}
@@ -34557,13 +34557,18 @@ PrefabInstance:
     - target: {fileID: 1354139872937875409, guid: 07bd887c92b0d884eb66472f577cb481,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2434087368300728166, guid: 07bd887c92b0d884eb66472f577cb481,
         type: 3}
       propertyPath: m_Volume
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 2434087368300728166, guid: 07bd887c92b0d884eb66472f577cb481,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 228d89d03266830498cb3ced9e0ea0fd, type: 3}
     - target: {fileID: 2434087368300728166, guid: 07bd887c92b0d884eb66472f577cb481,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -50495,6 +50500,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1992887056}
     m_Modifications:
+    - target: {fileID: 992605648823720969, guid: 489c6227ab56eb34687909ca0c79b9ff,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 9.632
+      objectReference: {fileID: 0}
+    - target: {fileID: 992605648823720969, guid: 489c6227ab56eb34687909ca0c79b9ff,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 30.59
+      objectReference: {fileID: 0}
     - target: {fileID: 1399560138944138630, guid: 489c6227ab56eb34687909ca0c79b9ff,
         type: 3}
       propertyPath: m_Name
@@ -50575,6 +50590,16 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 1033088886}
+    - target: {fileID: 9109206436683675214, guid: 489c6227ab56eb34687909ca0c79b9ff,
+        type: 3}
+      propertyPath: defaultAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 228d89d03266830498cb3ced9e0ea0fd, type: 3}
+    - target: {fileID: 9109206436683675214, guid: 489c6227ab56eb34687909ca0c79b9ff,
+        type: 3}
+      propertyPath: rainElectricClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d6325fb563e3186459492283749d6093, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

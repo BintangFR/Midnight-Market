@@ -4,6 +4,7 @@ public class AIVision : MonoBehaviour
 {
     [SerializeField] private float viewRange;
     [SerializeField][Range(0, 360)] private float viewAngle;
+    [SerializeField] private float hearingRange;
     [SerializeField] private LayerMask playerMask;
     [SerializeField] private LayerMask obstacleMask;
     [SerializeField] private AIController aiController;
@@ -27,12 +28,20 @@ public class AIVision : MonoBehaviour
     private void FindPlayer()
     {
         Vector3 dirToPlayer = (player.position - transform.position).normalized;
+        float dstToPlayer = Vector3.Distance(transform.position, player.position);
+        bool noObstacleBlockingVision = Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask);
 
-        if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
+        if (dstToPlayer < hearingRange)
         {
-            float dstToPlayer = Vector3.Distance(transform.position, player.position);
+            lastAwareTimer = 0f;
 
-            if (!Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask))
+            canSeePlayer = true;
+
+            return;
+        }
+        else if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
+        {
+            if (!noObstacleBlockingVision)
             {
                 lastAwareTimer = 0f;
 
@@ -78,5 +87,10 @@ public class AIVision : MonoBehaviour
     public float GetLastAwareTimer()
     {
         return lastAwareTimer;
+    }
+
+    public float GetHearingRange()
+    {
+        return hearingRange;
     }
 }

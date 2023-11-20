@@ -18,6 +18,7 @@ public class AIController : MonoBehaviour
     [SerializeField] private float losingPlayerTimer = 0f;
     [SerializeField] private AIVision aiVision;
     [SerializeField] private Transform idleTransform;
+    [SerializeField] private GameObject attackCollider;
 
     private Transform player;
     public LayerMask whatIsPlayer;
@@ -60,6 +61,7 @@ public class AIController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
         navMeshAgent = GetComponent<NavMeshAgent>();
         navMeshAgent.enabled = false;
+        attackCollider.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -140,7 +142,13 @@ public class AIController : MonoBehaviour
 
         AudioManager.Instance.PlaySFX("Attack Before", transform.position);
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.4f);
+
+        attackCollider.SetActive(true);
+
+        yield return new WaitForSeconds(0.6f);
+
+        attackCollider.SetActive(false);
 
         AudioManager.Instance.PlaySFX("Attack After", transform.position);
 

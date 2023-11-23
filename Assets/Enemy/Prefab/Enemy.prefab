@@ -830,6 +830,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 5742066667910392887, guid: 3b3f935a8a5a11341bec250c94f18262,
+        type: 3}
+      propertyPath: m_RootBone
+      value: 
+      objectReference: {fileID: 4800140704694747424}
     - target: {fileID: 5866666021909216657, guid: 3b3f935a8a5a11341bec250c94f18262,
         type: 3}
       propertyPath: m_Controller
@@ -962,6 +967,12 @@ PrefabInstance:
 --- !u!4 &1386460740553099454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3b3f935a8a5a11341bec250c94f18262,
+    type: 3}
+  m_PrefabInstance: {fileID: 1492674788958416725}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4800140704694747424 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -3014441668679733643, guid: 3b3f935a8a5a11341bec250c94f18262,
     type: 3}
   m_PrefabInstance: {fileID: 1492674788958416725}
   m_PrefabAsset: {fileID: 0}

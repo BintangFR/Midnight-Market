@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
         enemySource = AIController.Instance.GetComponent<AudioSource>();
         enemyVocalSource = enemyHead.GetComponent<AudioSource>();
 
-        PlayAmbience("Rain-Ambience");
+        PlayAmbience("Room Ambience");
     }
 
     public void ChangeEnemyState(AIController.EnemyState enemyState)

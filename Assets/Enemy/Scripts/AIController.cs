@@ -67,7 +67,7 @@ public class AIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("anim found");
+      
         anim = GetComponent<Animator>();
     }
 

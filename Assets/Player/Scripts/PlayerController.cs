@@ -26,8 +26,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody player;
     private float defaultSpeed;
     private Vector3 defaultScale;
-    private Camera cam;
-    private bool isOn = true;
+    
+    
 
     [Header("Player Stamina")]
     public float maxStamina = 100f;
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
         stamina = maxStamina;
         player = GetComponent<Rigidbody>();
         defaultSpeed = speed;
-        cam = Camera.main;
+        
         defaultScale = transform.localScale;
         player.interpolation = RigidbodyInterpolation.Interpolate;
     }
@@ -234,7 +234,6 @@ public class PlayerController : MonoBehaviour
                 //gameObject.layer = default;
                 transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
                 Physics.gravity *= 15f;
-                Debug.Log(speed);
 
             }
             else if (Input.GetKeyUp(KeyCode.LeftControl))

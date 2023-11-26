@@ -141,24 +141,20 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         else if (environtmentType == EnvirontmentType.Fan)
         {
             fanInteracted = true;
-            Debug.Log("Fan Mati");
             unityEvent.Invoke();
         }
 
         else if (environtmentType == EnvirontmentType.Taskboard)
         {
-            Debug.Log("Taskboard dilihat");
             unityEvent.Invoke();
         }
 
         else if (environtmentType == EnvirontmentType.CCTV)
         {
-            Debug.Log("CCTV sudah dicek");
             unityEvent.Invoke();
         }
         else if (environtmentType == EnvirontmentType.ShelfSponsoredFood)
         {
-            Debug.Log("Makanan ditaruh");
 
         }
     }
@@ -170,7 +166,6 @@ public class EnvirontmentController : MonoBehaviour,IInteractable
         {
             audioManager.PlaySFX("Phone", transform.position);
         }
-        Debug.Log("Telephone Mati");
         yield return new WaitForSeconds(6.0f);
         unityEvent.Invoke();
         yield return new WaitForEndOfFrame();

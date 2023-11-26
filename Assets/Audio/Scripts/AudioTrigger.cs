@@ -15,7 +15,6 @@ public class AudioTrigger : MonoBehaviour
             if (triggerType == TriggerType.Ambience)
             {
                 AudioManager.Instance.PlayAmbience(audioName);
-                Debug.Log("true");
             }
             else if (triggerType == TriggerType.SFX)
             {

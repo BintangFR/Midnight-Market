@@ -20,8 +20,8 @@ public class ObjectiveController : MonoBehaviour
 
    
     public string hint;
-    private bool isTimerActive = false;
-    private bool hasShownHint = false;
+    //private bool isTimerActive = false;
+    //private bool hasShownHint = false;
 
     public void StartObjectiveTimer()
     {
@@ -35,8 +35,8 @@ public class ObjectiveController : MonoBehaviour
         isComplete = true;
         isActive = false;
         gameObject.SetActive(false);
-        hasShownHint = false;
-        isTimerActive = false;
+        //hasShownHint = false;
+        //isTimerActive = false;
         objectiveManager.elapsedTime = 0f;
         objectiveManager.UIHint.text = "";
         AudioManager.Instance.PlaySFX("Objective Complete", Vector3.zero);
@@ -74,7 +74,7 @@ public class ObjectiveController : MonoBehaviour
     {
         objective.isActive = true;
         objective.gameObject.SetActive(true);
-        objective.isTimerActive = true;
+        //objective.isTimerActive = true;
         objective.StartObjectiveTimer();
 
     }
@@ -83,10 +83,10 @@ public class ObjectiveController : MonoBehaviour
     public ObjectiveController(int id, string description, ObjectiveType type, Requirement requirement, HintData hint)
     {
         ID = id;
-        description = description;
+        //description = description;
         isComplete = false;
         isActive = false;
-        type = type;
+        //type = type;
         progress = 0f;
         ObjectiveRequirement = requirement;
         ObjectiveHint = hint;

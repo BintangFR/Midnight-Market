@@ -234,7 +234,7 @@ public class AudioManager : MonoBehaviour
             }
         }
 
-        Debug.Log(audioName);
+ 
         return null;
     }
 

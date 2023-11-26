@@ -19,7 +19,6 @@ public class LightController : MonoBehaviour
     {
         if (Instance == null)
         {
-            Debug.Log("udah");
             Instance = this;
         }
         else

@@ -47,7 +47,6 @@ public class DoorController : MonoBehaviour, IInteractable
         }
         else
         {
-            Debug.Log("Pintu Terkunci");
             AudioManager.Instance.PlaySFX("Door-Locked", transform.position);
         }
         

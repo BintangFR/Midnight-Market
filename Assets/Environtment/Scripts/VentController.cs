@@ -18,7 +18,7 @@ public class VentController : MonoBehaviour,IInteractable
     public String interactText;
     
 
-    private bool isFading = false; 
+    //private bool isFading = false; 
 
     public EnvirontmentController environmentController; 
 
@@ -45,7 +45,7 @@ public class VentController : MonoBehaviour,IInteractable
 
     private IEnumerator FadeScreenInAndOut()
     {
-        isFading = true;
+        //isFading = true;
 
         Color startColor = screenFadeImage.color;
         Color targetColor = new Color(0, 0, 0, 1); 
@@ -83,7 +83,7 @@ public class VentController : MonoBehaviour,IInteractable
         }
 
         screenFadeImage.color = targetColor;
-        isFading = false;
+        //isFading = false;
     }
 
    
@@ -113,10 +113,6 @@ public class VentController : MonoBehaviour,IInteractable
         if (environmentController.HasInteractedWithFan())
         {
         StartCoroutine(FadeScreenInAndOut());
-        }
-        else
-        {
-            Debug.Log("Matiin Fan dulu"); 
         }
     }
 }

@@ -15124,7 +15124,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.01354
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8010147855826852393, guid: f12ebcfc238b535499a4716d3aff3a48, type: 3}
+    - {fileID: 1992827109946019610, guid: f12ebcfc238b535499a4716d3aff3a48, type: 3}
+    - {fileID: 3660892569332842401, guid: f12ebcfc238b535499a4716d3aff3a48, type: 3}
+    - {fileID: 7383388573444160559, guid: f12ebcfc238b535499a4716d3aff3a48, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -46988,6 +46992,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7138791393965980204, guid: bcf1942cedfa30942a17ddafb1499c1c,
         type: 3}
+      propertyPath: isActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138791393965980204, guid: bcf1942cedfa30942a17ddafb1499c1c,
+        type: 3}
       propertyPath: objectiveManager
       value: 
       objectReference: {fileID: 147197704}
@@ -59692,8 +59701,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1321457499913642083, guid: 5ce4963bc76a5a84284ce342d3a9b7b0,
-          type: 3}
+      - m_Target: {fileID: 471528057}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: set_layer
         m_Mode: 3

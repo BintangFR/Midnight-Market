@@ -15,7 +15,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject ObjectiveScreen;
     [SerializeField] private GameObject OptionsScreen;
     [SerializeField] private GameObject controlScreen;
-
+    
+    private AudioSource[] audios;
     public UIState uiState;
     public enum UIState{
         Objective = 0,
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         pausedMenu?.SetActive(false);
         GameOverScreen?.SetActive(false);
         FinishedScreen?.SetActive(false);
+        audios = FindObjectsOfType<AudioSource>();
 
     }
 
@@ -120,6 +122,10 @@ public class GameManager : MonoBehaviour
         currentState = UIState.Objective;
         pausedMenu?.SetActive(true);
         isPaused = true;
+        foreach (AudioSource audio in audios)
+        {
+            audio.Pause();
+        }
     }
     public void ResumeGame(){
         player.enabled = true;
@@ -127,6 +133,10 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1f;
         pausedMenu?.SetActive(false);
         isPaused = false;
+        foreach (AudioSource audio in audios)
+        {
+            audio.Play();
+        }
     }
     public void GoToMainMenu(){
         Time.timeScale = 1f;

@@ -39,10 +39,13 @@ public class DoorController : MonoBehaviour, IInteractable
             if (!isOpen)
             {
                 AudioManager.Instance.PlaySFX("Door-Open", transform.position);
+                Debug.Log("Door Opened");
             }
             else
             {
                 AudioManager.Instance.PlaySFX("Door-Close", transform.position);
+                Debug.Log("fuck you");
+
             }
         }
         else
@@ -74,7 +77,7 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         Quaternion startRotation = pivot.localRotation;
         Quaternion endRotation = Quaternion.Euler(new Vector3(0, StartRotation.y + Rotation, 0));
-
+        yield return new WaitForEndOfFrame();
         isOpen = true;
 
         float time = 0;
@@ -90,7 +93,7 @@ public class DoorController : MonoBehaviour, IInteractable
     {
         Quaternion startRotation = pivot.localRotation;
         Quaternion endRotation = Quaternion.Euler(StartRotation);
-
+        yield return new WaitForEndOfFrame();
         isOpen = false;
 
         float time = 0;

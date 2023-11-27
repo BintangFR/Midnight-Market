@@ -39,13 +39,10 @@ public class DoorController : MonoBehaviour, IInteractable
             if (!isOpen)
             {
                 AudioManager.Instance.PlaySFX("Door-Open", transform.position);
-                Debug.Log("Door Opened");
             }
             else
             {
                 AudioManager.Instance.PlaySFX("Door-Close", transform.position);
-                Debug.Log("fuck you");
-
             }
         }
         else

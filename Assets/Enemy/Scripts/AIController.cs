@@ -190,6 +190,7 @@ public class AIController : MonoBehaviour
 
         if (newState == EnemyState.chasing || newState == EnemyState.seeking)
         {
+            anim.SetBool("Seek", newState == EnemyState.chasing? true : false);
             AudioManager.Instance.PlayEnemy("Robot Footstep");
         }
         else

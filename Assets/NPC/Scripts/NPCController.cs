@@ -7,7 +7,18 @@ public class NPCController : MonoBehaviour,IInteractable
 {
 
     public GameObject npcDialogue;
-    
+    private Animator npcAnimator; 
+
+    void Start()
+    {
+        Transform childTransform = transform.Find("NPC Idle");
+
+        if (childTransform != null)
+        {
+            npcAnimator = childTransform.GetComponent<Animator>();
+        }
+    }
+
     public string GetInteractText()
     {
         return "Talk To Fauzan";
@@ -16,6 +27,14 @@ public class NPCController : MonoBehaviour,IInteractable
     public void Interact()
     {        
         npcDialogue.SetActive(true);
+
+        if (npcDialogue.activeSelf) 
+        {
+            if (npcAnimator != null)
+            {
+                npcAnimator.SetTrigger("Talking");
+            }
+        }
     }
 
     public void ChangeDialogue(Dialogue dialogue){

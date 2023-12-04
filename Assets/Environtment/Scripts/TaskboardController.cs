@@ -9,6 +9,7 @@ public class TaskboardController : MonoBehaviour,IInteractable
     public UnityEvent unityEvent;
     [SerializeField] private PlayerController player;
     [SerializeField] private CameraController camera;
+    [SerializeField] private MovementAudio movementAudio;
     private bool isLooking;
     private bool hasInteract;
     // Start is called before the first frame update
@@ -47,6 +48,7 @@ public class TaskboardController : MonoBehaviour,IInteractable
     private void LookTaskboard(){
         player.enabled = false;
         camera.enabled = false;
+        movementAudio.enabled = false;
         isLooking = true;
         taskboardImage.SetActive(true);
         hasInteract = true;
@@ -55,6 +57,7 @@ public class TaskboardController : MonoBehaviour,IInteractable
     private void NotLookTaskboard(){
         player.enabled = true;
         camera.enabled = true;
+        movementAudio.enabled = true;
         isLooking = false;
         taskboardImage.SetActive(false);
     }

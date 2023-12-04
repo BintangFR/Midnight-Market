@@ -51178,6 +51178,11 @@ PrefabInstance:
       objectReference: {fileID: 1583987510}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
+      propertyPath: movementAudio
+      value: 
+      objectReference: {fileID: 1583987512}
+    - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
       propertyPath: lines.Array.data[0]
       value: "You do the closing routine, i\u2019ll go check toilet\u2019s vent and
         freezer"
@@ -56778,6 +56783,11 @@ PrefabInstance:
       objectReference: {fileID: 1583987510}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
+      propertyPath: movementAudio
+      value: 
+      objectReference: {fileID: 1583987512}
+    - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
       propertyPath: lines.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -59576,6 +59586,7 @@ MonoBehaviour:
         m_CallState: 2
   player: {fileID: 1583987510}
   camera: {fileID: 1460751451}
+  movementAudio: {fileID: 1583987512}
 --- !u!65 &1794003426
 BoxCollider:
   m_ObjectHideFlags: 0

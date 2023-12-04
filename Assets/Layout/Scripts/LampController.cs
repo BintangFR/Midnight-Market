@@ -24,13 +24,15 @@ public class LampController : MonoBehaviour
 
     private void TurnOffLamp()
     {
-        meshRenderer.material = lampOffMaterial;
         realtimeLight?.SetActive(false);
+        if (lampOffMaterial == null) return;
+        meshRenderer.material = lampOffMaterial;
     }
 
     private void TurnOnLamp()
     {
-        meshRenderer.material = lampOnMaterial;
         realtimeLight?.SetActive(true);
+        if (lampOnMaterial == null) return;
+        meshRenderer.material = lampOnMaterial;
     }
 }

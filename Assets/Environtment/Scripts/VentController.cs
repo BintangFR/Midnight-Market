@@ -16,11 +16,14 @@ public class VentController : MonoBehaviour,IInteractable
     [SerializeField] private Image screenFadeImage; 
     [SerializeField] private float fadeDuration = 1.0f; 
     public String interactText;
-    
-
-    //private bool isFading = false; 
 
     public EnvirontmentController environmentController; 
+
+
+    private void Start()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
 
     private void OnDrawGizmos()
     {
@@ -33,7 +36,6 @@ public class VentController : MonoBehaviour,IInteractable
         Rigidbody rb = player.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.velocity = Vector3.zero; // Stop the player's current movement.
             rb.position = destination.position;
         }
         else
@@ -45,8 +47,6 @@ public class VentController : MonoBehaviour,IInteractable
 
     private IEnumerator FadeScreenInAndOut()
     {
-        //isFading = true;
-
         Color startColor = screenFadeImage.color;
         Color targetColor = new Color(0, 0, 0, 1); 
 
@@ -61,11 +61,9 @@ public class VentController : MonoBehaviour,IInteractable
 
         screenFadeImage.color = targetColor;
 
-        // Move the player to the destination position.
         GameObject player = GameObject.FindGameObjectWithTag("Player");
-        TeleportPlayer(player);
 
-        // Player Always Crouch
+        TeleportPlayer(player);
         ApplyCrouching(player);
 
         yield return new WaitForSeconds(1.0f); 
@@ -83,26 +81,20 @@ public class VentController : MonoBehaviour,IInteractable
         }
 
         screenFadeImage.color = targetColor;
-        //isFading = false;
+       
     }
 
    
     private void ApplyCrouching(GameObject player)
     {
-        PlayerController playerController = player.GetComponent<PlayerController>();
         if (playerController != null)
-        {
-            // Modify player's speed, layer, and scale for crouching.
-            playerController.canRun = false;
+        {         
             playerController.speed = 2.5f;
-
             player.transform.localScale = new Vector3(player.transform.localScale.x, 0.5f, player.transform.localScale.z);
-            player.gameObject.layer = 0; // Change the layer to the default layer.
-            playerController.canCrouch = !playerController.canCrouch;
-
-            Debug.Log(playerController.speed);
+            player.gameObject.layer = 0; 
         }
     }
+
     public string GetInteractText()
     {
         return interactText;
@@ -110,10 +102,13 @@ public class VentController : MonoBehaviour,IInteractable
 
     public void Interact()
     {
+        playerController.notInVent = !playerController.notInVent;
+
         if (environmentController.HasInteractedWithFan())
         {
         StartCoroutine(FadeScreenInAndOut());
         }
+
     }
 }
 

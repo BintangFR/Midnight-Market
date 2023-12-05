@@ -10042,12 +10042,12 @@ PrefabInstance:
     - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}
       propertyPath: hint
-      value: Check Office
+      value: The borrowed fuse is in the manager room
       objectReference: {fileID: 0}
     - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}
       propertyPath: description
-      value: Find Borrowed Fuse
+      value: Find borrowed fuse
       objectReference: {fileID: 0}
     - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}
@@ -10725,6 +10725,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942545950783339295, guid: 2588cc2be63e3204ebaea60348a4b385,
+        type: 3}
+      propertyPath: hint
+      value: Fan controller is inside the security room
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942545950783339295, guid: 2588cc2be63e3204ebaea60348a4b385,
+        type: 3}
+      propertyPath: description
+      value: Turn off the fan controller to enter the ventilation
       objectReference: {fileID: 0}
     - target: {fileID: 7942545950783339295, guid: 2588cc2be63e3204ebaea60348a4b385,
         type: 3}
@@ -12588,6 +12598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hint
       value: Mascot is near the entrance
+      objectReference: {fileID: 0}
+    - target: {fileID: 6363678603035126086, guid: 23dbe55a5513d1d4b987316b2b2f862d,
+        type: 3}
+      propertyPath: description
+      value: Check the new mascot
       objectReference: {fileID: 0}
     - target: {fileID: 6363678603035126086, guid: 23dbe55a5513d1d4b987316b2b2f862d,
         type: 3}
@@ -15007,6 +15022,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hint
       value: Near Storage
+      objectReference: {fileID: 0}
+    - target: {fileID: 3357298785008055772, guid: 60b9700744b6da74c91ce1fa42850faa,
+        type: 3}
+      propertyPath: description
+      value: Go to the freezer
       objectReference: {fileID: 0}
     - target: {fileID: 3357298785008055772, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
@@ -17630,12 +17650,12 @@ PrefabInstance:
     - target: {fileID: 8839864038313193554, guid: 7779522a6996e2b4fa1a6e18ac5795e5,
         type: 3}
       propertyPath: hint
-      value: Check Storage
+      value: The food is in the storage room
       objectReference: {fileID: 0}
     - target: {fileID: 8839864038313193554, guid: 7779522a6996e2b4fa1a6e18ac5795e5,
         type: 3}
       propertyPath: description
-      value: Take Food
+      value: Take the food
       objectReference: {fileID: 0}
     - target: {fileID: 8839864038313193554, guid: 7779522a6996e2b4fa1a6e18ac5795e5,
         type: 3}
@@ -19430,7 +19450,7 @@ PrefabInstance:
     - target: {fileID: 5636353937819383271, guid: d5f28490087f421449bfa3d27fdec0a0,
         type: 3}
       propertyPath: hint
-      value: Go Back To The Entrance
+      value: Go back to the main door
       objectReference: {fileID: 0}
     - target: {fileID: 5636353937819383271, guid: d5f28490087f421449bfa3d27fdec0a0,
         type: 3}
@@ -19942,7 +19962,7 @@ PrefabInstance:
     - target: {fileID: 9110732246031060775, guid: 68c3235326076cb488d9c706cbffe7c1,
         type: 3}
       propertyPath: hint
-      value: Find Food Shelf in the market
+      value: Put the food in the food shelf
       objectReference: {fileID: 0}
     - target: {fileID: 9110732246031060775, guid: 68c3235326076cb488d9c706cbffe7c1,
         type: 3}
@@ -19952,7 +19972,7 @@ PrefabInstance:
     - target: {fileID: 9110732246031060775, guid: 68c3235326076cb488d9c706cbffe7c1,
         type: 3}
       propertyPath: description
-      value: Put the Food In Shelf
+      value: Restock the food supplies
       objectReference: {fileID: 0}
     - target: {fileID: 9110732246031060775, guid: 68c3235326076cb488d9c706cbffe7c1,
         type: 3}
@@ -21544,7 +21564,12 @@ PrefabInstance:
     - target: {fileID: 8173688956592277131, guid: 1dce1dd70f58ee1418b1199fc5985221,
         type: 3}
       propertyPath: hint
-      value: NPC is in BreakRoom
+      value: Adam is in the breakroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 8173688956592277131, guid: 1dce1dd70f58ee1418b1199fc5985221,
+        type: 3}
+      propertyPath: description
+      value: Talk to Adam
       objectReference: {fileID: 0}
     - target: {fileID: 8173688956592277131, guid: 1dce1dd70f58ee1418b1199fc5985221,
         type: 3}
@@ -22968,7 +22993,7 @@ PrefabInstance:
     - target: {fileID: 1636755235818211021, guid: 8995c8b063ffd8c4ebb546868d49946c,
         type: 3}
       propertyPath: description
-      value: Find Fuse
+      value: Find fuse
       objectReference: {fileID: 0}
     - target: {fileID: 1636755235818211021, guid: 8995c8b063ffd8c4ebb546868d49946c,
         type: 3}
@@ -23533,12 +23558,17 @@ PrefabInstance:
     - target: {fileID: 6623173824588140391, guid: 63652ff6266a97743b057c46e73c5603,
         type: 3}
       propertyPath: hint
-      value: Go To The Entrance
+      value: Escape through the main door
       objectReference: {fileID: 0}
     - target: {fileID: 6623173824588140391, guid: 63652ff6266a97743b057c46e73c5603,
         type: 3}
       propertyPath: isActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623173824588140391, guid: 63652ff6266a97743b057c46e73c5603,
+        type: 3}
+      propertyPath: description
+      value: 'Escape the market '
       objectReference: {fileID: 0}
     - target: {fileID: 6623173824588140391, guid: 63652ff6266a97743b057c46e73c5603,
         type: 3}
@@ -25768,7 +25798,12 @@ PrefabInstance:
     - target: {fileID: 6324395119398789837, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
         type: 3}
       propertyPath: hint
-      value: Near Office 1
+      value: The manager room is near the supervisor room
+      objectReference: {fileID: 0}
+    - target: {fileID: 6324395119398789837, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
+        type: 3}
+      propertyPath: description
+      value: Go to the manager room
       objectReference: {fileID: 0}
     - target: {fileID: 6324395119398789837, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
         type: 3}
@@ -26442,6 +26477,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734507983352975294, guid: ec86369af1c376243b5f43d57e456f88,
+        type: 3}
+      propertyPath: hint
+      value: Taskboard is in the breakroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 2734507983352975294, guid: ec86369af1c376243b5f43d57e456f88,
+        type: 3}
+      propertyPath: description
+      value: Look at the taskboard
       objectReference: {fileID: 0}
     - target: {fileID: 2734507983352975294, guid: ec86369af1c376243b5f43d57e456f88,
         type: 3}
@@ -30560,7 +30605,12 @@ PrefabInstance:
     - target: {fileID: 1204784366354450628, guid: 0feaf74f9cf052241a21b1964de8eb5e,
         type: 3}
       propertyPath: hint
-      value: Electrical Near Security
+      value: Electrical room is near the security room
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204784366354450628, guid: 0feaf74f9cf052241a21b1964de8eb5e,
+        type: 3}
+      propertyPath: description
+      value: Place the second fuse in circuit breaker
       objectReference: {fileID: 0}
     - target: {fileID: 1204784366354450628, guid: 0feaf74f9cf052241a21b1964de8eb5e,
         type: 3}
@@ -35688,7 +35738,12 @@ PrefabInstance:
     - target: {fileID: 4721791167470615019, guid: 700fc91e5506be9489bd41bcfacac01f,
         type: 3}
       propertyPath: hint
-      value: Escape!!!!
+      value: Escape through the main door
+      objectReference: {fileID: 0}
+    - target: {fileID: 4721791167470615019, guid: 700fc91e5506be9489bd41bcfacac01f,
+        type: 3}
+      propertyPath: description
+      value: ESCAPE!
       objectReference: {fileID: 0}
     - target: {fileID: 4721791167470615019, guid: 700fc91e5506be9489bd41bcfacac01f,
         type: 3}
@@ -36049,6 +36104,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hint
       value: Electrical Room is near Security
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540985972873336857, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
+        type: 3}
+      propertyPath: description
+      value: Go to the electrical room
       objectReference: {fileID: 0}
     - target: {fileID: 1540985972873336857, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
         type: 3}
@@ -38083,12 +38143,17 @@ PrefabInstance:
     - target: {fileID: 7265732431108218122, guid: 5e316b98d480f1a4e854a2794bcddb7d,
         type: 3}
       propertyPath: hint
-      value: NPC Still in The Breakroom
+      value: Adam is still in the breakroom
       objectReference: {fileID: 0}
     - target: {fileID: 7265732431108218122, guid: 5e316b98d480f1a4e854a2794bcddb7d,
         type: 3}
       propertyPath: isActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7265732431108218122, guid: 5e316b98d480f1a4e854a2794bcddb7d,
+        type: 3}
+      propertyPath: description
+      value: Tell Adam about the explosion
       objectReference: {fileID: 0}
     - target: {fileID: 7265732431108218122, guid: 5e316b98d480f1a4e854a2794bcddb7d,
         type: 3}
@@ -40482,6 +40547,16 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
+    - target: {fileID: 3328767980677518209, guid: ba4e2c9b809404840bbcf540506da2ac,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 46.877
+      objectReference: {fileID: 0}
+    - target: {fileID: 3328767980677518209, guid: ba4e2c9b809404840bbcf540506da2ac,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.948
+      objectReference: {fileID: 0}
     - target: {fileID: 3368902465709788802, guid: ba4e2c9b809404840bbcf540506da2ac,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -40641,6 +40716,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181081161307409780, guid: ba4e2c9b809404840bbcf540506da2ac,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4181081161307409780, guid: ba4e2c9b809404840bbcf540506da2ac,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4181081161307409780, guid: ba4e2c9b809404840bbcf540506da2ac,
         type: 3}
@@ -43149,6 +43234,11 @@ PrefabInstance:
         type: 3}
       propertyPath: isActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138791393965980204, guid: bcf1942cedfa30942a17ddafb1499c1c,
+        type: 3}
+      propertyPath: description
+      value: Go to the main door
       objectReference: {fileID: 0}
     - target: {fileID: 7138791393965980204, guid: bcf1942cedfa30942a17ddafb1499c1c,
         type: 3}
@@ -50481,7 +50571,12 @@ PrefabInstance:
     - target: {fileID: 1636755235818211021, guid: b98c80b10cb225d49bb2fe7972ab9e9e,
         type: 3}
       propertyPath: hint
-      value: Near Security Room
+      value: Electrical room is near the security room
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636755235818211021, guid: b98c80b10cb225d49bb2fe7972ab9e9e,
+        type: 3}
+      propertyPath: description
+      value: Place the fuse in circuit breaker
       objectReference: {fileID: 0}
     - target: {fileID: 1636755235818211021, guid: b98c80b10cb225d49bb2fe7972ab9e9e,
         type: 3}
@@ -59631,6 +59726,11 @@ PrefabInstance:
         type: 3}
       propertyPath: hint
       value: Office is near Breakroom
+      objectReference: {fileID: 0}
+    - target: {fileID: 1772494780035413920, guid: 0cdd48d1bd11b0c49a77336d0a8ecf9b,
+        type: 3}
+      propertyPath: description
+      value: Go to the supervisor room (call 911)
       objectReference: {fileID: 0}
     - target: {fileID: 1772494780035413920, guid: 0cdd48d1bd11b0c49a77336d0a8ecf9b,
         type: 3}
@@ -71415,7 +71515,12 @@ PrefabInstance:
     - target: {fileID: 3374357329659623237, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
       propertyPath: hint
-      value: Around The Toilet
+      value: There's a ventilation inside one of the toilet rooms
+      objectReference: {fileID: 0}
+    - target: {fileID: 3374357329659623237, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
+      propertyPath: description
+      value: Find a ventilation
       objectReference: {fileID: 0}
     - target: {fileID: 3374357329659623237, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
@@ -76242,7 +76347,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   objectiveManager: {fileID: 147197704}
-  hint: Check The Storage
+  hint: Check the storage room
 --- !u!1 &2545081724713046323
 GameObject:
   m_ObjectHideFlags: 0

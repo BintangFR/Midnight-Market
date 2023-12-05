@@ -1305,6 +1305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   npcDialogue: {fileID: 1508055273}
+  name: Adam
 --- !u!136 &55743516
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -9039,6 +9040,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 28.195889
+      objectReference: {fileID: 0}
+    - target: {fileID: 6051263512430652368, guid: f12ebcfc238b535499a4716d3aff3a48,
+        type: 3}
+      propertyPath: isLocked
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6264120354030058349, guid: f12ebcfc238b535499a4716d3aff3a48,
         type: 3}
@@ -31677,6 +31683,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 39.24
+      objectReference: {fileID: 0}
+    - target: {fileID: 6709267010388963485, guid: 58c152f225964154f806bc75118cf6f9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 25.736
       objectReference: {fileID: 0}
     - target: {fileID: 6724672697967919117, guid: 58c152f225964154f806bc75118cf6f9,
         type: 3}

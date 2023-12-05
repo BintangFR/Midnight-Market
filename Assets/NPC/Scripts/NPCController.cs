@@ -7,6 +7,7 @@ public class NPCController : MonoBehaviour, IInteractable
 {
     public GameObject npcDialogue;
     private Animator npcAnimator;
+    public string name;
     
     void Start()
     {
@@ -20,7 +21,7 @@ public class NPCController : MonoBehaviour, IInteractable
 
     public string GetInteractText()
     {
-        return "Talk To Fauzan";
+        return "Talk To " + name;
     }
 
     public void Interact()

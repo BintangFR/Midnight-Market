@@ -29,7 +29,7 @@ public class AudioTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             //AudioManager.Instance.StopAmbience();
-            AudioManager.Instance.PlayAmbience("Rain-Ambience");
+            AudioManager.Instance.PlayAmbience("Room Ambience");
         }
     }
 }

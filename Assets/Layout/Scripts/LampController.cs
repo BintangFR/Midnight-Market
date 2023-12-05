@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class LampController : MonoBehaviour
@@ -14,6 +15,11 @@ public class LampController : MonoBehaviour
 
         LightController.Instance.OnLightsOn += TurnOnLamp;
         LightController.Instance.OnLightsOff += TurnOffLamp;
+
+        if (transform.transform.position.y < 5f)
+        {
+            realtimeLight.GetComponent<Light>().intensity = 0.5f;
+        }
     }
 
     private void OnDisable()

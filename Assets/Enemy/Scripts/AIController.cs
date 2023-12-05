@@ -177,6 +177,7 @@ public class AIController : MonoBehaviour
 
     public void ActivateEnemy()
     {
+        anim.enabled = true;
         transform.position = idleTransform.position;
         transform.rotation = idleTransform.rotation;
         navMeshAgent.enabled = true;

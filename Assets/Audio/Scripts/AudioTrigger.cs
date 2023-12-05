@@ -6,14 +6,19 @@ public class AudioTrigger : MonoBehaviour
     [SerializeField] private string audioName;
     [SerializeField] private Transform soundSource;
     [SerializeField] private TriggerType triggerType;
-
+    private static bool isOnBridge = false;
 
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            if (triggerType == TriggerType.Ambience)
+            if (triggerType == TriggerType.Bridge)
             {
+                isOnBridge = true;
+            }
+            if (triggerType == TriggerType.Ambience && !isOnBridge)
+            {
+                AudioManager.Instance.StopAmbience();
                 AudioManager.Instance.PlayAmbience(audioName);
             }
             else if (triggerType == TriggerType.SFX)
@@ -28,8 +33,15 @@ public class AudioTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //AudioManager.Instance.StopAmbience();
-            AudioManager.Instance.PlayAmbience("Rain-Ambience");
+            if (triggerType == TriggerType.Bridge)
+            {
+                isOnBridge = false;
+            }
+            else if (!isOnBridge)
+            {
+                AudioManager.Instance.StopAmbience();
+                AudioManager.Instance.PlayAmbience("Room Ambience");
+            }
         }
     }
 }
@@ -38,5 +50,6 @@ public enum TriggerType
 {
     Ambience,
     BGM,
-    SFX
+    SFX,
+    Bridge
 }

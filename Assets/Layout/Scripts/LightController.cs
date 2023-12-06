@@ -83,12 +83,16 @@ public class LightController : MonoBehaviour
 
     private IEnumerator Flickers(int count)
     {
+        AudioManager.Instance.PlayBGM("Flickering Light");
+
         for (int i = 0; i < count; i++)
         {
             float duration = UnityEngine.Random.Range(0.05f, 0.25f);
             SetLighting(!isLightingOn);
             yield return new WaitForSeconds(duration);
         }
+
+        AudioManager.Instance.StopBGM();
     }
 
     private void Update()

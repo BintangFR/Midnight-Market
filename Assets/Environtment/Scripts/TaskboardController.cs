@@ -52,7 +52,6 @@ public class TaskboardController : MonoBehaviour,IInteractable
         isLooking = true;
         taskboardImage.SetActive(true);
         hasInteract = true;
-
     }
     private void NotLookTaskboard(){
         player.enabled = true;

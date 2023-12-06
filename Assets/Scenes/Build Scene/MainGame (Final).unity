@@ -10285,7 +10285,7 @@ PrefabInstance:
     - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}
       propertyPath: description
-      value: Find the borrowed fuse
+      value: Take the borrowed fuse
       objectReference: {fileID: 0}
     - target: {fileID: 1204784366354450628, guid: 609ecac784a6ba54f8331c0dd1b93e74,
         type: 3}
@@ -15404,22 +15404,22 @@ PrefabInstance:
     - target: {fileID: 8979458867526881724, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 5.7213087
+      value: 13.157821
       objectReference: {fileID: 0}
     - target: {fileID: 8979458867526881724, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.9178155
+      value: 4.931395
       objectReference: {fileID: 0}
     - target: {fileID: 8979458867526881724, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.1
+      value: 14.6
       objectReference: {fileID: 0}
     - target: {fileID: 8979458867526881724, guid: 60b9700744b6da74c91ce1fa42850faa,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -18.66
+      value: -20.87
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -25856,8 +25856,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1184087284325676509, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3854344
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184087284325676509, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4907317
+      objectReference: {fileID: 0}
+    - target: {fileID: 1184087284325676509, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26.76
+      value: 26.344
       objectReference: {fileID: 0}
     - target: {fileID: 1184087284325676509, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
         type: 3}
@@ -25882,12 +25892,12 @@ PrefabInstance:
     - target: {fileID: 6324395119398789837, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
         type: 3}
       propertyPath: hint
-      value: The manager room is near the supervisor room
+      value: The borrowed fuse is in the manager room
       objectReference: {fileID: 0}
     - target: {fileID: 6324395119398789837, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
         type: 3}
       propertyPath: description
-      value: Go to the manager room
+      value: Find the borrowed fuse
       objectReference: {fileID: 0}
     - target: {fileID: 6324395119398789837, guid: 7f851fa5a4ea8fa43b1ef1ea456c57b0,
         type: 3}
@@ -28708,6 +28718,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1992887056}
     m_Modifications:
+    - target: {fileID: 54432517849987729, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.174
+      objectReference: {fileID: 0}
     - target: {fileID: 253781340587100427, guid: 9f35b7f84be55f44a8b5bddf3177429d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -29081,6 +29096,22 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 944717002}
+    - targetCorrespondingSourceObject: {fileID: 3893887419319825717, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1282810406}
+    - targetCorrespondingSourceObject: {fileID: 3221509849783527169, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1548353198}
+    - targetCorrespondingSourceObject: {fileID: 8087611459893025878, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1565206305}
+    - targetCorrespondingSourceObject: {fileID: 6260423091056144353, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2086088623}
   m_SourcePrefab: {fileID: 100100000, guid: 9f35b7f84be55f44a8b5bddf3177429d, type: 3}
 --- !u!1 &944716998 stripped
 GameObject:
@@ -30110,7 +30141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 39.5, y: 15}
+  m_AnchoredPosition: {x: 33.5, y: 15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &999423640
@@ -30133,9 +30164,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Option
-
-'
+  m_text: Options
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d7109ff1cf1c5847a3a5d71a4bf2053, type: 2}
   m_sharedMaterial: {fileID: -924488212681158415, guid: 6d7109ff1cf1c5847a3a5d71a4bf2053,
@@ -30716,7 +30745,7 @@ PrefabInstance:
     - target: {fileID: 1204784366354450628, guid: 0feaf74f9cf052241a21b1964de8eb5e,
         type: 3}
       propertyPath: description
-      value: Place fuse in the circuit breaker
+      value: Place the fuse in the circuit breaker
       objectReference: {fileID: 0}
     - target: {fileID: 1204784366354450628, guid: 0feaf74f9cf052241a21b1964de8eb5e,
         type: 3}
@@ -35827,7 +35856,7 @@ PrefabInstance:
     - target: {fileID: 1540985972873336857, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
         type: 3}
       propertyPath: description
-      value: Got to the electrical room
+      value: Go to the electrical room
       objectReference: {fileID: 0}
     - target: {fileID: 1540985972873336857, guid: 188df2aadf4be7445b28dd6ff9a5bf68,
         type: 3}
@@ -38567,6 +38596,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277597014}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1282810402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3893887419319825717, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+    type: 3}
+  m_PrefabInstance: {fileID: 944716997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1282810406
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1282810402}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0057001, y: 1.7347715, z: 1.0057002}
+  m_Center: {x: 0.0000019290767, y: 0.36453563, z: -0.000000014331009}
 --- !u!1001 &1285437993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45717,7 +45773,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 39.5, y: 15}
+  m_AnchoredPosition: {x: 31.8, y: 15}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481190852
@@ -45740,7 +45796,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Control
+  m_text: Controls
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6d7109ff1cf1c5847a3a5d71a4bf2053, type: 2}
   m_sharedMaterial: {fileID: -924488212681158415, guid: 6d7109ff1cf1c5847a3a5d71a4bf2053,
@@ -47509,6 +47565,33 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1542999574}
   m_Mesh: {fileID: -6597982277902822275, guid: 30d5b549d3a274f48bcbb0b428ab620c, type: 3}
+--- !u!1 &1548353194 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3221509849783527169, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+    type: 3}
+  m_PrefabInstance: {fileID: 944716997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1548353198
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548353194}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0056998, y: 1.7347711, z: 1.0057}
+  m_Center: {x: 0, y: 0.36453563, z: 0}
 --- !u!1 &1548672530 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 152955310288243915, guid: f85aa176ac0858840ae9d4ef5ebaebf5,
@@ -48508,6 +48591,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1563592031}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1565206301 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8087611459893025878, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+    type: 3}
+  m_PrefabInstance: {fileID: 944716997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1565206305
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565206301}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0056998, y: 1.7347711, z: 1.0057}
+  m_Center: {x: 0, y: 0.36453563, z: 0}
 --- !u!1001 &1565413019
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50423,7 +50533,7 @@ PrefabInstance:
     - target: {fileID: 1636755235818211021, guid: b98c80b10cb225d49bb2fe7972ab9e9e,
         type: 3}
       propertyPath: description
-      value: Place fuse in the circuit breaker
+      value: Place the fuse in the circuit breaker
       objectReference: {fileID: 0}
     - target: {fileID: 1636755235818211021, guid: b98c80b10cb225d49bb2fe7972ab9e9e,
         type: 3}
@@ -56364,8 +56474,8 @@ Transform:
   m_GameObject: {fileID: 1847703357}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -33.89, y: 2.47, z: 15.59}
-  m_LocalScale: {x: 2.9952824, y: 4.3938, z: 16.584896}
+  m_LocalPosition: {x: -31.46, y: 2.47, z: 15.59}
+  m_LocalScale: {x: 15.043044, y: 4.3938, z: 27.930624}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1394153372}
@@ -59638,7 +59748,7 @@ Transform:
   m_GameObject: {fileID: 1913659221}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.34, y: -0.21, z: 0.4}
+  m_LocalPosition: {x: 0.921, y: -0.21, z: 0.36}
   m_LocalScale: {x: 621.2413, y: 748.82794, z: 178.70337}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -72783,13 +72893,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7477811661883602804, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4481
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477811661883602804, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
       propertyPath: m_LocalPosition.x
-      value: 42.383
+      value: 42.487
+      objectReference: {fileID: 0}
+    - target: {fileID: 7477811661883602804, guid: d972e8beedce4d64ab4cd9d695133eb5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.001
       objectReference: {fileID: 0}
     - target: {fileID: 7477811661883602804, guid: d972e8beedce4d64ab4cd9d695133eb5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.01
+      value: -29.72
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -72878,6 +72998,33 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8254156367495797971, guid: 89e2cd0072ebb054c9f6c2ac39a7ac67, type: 3}
+--- !u!1 &2086088619 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6260423091056144353, guid: 9f35b7f84be55f44a8b5bddf3177429d,
+    type: 3}
+  m_PrefabInstance: {fileID: 944716997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &2086088623
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2086088619}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0056996, y: 1.7347713, z: 1.0057}
+  m_Center: {x: 0.000000010864006, y: 0.36453563, z: -0.0000000019360022}
 --- !u!65 &2086720226
 BoxCollider:
   m_ObjectHideFlags: 0

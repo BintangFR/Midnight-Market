@@ -96,6 +96,19 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (!notInVent)
+        {
+            canCrouch = false;
+            canRun = false;
+            canJump = false;
+        }
+        else
+        {
+            canCrouch = true;
+            canRun = true;
+            canJump = true;
+        }
+
         //Stop player movement smoothly
         if (player.velocity != Vector3.zero)
         {

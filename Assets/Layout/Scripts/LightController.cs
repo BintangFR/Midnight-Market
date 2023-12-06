@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -72,6 +73,21 @@ public class LightController : MonoBehaviour
             LightmapSettings.lightmaps = darkLightmap;
             isLightingOn = false;
             OnLightsOff?.Invoke();
+        }
+    }
+
+    public void FlickerLight(int count)
+    {
+        StartCoroutine(Flickers(count));
+    }
+
+    private IEnumerator Flickers(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            float duration = UnityEngine.Random.Range(0.05f, 0.25f);
+            SetLighting(!isLightingOn);
+            yield return new WaitForSeconds(duration);
         }
     }
 

@@ -1,10 +1,6 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Rendering;
 
 public class AIController : MonoBehaviour
 {
@@ -177,6 +173,7 @@ public class AIController : MonoBehaviour
 
     public void ActivateEnemy()
     {
+        anim.enabled = true;
         transform.position = idleTransform.position;
         transform.rotation = idleTransform.rotation;
         navMeshAgent.enabled = true;

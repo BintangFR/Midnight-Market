@@ -70,7 +70,7 @@ public class CCTVControllerNew : MonoBehaviour, IInteractable
         mainCamera.SetActive(false);
         isCCTVActive = true;
         cctvUI.SetActive(true);
-        playerController.enabled = false;
+        playerController.canMove = false;
         gameObject.layer = 0;
 
         for (int i = 1; i < cameras.Length; i++)
@@ -88,7 +88,7 @@ public class CCTVControllerNew : MonoBehaviour, IInteractable
             mainCamera.SetActive(true);
             cctvUI.SetActive(false);
             isCCTVActive = false;
-            playerController.enabled = true;
+            playerController.canMove = true;
             gameObject.layer = 7;
 
             //deactivate all cctv camera
@@ -123,6 +123,7 @@ public class CCTVControllerNew : MonoBehaviour, IInteractable
     
     private IEnumerator Cutscene(){
         enemy.gameObject.SetActive(true);
+        GameManager.Instance.StartFlickerCycle(0.5f, 3f);
         yield return new WaitForEndOfFrame();
         shadowMan.SetDestination(shadowManTarget.position);
         yield return new WaitForSeconds(shadowManDissappearence);

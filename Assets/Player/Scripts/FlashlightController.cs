@@ -63,4 +63,15 @@ public class FlashlightController : MonoBehaviour
         pumpFlashlight.enabled = true;
     }
     
+    public void AutoOnFlashlight()
+    {
+        StartCoroutine(AutoOn());
+    }
+
+    private IEnumerator AutoOn()
+    {
+        yield return new WaitForSeconds(3);
+        AudioManager.Instance.PlaySFX("Flashlight", transform.position);
+        light.enabled = true;
+    }
 }

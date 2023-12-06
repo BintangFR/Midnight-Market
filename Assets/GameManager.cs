@@ -152,5 +152,37 @@ public class GameManager : MonoBehaviour
         ObjectiveScreen?.SetActive(true);
 
     }
+
+    public void BreakElectricity()
+    {
+        StartFlickerCycle(10f, 10f);
+    }
+
+    public void StartFlickerCycle(float firstCooldown, float secondCooldown)
+    {
+        StopAllCoroutines();
+        StartCoroutine(FlickerCycle(firstCooldown, secondCooldown));
+    }
+
+    private IEnumerator FlickerCycle(float firstCooldown, float secondCooldown)
+    {
+        yield return new WaitForSeconds(firstCooldown);
+
+        int count = Random.Range(2, 5) * 2;
+        LightController.Instance.FlickerLight(count);
+
+        yield return new WaitForSeconds(secondCooldown);
+
+        count = Random.Range(2, 5) * 2;
+        LightController.Instance.FlickerLight(count);
+
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(10f, 20f));
+
+            count = Random.Range(2, 5) * 2;
+            LightController.Instance.FlickerLight(count);
+        }
+    }
 }
 

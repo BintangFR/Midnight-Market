@@ -7,15 +7,15 @@ public class NPCController : MonoBehaviour,IInteractable
 {
 
     public GameObject npcDialogue;
-    
+
     public string GetInteractText()
     {
-        return "Talk To Fauzan";
+        return "Talk To Adam";
     }
 
     public void Interact()
     {        
-        npcDialogue.SetActive(true);
+        npcDialogue.SetActive(true);       
     }
 
     public void ChangeDialogue(Dialogue dialogue){

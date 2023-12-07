@@ -13,20 +13,21 @@ public class FlashlightController : MonoBehaviour
     public float maxBrightness;
 
     public float drainRate;
-    [SerializeField] private AudioSource pumpFlashlight;
+    private AudioSource pumpFlashlight;
 
     // Start is called before the first frame update
 
     void Start()
     {
         light = GetComponent<Light>();
+        pumpFlashlight = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
         transform.rotation = camera.rotation;
+
         if (Input.GetKeyDown(KeyCode.F))
         {
             AudioManager.Instance.PlaySFX("Flashlight", transform.position);
@@ -36,31 +37,33 @@ public class FlashlightController : MonoBehaviour
         Mathf.Clamp(light.intensity, minBrightness, maxBrightness);
         if (drainOverTime && light.enabled)
         {
-
             if (light.intensity > minBrightness)
             {
                 light.intensity -= Time.deltaTime * (drainRate/1000);
             }
         }
+
         if (Input.GetKey(KeyCode.R))
         {
             if (light.intensity < maxBrightness)
             {
-                PumpFlashlight(0.03f);
-
+                PumpFlashlight(10 * Time.deltaTime);
             }
         }
-        else{
-            pumpFlashlight.enabled = false;
+        
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            pumpFlashlight.Play();
+            AIController.Instance.ApproachPlayerSound(transform.position);
         }
-
-
+        else if (Input.GetKeyUp(KeyCode.R))
+        {
+            pumpFlashlight.Stop();
+        }
     }
     private void PumpFlashlight(float amount)
     {
-        pumpFlashlight.playOnAwake = true;
         light.intensity += amount;
-        pumpFlashlight.enabled = true;
     }
     
     public void AutoOnFlashlight()

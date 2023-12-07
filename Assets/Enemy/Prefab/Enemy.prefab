@@ -997,8 +997,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: -7575851521338489586}
-  normalSpeed: 4
-  sprintSpeed: 5
+  normalSpeed: 5
+  sprintSpeed: 6.25
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -1015,7 +1015,8 @@ MonoBehaviour:
   currentState: 0
   losingPlayerTimer: 2.5
   aiVision: {fileID: 3371499448756867006}
-  idleTransform: {fileID: 0}
+  firstActive: {fileID: 0}
+  secondActive: {fileID: 0}
   attackCollider: {fileID: 6383118154057764767}
   whatIsPlayer:
     serializedVersion: 2
@@ -1102,7 +1103,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0

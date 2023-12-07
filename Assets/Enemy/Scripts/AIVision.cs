@@ -31,17 +31,17 @@ public class AIVision : MonoBehaviour
         float dstToPlayer = Vector3.Distance(transform.position, player.position);
         bool noObstacleBlockingVision = Physics.Raycast(transform.position, dirToPlayer, dstToPlayer, obstacleMask);
 
-        if (dstToPlayer < hearingRange)
+        if (!noObstacleBlockingVision)
         {
-            lastAwareTimer = 0f;
+            if (dstToPlayer < hearingRange)
+            {
+                lastAwareTimer = 0f;
 
-            canSeePlayer = true;
+                canSeePlayer = true;
 
-            return;
-        }
-        else if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
-        {
-            if (!noObstacleBlockingVision)
+                return;
+            }
+            else if (Vector3.Angle(transform.forward, dirToPlayer) < viewAngle / 2)
             {
                 lastAwareTimer = 0f;
 

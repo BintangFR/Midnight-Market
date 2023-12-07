@@ -94,12 +94,4 @@ public class LightController : MonoBehaviour
 
         AudioManager.Instance.StopBGM();
     }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SetLighting(!isLightingOn);
-        }
-    }
 }

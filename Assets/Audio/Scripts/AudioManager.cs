@@ -178,7 +178,7 @@ public class AudioManager : MonoBehaviour
 
     public void StopEnemy()
     {
-        enemySource.Stop();
+        enemySource?.Stop();
     }
 
     private void PlayLoopingAudio(AudioSource audioSource, AudioGroup audioGroup, int id)

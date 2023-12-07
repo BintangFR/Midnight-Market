@@ -64,8 +64,17 @@ public class AIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      
         anim = GetComponent<Animator>();
+    }
+
+    private void OnEnable()
+    {
+        AudioManager.Instance.StopEnemy();
+    }
+
+    private void OnDisable()
+    {
+        AudioManager.Instance.StopEnemy();
     }
 
     // Update is called once per frame
@@ -101,6 +110,11 @@ public class AIController : MonoBehaviour
             if (aiVision.GetCanSeePlayer())
             {
                 ChangeEnemyState(EnemyState.chasing);
+            }
+
+            if (Vector3.Distance(new Vector3(transform.position.x, 0, transform.position.z), new Vector3(waypoints[currentWaypointIndex].position.x, 0, waypoints[currentWaypointIndex].position.z)) < 0.5f)
+            {
+                MoveToWaypoint();
             }
         }
         else if (currentState == EnemyState.chasing)
@@ -156,13 +170,7 @@ public class AIController : MonoBehaviour
 
     private void MoveToWaypoint()
     {
-        int randomIndex;
-        do
-        {
-            randomIndex = UnityEngine.Random.Range(0, waypoints.Length);
-        }
-        while (currentWaypointIndex == randomIndex);
-        currentWaypointIndex = randomIndex;
+        currentWaypointIndex = Random.Range(0, waypoints.Length); ;
 
         agent.SetDestination(waypoints[currentWaypointIndex].position);
     }
@@ -214,6 +222,15 @@ public class AIController : MonoBehaviour
     public Transform GetPlayer()
     {
         return player;
+    }
+
+    public void ApproachPlayerSound(Vector3 position)
+    {
+        if (currentState == EnemyState.seeking)
+        {
+            agent.SetDestination(position);
+            Debug.Log("Cheery Can Hear You");
+        }
     }
 
     /*

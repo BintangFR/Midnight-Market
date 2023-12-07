@@ -14,7 +14,7 @@ public class VentController : MonoBehaviour,IInteractable
     [SerializeField] Transform destination;
 
     [SerializeField] private Image screenFadeImage; 
-    [SerializeField] private float fadeDuration = 1.0f; 
+    [SerializeField] private float fadeDuration = 1.0f;
     public String interactText;
 
     public EnvirontmentController environmentController; 
@@ -64,7 +64,7 @@ public class VentController : MonoBehaviour,IInteractable
         GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         TeleportPlayer(player);
-        ApplyCrouching(player);
+        if (!playerController.notInVent) ApplyCrouching(player);
 
         yield return new WaitForSeconds(1.0f); 
 
@@ -84,14 +84,12 @@ public class VentController : MonoBehaviour,IInteractable
        
     }
 
-   
     private void ApplyCrouching(GameObject player)
     {
         if (playerController != null)
         {         
             playerController.speed = 2.5f;
             player.transform.localScale = new Vector3(player.transform.localScale.x, 0.5f, player.transform.localScale.z);
-            player.gameObject.layer = 0; 
         }
     }
 

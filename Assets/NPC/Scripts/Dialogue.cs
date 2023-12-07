@@ -15,7 +15,6 @@ public class Dialogue : MonoBehaviour
     private int index;
     public UnityEvent gotFlashlight;
     [SerializeField] private PlayerController player;
-    [SerializeField] private MovementAudio movementAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +46,6 @@ public class Dialogue : MonoBehaviour
     {
         //player.GetComponent<PlayerController>().enabled = false;
         player.canMove = false;
-        movementAudio.enabled = false;
         index = 0;
         StartCoroutine(TypeLine());
     }
@@ -74,8 +72,7 @@ public class Dialogue : MonoBehaviour
             gotFlashlight.Invoke();
             gameObject.SetActive(false);
             player.canMove = true;
-            movementAudio.enabled = true;
-
+            
         }
     }
 }

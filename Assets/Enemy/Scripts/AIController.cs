@@ -13,7 +13,8 @@ public class AIController : MonoBehaviour
     [SerializeField] private EnemyState currentState = EnemyState.non_active;
     [SerializeField] private float losingPlayerTimer = 0f;
     [SerializeField] private AIVision aiVision;
-    [SerializeField] private Transform idleTransform;
+    [SerializeField] private Transform firstActive;
+    [SerializeField] private Transform secondActive;
     [SerializeField] private GameObject attackCollider;
 
     private Transform player;
@@ -124,11 +125,6 @@ public class AIController : MonoBehaviour
         {
             // attacking logic
         }
-
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            ActivateEnemy();
-        }
     }
 
     private IEnumerator Attack()
@@ -171,11 +167,23 @@ public class AIController : MonoBehaviour
         agent.SetDestination(waypoints[currentWaypointIndex].position);
     }
 
-    public void ActivateEnemy()
+    public void ActivateEnemy(bool first)
     {
+        anim.enabled = false;
+        navMeshAgent.enabled = false;
+
+        if (first)
+        {
+            transform.position = firstActive.position;
+            transform.rotation = firstActive.rotation;
+        }
+        else
+        {
+            transform.position = secondActive.position;
+            transform.rotation = secondActive.rotation;
+        }
+
         anim.enabled = true;
-        transform.position = idleTransform.position;
-        transform.rotation = idleTransform.rotation;
         navMeshAgent.enabled = true;
 
         ChangeEnemyState(EnemyState.idle);

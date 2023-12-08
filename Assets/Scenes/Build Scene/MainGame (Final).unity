@@ -12309,6 +12309,16 @@ PrefabInstance:
       objectReference: {fileID: 1382965466}
     - target: {fileID: 4386360719727680479, guid: 1a81b19eef0d61f4f8f02130eb45ebd6,
         type: 3}
+      propertyPath: normalSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386360719727680479, guid: 1a81b19eef0d61f4f8f02130eb45ebd6,
+        type: 3}
+      propertyPath: sprintSpeed
+      value: 7.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4386360719727680479, guid: 1a81b19eef0d61f4f8f02130eb45ebd6,
+        type: 3}
       propertyPath: secondActive
       value: 
       objectReference: {fileID: 309070892}
@@ -16949,7 +16959,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -56376,7 +56386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9770cbde7e8f59c4e8bd533635d35207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.5
+  speed: 7
   jumpHeight: 0.8
   stamina: 100
   maxHealth: 3

@@ -170,7 +170,7 @@ public class PlayerController : MonoBehaviour
                 isRunning = true;
                 if (stamina > 0 && !isFatigued)
                 {
-                    speed += (speed * 20 / 100); 
+                    speed += (speed * 50 / 100); 
                     //staminaBar.gameObject.SetActive(true);
                 }
             }

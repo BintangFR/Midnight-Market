@@ -8088,8 +8088,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
+      propertyPath: m_text
+      value: Press E to continue >>
+      objectReference: {fileID: 0}
+    - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
       propertyPath: m_fontSize
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -8100,7 +8105,7 @@ PrefabInstance:
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -8125,6 +8130,11 @@ PrefabInstance:
       objectReference: {fileID: 1583987510}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
+      propertyPath: textSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
       propertyPath: movementAudio
       value: 
       objectReference: {fileID: 1583987512}
@@ -8136,13 +8146,13 @@ PrefabInstance:
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[0]
-      value: "It\u2019s time to end the shift\r\n"
+      value: "It\u2019s time to end the shift...\r"
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[1]
-      value: I need to check task board to find closing routine list and talk to
-        Adam
+      value: I need to check the taskboard to find closing routine list and talk
+        to Adam
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -8379,7 +8389,7 @@ PrefabInstance:
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSize
-      value: 29
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -8390,7 +8400,7 @@ PrefabInstance:
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 29
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -10144,6 +10154,7 @@ PrefabInstance:
     - {fileID: 4132313991871348566, guid: edff8095f24679e45bac71f99de15e2d, type: 3}
     - {fileID: 7275408535045529407, guid: edff8095f24679e45bac71f99de15e2d, type: 3}
     - {fileID: 1925407117444724919, guid: edff8095f24679e45bac71f99de15e2d, type: 3}
+    - {fileID: 9111972925200843027, guid: edff8095f24679e45bac71f99de15e2d, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2249894843691825399, guid: edff8095f24679e45bac71f99de15e2d, type: 3}
     m_AddedGameObjects:
@@ -10156,6 +10167,10 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 284124500}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6478457525716315474, guid: edff8095f24679e45bac71f99de15e2d,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 282852360}
     - targetCorrespondingSourceObject: {fileID: 836817301556503832, guid: edff8095f24679e45bac71f99de15e2d,
         type: 3}
       insertIndex: -1
@@ -10195,6 +10210,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 282852357}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &282852359 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6478457525716315474, guid: edff8095f24679e45bac71f99de15e2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 282852357}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &282852360
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282852359}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3032161, y: 2.0817635, z: 1.2918237}
+  m_Center: {x: -0.015049523, y: 0.020202221, z: -0.20646001}
 --- !u!1001 &283020801
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17068,8 +17110,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
+      propertyPath: m_text
+      value: Press E to continue >>
+      objectReference: {fileID: 0}
+    - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
       propertyPath: m_fontSize
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -17080,7 +17127,7 @@ PrefabInstance:
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -17105,25 +17152,28 @@ PrefabInstance:
       objectReference: {fileID: 1583987510}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
+      propertyPath: textSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
       propertyPath: movementAudio
       value: 
       objectReference: {fileID: 1583987512}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[0]
-      value: I need to check task board to find closing routine list and talk to
-        Adam
+      value: Was that an explosion?
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[1]
-      value: I need to check task board to find closing routine list and talk to
-        Adam
+      value: I need to tell Adam about this first before checking what's happened
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -17355,7 +17405,7 @@ PrefabInstance:
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSize
-      value: 29
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -17366,7 +17416,7 @@ PrefabInstance:
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 29
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -34082,14 +34132,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6478308140488012862, guid: 0bfd284158b2f1d4586348f36c033fd4, type: 3}
+    - {fileID: 5519060785013753795, guid: 0bfd284158b2f1d4586348f36c033fd4, type: 3}
+    - {fileID: 7998615931605863152, guid: 0bfd284158b2f1d4586348f36c033fd4, type: 3}
     m_RemovedGameObjects:
     - {fileID: 5815552755924853165, guid: 0bfd284158b2f1d4586348f36c033fd4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9027072562914024861, guid: 0bfd284158b2f1d4586348f36c033fd4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 993894936}
     - targetCorrespondingSourceObject: {fileID: 3217192486933265848, guid: 0bfd284158b2f1d4586348f36c033fd4,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 940686364}
+    - targetCorrespondingSourceObject: {fileID: 1583609735421110643, guid: 0bfd284158b2f1d4586348f36c033fd4,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 993894938}
   m_SourcePrefab: {fileID: 100100000, guid: 0bfd284158b2f1d4586348f36c033fd4, type: 3}
 --- !u!4 &993894934 stripped
 Transform:
@@ -34097,6 +34157,60 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 993894933}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &993894935 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9027072562914024861, guid: 0bfd284158b2f1d4586348f36c033fd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 993894933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &993894936
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993894935}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.3032161, y: 2.0817635, z: 1.2918237}
+  m_Center: {x: -0.0150469, y: 0.020199718, z: -0.2064562}
+--- !u!1 &993894937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1583609735421110643, guid: 0bfd284158b2f1d4586348f36c033fd4,
+    type: 3}
+  m_PrefabInstance: {fileID: 993894933}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &993894938
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993894937}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.2340627, y: 4, z: 1.2340627}
+  m_Center: {x: -0.000000029802322, y: 0.011492819, z: -0.0000018775463}
 --- !u!1 &999423638
 GameObject:
   m_ObjectHideFlags: 0
@@ -53005,8 +53119,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
+      propertyPath: m_text
+      value: Press E to continue >>
+      objectReference: {fileID: 0}
+    - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
       propertyPath: m_fontSize
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -53017,7 +53136,7 @@ PrefabInstance:
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -53045,6 +53164,11 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1583987510}
+    - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
+      propertyPath: textSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: movementAudio
@@ -53268,7 +53392,7 @@ PrefabInstance:
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSize
-      value: 29
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -53279,7 +53403,7 @@ PrefabInstance:
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 29
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -60006,8 +60130,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
+      propertyPath: m_text
+      value: Press E to continue >>
+      objectReference: {fileID: 0}
+    - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
       propertyPath: m_fontSize
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -60018,7 +60147,7 @@ PrefabInstance:
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 17
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 559644686607806148, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -60043,13 +60172,18 @@ PrefabInstance:
       objectReference: {fileID: 1583987510}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
+      propertyPath: textSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
+        type: 3}
       propertyPath: movementAudio
       value: 
       objectReference: {fileID: 1583987512}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.size
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -60059,24 +60193,24 @@ PrefabInstance:
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[1]
-      value: "I need to go home fast, my wife said she\u2019ll wait for me"
+      value: 'I have to go home fast, my wife is waiting for me '
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[2]
-      value: "We\u2019ll celebrate our wedding day"
+      value: We're about to celebrate our wedding anniversary tonight
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[3]
-      value: "To make it fast, you check electrical room and I\u2019ll finish my
-        task in the freezer"
+      value: "To speed things up, you go check the  electrical room and I\u2019ll
+        finish my task in the freezer"
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: lines.Array.data[4]
       value: If you need tools and spare part for the electrical, just search in
-        storage room
+        warehouse
       objectReference: {fileID: 0}
     - target: {fileID: 1917586895230183906, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -60291,7 +60425,7 @@ PrefabInstance:
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSize
-      value: 29
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -60302,7 +60436,7 @@ PrefabInstance:
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
       propertyPath: m_fontSizeBase
-      value: 29
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 6443826074311818543, guid: 8468c7c60fd3523488fab69e2b643a78,
         type: 3}
@@ -63176,7 +63310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1799596527
 Transform:
   m_ObjectHideFlags: 0

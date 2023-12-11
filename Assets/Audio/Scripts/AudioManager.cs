@@ -15,11 +15,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource ambienceSource;
     [SerializeField] private AudioSource bgmSource;
 
-
+    private AudioSource lightSource;
     private AudioSource enemySource;
     private AudioSource enemyVocalSource;
     private float enemyVocalDuration = 0f;
     private AIController.EnemyState enemyState;
+    private int prevEnemyIndex = 0;
 
     private float audioCooldown = 0;
 
@@ -46,6 +47,8 @@ public class AudioManager : MonoBehaviour
 
         enemySource = AIController.Instance.GetComponent<AudioSource>();
         enemyVocalSource = enemyHead.GetComponent<AudioSource>();
+
+        lightSource = LightController.Instance.GetComponent<AudioSource>();
 
         PlayAmbience("Room Ambience");
     }
@@ -135,6 +138,18 @@ public class AudioManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(temp.audioClip, position, temp.volume);
     }
 
+    public void PlayElectricBuzz()
+    {
+        lightSource.enabled = true;
+        lightSource.Play();
+    }
+
+    public void StopElectricBuzz()
+    {
+        lightSource.Stop();
+        lightSource.enabled = false;
+    }
+
     public void PlayAmbience(int id)
     {
         PlayLoopingAudio(ambienceSource, ambienceGroup, id);
@@ -154,7 +169,6 @@ public class AudioManager : MonoBehaviour
     {
         PlayLoopingAudio(bgmSource, bgmGroup, audioName);
     }
-
 
     public void PlayEnemy(int id)
     {
@@ -240,7 +254,15 @@ public class AudioManager : MonoBehaviour
 
     private AudioGroup.PreparedAudio GetPreparedAudio(AudioGroup audioGroup, string[] audioNames)
     {
-        int randomIndex = Random.Range(0, audioNames.Length);
+        int randomIndex;
+
+        do
+        {
+            randomIndex = Random.Range(0, audioNames.Length);
+        }
+        while (randomIndex == prevEnemyIndex);
+        
+        prevEnemyIndex = randomIndex;
 
         return GetPreparedAudio(audioGroup, audioNames[randomIndex]);
     }

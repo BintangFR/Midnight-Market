@@ -17,7 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject controlScreen;
     
     private AudioSource[] audios;
+    private bool[] isAudioPlaying;
     public UIState uiState;
+
     public enum UIState{
         Objective = 0,
         Options = 1,
@@ -52,7 +54,7 @@ public class GameManager : MonoBehaviour
         GameOverScreen?.SetActive(false);
         FinishedScreen?.SetActive(false);
         audios = FindObjectsOfType<AudioSource>();
-
+        isAudioPlaying = new bool[audios.Length];
     }
 
     // Update is called once per frame
@@ -115,6 +117,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame(){
         SceneManager.LoadScene(1);
     }
+
     public void PausedGame(){
         player.enabled = false;
         camera.enabled = false;
@@ -122,20 +125,30 @@ public class GameManager : MonoBehaviour
         currentState = UIState.Objective;
         pausedMenu?.SetActive(true);
         isPaused = true;
-        foreach (AudioSource audio in audios)
+
+        for (int i = 0; i < audios.Length; i++)
         {
-            audio.Pause();
+            if (audios[i].isPlaying)
+            {
+                isAudioPlaying[i] = true;
+                audios[i].Pause();
+            }
         }
     }
+
     public void ResumeGame(){
         player.enabled = true;
         camera.enabled = true;
         Time.timeScale = 1f;
         pausedMenu?.SetActive(false);
         isPaused = false;
-        foreach (AudioSource audio in audios)
+
+        for (int i = 0; i < audios.Length; i++)
         {
-            audio.Play();
+            if (isAudioPlaying[i] && audios[i].isActiveAndEnabled)
+            {
+                audios[i].Play();
+            }
         }
     }
     public void GoToMainMenu(){

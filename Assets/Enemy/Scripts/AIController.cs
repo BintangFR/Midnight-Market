@@ -22,6 +22,7 @@ public class AIController : MonoBehaviour
     private Animator anim;
     private NavMeshAgent navMeshAgent;
     private int currentWaypointIndex = 0;
+    private float lastChaseTimer = 10f;
 
     public enum EnemyState
     {
@@ -97,12 +98,15 @@ public class AIController : MonoBehaviour
         }
         else if (currentState == EnemyState.seeking)
         {
+            lastChaseTimer += Time.deltaTime;
+
             agent.stoppingDistance = 0f;
             anim.SetFloat("Speed", agent.speed);
             agent.speed = normalSpeed;
 
             if (!agent.hasPath && waypoints.Length > 0)
             {
+                Debug.Log("Move to waypoint");
                 anim.SetBool("Seek", true);
                 MoveToWaypoint();
             }
@@ -205,6 +209,11 @@ public class AIController : MonoBehaviour
         {
             anim.SetBool("Seek", newState == EnemyState.chasing? true : false);
             AudioManager.Instance.PlayEnemy("Robot Footstep");
+            if (newState == EnemyState.chasing && lastChaseTimer >= 10f)
+            {
+                AudioManager.Instance.PlayBGM("Jejeng SFX(2)");
+                lastChaseTimer = 0f;
+            }
         }
         else
         {
@@ -228,7 +237,7 @@ public class AIController : MonoBehaviour
     {
         if (currentState == EnemyState.seeking)
         {
-            agent.SetDestination(position);
+            agent.SetDestination(player.position);
             Debug.Log("Cheery Can Hear You");
         }
     }

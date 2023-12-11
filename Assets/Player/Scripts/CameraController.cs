@@ -65,6 +65,20 @@ public class CameraController : MonoBehaviour
         shakeDuration = duration;
     }
 
+    public void ShakeCamera2()
+    {
+        isShaking = true;
+        shakeStrength = 0.5f;
+        shakeDuration = 1f;
+    }
+
+    public void ShakeCamera()
+    {
+        isShaking = true;
+        shakeStrength = 2f;
+        shakeDuration = 1f;
+    }
+
     public void SetSens (float camSens)
     {
         sens = camSens;

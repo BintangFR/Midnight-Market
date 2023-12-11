@@ -18,7 +18,7 @@ public class LampController : MonoBehaviour
 
         if (transform.transform.position.y < 5f)
         {
-            realtimeLight.GetComponent<Light>().intensity = 0.5f;
+            realtimeLight.GetComponent<Light>().intensity = 0.75f;
         }
     }
 

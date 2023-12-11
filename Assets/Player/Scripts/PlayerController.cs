@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Image bloodSplatterImage2 = null;
     [SerializeField] private Image bloodSplatterImage3 = null;
     public bool isWalking;
+    public bool isCrouching;
 
     [Header("Player Physics")]
     public Transform orientation;
@@ -26,8 +27,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody player;
     private float defaultSpeed;
     private Vector3 defaultScale;
-    
-    
 
     [Header("Player Stamina")]
     public float maxStamina = 100f;
@@ -247,6 +246,7 @@ public class PlayerController : MonoBehaviour
                 //gameObject.layer = default;
                 transform.localScale = new Vector3(transform.localScale.x, 0.5f, transform.localScale.z);
                 Physics.gravity *= 15f;
+                isCrouching = true;
 
             }
             else if (Input.GetKeyUp(KeyCode.LeftControl))
@@ -257,9 +257,9 @@ public class PlayerController : MonoBehaviour
                 transform.localScale = defaultScale;
                 Physics.gravity = new Vector3(0, -9.81f, 0);
                 //gameObject.layer = 6;
+                isCrouching = false;
             }
         }
-
     }
 
     private void SpeedControl()
@@ -267,7 +267,6 @@ public class PlayerController : MonoBehaviour
         Vector3 flatVel = new Vector3(player.velocity.x, 0f, player.velocity.z);
 
         if (flatVel.magnitude > speed || flatVel.magnitude < speed)
-
         {
             Vector3 limitedVel = flatVel.normalized * speed;
             player.velocity = new Vector3(limitedVel.x, player.velocity.y, limitedVel.z);
@@ -301,21 +300,24 @@ public class PlayerController : MonoBehaviour
         else if (maxHealth == 2)
         {
             Color splatterAlpha = bloodSplatterImage.color;
-            splatterAlpha.a = 1;
-            bloodSplatterImage.color = splatterAlpha;           
+            splatterAlpha.a = 0.5f;
+            bloodSplatterImage.color = splatterAlpha;
+            Camera.main.GetComponent<CameraController>().ShakeCamera(2f, 0.5f);
         }
         else if (maxHealth == 1)
         {
             Color splatterAlpha2 = bloodSplatterImage2.color;
-            splatterAlpha2.a = 1;
+            splatterAlpha2.a = 0.5f;
             bloodSplatterImage2.color = splatterAlpha2;
+            Camera.main.GetComponent<CameraController>().ShakeCamera(2f, 0.5f);
         }
         else if (maxHealth == 0)
         {
             Color splatterAlpha3 = bloodSplatterImage3.color;
-            splatterAlpha3.a = 1;
+            splatterAlpha3.a = 0.5f;
             bloodSplatterImage3.color = splatterAlpha3;
             AudioManager.Instance.PlaySFX("Dead", transform.position);
+            Camera.main.GetComponent<CameraController>().ShakeCamera(2f, 0.5f);
             Die();
         }
     }

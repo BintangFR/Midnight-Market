@@ -45,12 +45,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 0
-  description: Talk about the explosion
+  description: Talk with Adam about the explosion
   isComplete: 0
   isActive: 0
   type: 2
   progress: 0
+  ObjectiveHint:
+    description: 
+    Type: 0
+    isActive: 0
   requirement:
     m_PersistentCalls:
       m_Calls: []
   objectiveManager: {fileID: 0}
+  hint: 

@@ -83,7 +83,7 @@ public class LightController : MonoBehaviour
 
     private IEnumerator Flickers(int count)
     {
-        AudioManager.Instance.PlayBGM("Flickering Light");
+        AudioManager.Instance.PlayElectricBuzz();
 
         for (int i = 0; i < count; i++)
         {
@@ -92,6 +92,6 @@ public class LightController : MonoBehaviour
             yield return new WaitForSeconds(duration);
         }
 
-        AudioManager.Instance.StopBGM();
+        AudioManager.Instance.StopElectricBuzz();
     }
 }
